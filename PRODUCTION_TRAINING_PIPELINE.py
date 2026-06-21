@@ -249,7 +249,9 @@ class ConsolidatedHQDataset(IterableDataset):
         self.target_tokens = self.effective_len + 1
         self.tcm_weight = tcm_weight
         
-        self.s3 = boto3.client('s3')
+        import botocore.config
+        s3_config = botocore.config.Config(response_checksum_validation="when_required")
+        s3 = boto3.client('s3', region_name=S3_REGION, config=s3_config)
         
         # List all files in the HQ folder
         all_files = self._list_files()
