@@ -73,8 +73,8 @@ MAX_TOKENS = 6000
 DEDUP_HASH_SIZE = 100000
 
 # ─── DIRECTORIES ──────────────────────────────────────────────────────────────
-CKPT_DIR = os.path.join(os.environ.get('SM_MODEL_DIR', '/tmp'), 'mycelia_checkpoints')
-OUT_DIR = os.path.join(os.environ.get('SM_OUTPUT_DATA_DIR', '/tmp'), 'mycelia_output')
+CKPT_DIR = os.path.join(os.environ.get('SM_MODEL_DIR', '/home/ec2-user/SageMaker'), 'mycelia_checkpoints')
+OUT_DIR = os.path.join(os.environ.get('SM_OUTPUT_DATA_DIR', '/home/ec2-user/SageMaker'), 'mycelia_output')
 os.makedirs(CKPT_DIR, exist_ok=True)
 os.makedirs(OUT_DIR, exist_ok=True)
 LATEST_CKPT = os.path.join(CKPT_DIR, "mycelia_latest.pt")
@@ -249,9 +249,10 @@ class ConsolidatedHQDataset(IterableDataset):
         self.target_tokens = self.effective_len + 1
         self.tcm_weight = tcm_weight
         
+        # self.s3 = boto3.client('s3')
         import botocore.config
         s3_config = botocore.config.Config(response_checksum_validation="when_required")
-        s3 = boto3.client('s3', region_name=S3_REGION, config=s3_config)
+        self.s3 = boto3.client('s3', region_name='eu-central-1', config=s3_config)
         
         # List all files in the HQ folder
         all_files = self._list_files()
@@ -329,6 +330,7 @@ class ConsolidatedHQDataset(IterableDataset):
     
     def _stream_all(self):
         """Stream from all sources in weighted order."""
+        while True:
         for source_type, key in self.sources:
             for row in self._stream_file(key):
                 text = self.quality_filter.filter_row(row)
@@ -526,6 +528,11 @@ for step in tqdm(range(MAX_STEPS), desc=f"Epoch {start_epoch}", initial=global_s
     if step % 50 == 0 and torch.cuda.is_available():
         torch.cuda.empty_cache()
         gc.collect()
+        
+    import glob
+    ckpts = sorted(glob.glob(os.path.join(CKPT_DIR, "mycelia_step_*.pt")), key=os.path.getmtime)
+    for old in ckpts[:-2]:   # keep only the 2 most recent
+        os.remove(old)
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # FINAL SAVE

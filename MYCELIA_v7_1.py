@@ -14,7 +14,7 @@ from typing import Optional, Tuple
 
 @dataclass
 class MyceliaConfig:
-    d_model: int = 512
+    d_model: int = 512 # <-- managable for T4
     n_layers: int = 6
     n_heads: int = 8
     vocab_size: int = 151936  # Qwen-7B vocab size (will be overridden by tokenizer)
@@ -81,9 +81,19 @@ class MycelialConsensus(nn.Module):
         super().__init__()
         self.config = config
         self.n_heads = config.n_heads
-        fib_weights = config.fib_weights[:self.n_heads]
-        self.register_buffer('fib_weights', torch.tensor(fib_weights, dtype=torch.float32) / sum(fib_weights))
+        fib = self._generate_fibonacci(self.n_heads)
+        self.register_buffer(
+            'fib_weights',
+            torch.tensor(fib, dtype=torch.float32) / sum(fib)
+        )
 
+    @staticmethod
+    def _generate_fibonacci(n: int) -> list:
+        seq = [1, 1]
+        while len(seq) < n:
+            seq.append(seq[-1] + seq[-2])
+        return seq[:n]
+        
     def forward(self, head_outputs: torch.Tensor, step: int = 0):
         B, n_heads, T, d_head = head_outputs.shape
         weights = self.fib_weights.view(1, -1, 1, 1)
