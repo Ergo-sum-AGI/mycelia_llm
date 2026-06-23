@@ -5,6 +5,7 @@
 # ============================================
 
 import os
+os.environ['PYTORCH_ALLOC_CONF'] = 'expandable_segments:True'
 import gc
 import json
 import re
@@ -35,19 +36,22 @@ except ImportError:
 # CONFIGURATION
 # ═══════════════════════════════════════════════════════════════════════════════
 
-MAX_SEQ_LEN = 4096
+MAX_SEQ_LEN = 512
 BATCH_SIZE = 2
 ACCUM_STEPS = 8
-LR = 3e-4
+LR = 5e-5           # reduce from 3e-4
 WEIGHT_DECAY = 0.01
 MAX_STEPS = 50000
-GRAD_CLIP = 1.0
+GRAD_CLIP = 0.5
 SAVE_EVERY = 500
-COMPRESS_FREQ = 4
+
+# Use this after 50K steps
+COMPRESS_FREQ = 100  # Occasional compression refresher
 COMPRESS_WINDOW = 256
 COMPRESS_RATIO = 8
+# Or if you want faster compression learning: COMPRESS_FREQ = 100
 
-# ─── SINGLE S3 SOURCE (consolidated high-quality) ────────────────────────────
+# ─── SINGLE S3 SOURCE (consolidated high-quality)
 S3_BUCKET = "sagemaker-eu-central-1-119287771635"
 HQ_PREFIX = "massif-llm-highquality"
 
@@ -229,9 +233,9 @@ class ConsolidatedHQDataset(IterableDataset):
     Streams from a single S3 folder (massif-llm-highquality/)
     with internal file-level priority mixing.
     
-    TCM files get 70% weight, secondary files get 30% weight.
+    TCM files get 100% weight, secondary files get 00% weight.
     """
-    
+
     def __init__(self, bucket: str, prefix: str, tokenizer,
                  tcm_priority_files: List[str],
                  secondary_files: List[str],
@@ -249,20 +253,18 @@ class ConsolidatedHQDataset(IterableDataset):
         self.target_tokens = self.effective_len + 1
         self.tcm_weight = tcm_weight
         
-        # self.s3 = boto3.client('s3')
         import botocore.config
         s3_config = botocore.config.Config(response_checksum_validation="when_required")
         self.s3 = boto3.client('s3', region_name='eu-central-1', config=s3_config)
-        
         # List all files in the HQ folder
         all_files = self._list_files()
         print(f"\\n📁 Found {len(all_files)} files in s3://{bucket}/{prefix}")
-        
+
         # Categorize files
         self.tcm_files = []
         self.secondary_files = []
         self.other_files = []
-        
+
         for f in all_files:
             basename = os.path.basename(f)
             if basename in tcm_priority_files:
@@ -274,15 +276,15 @@ class ConsolidatedHQDataset(IterableDataset):
             else:
                 self.other_files.append(f)
                 print(f"   📄 [OTH] {basename}")
-        
+
         print(f"\\n📊 Source breakdown:")
         print(f"   TCM priority: {len(self.tcm_files)} files")
         print(f"   Secondary:    {len(self.secondary_files)} files")
         print(f"   Other:        {len(self.other_files)} files")
-        
+
         # Build weighted source list
         self.sources = self._build_weighted_sources()
-    
+
     def _list_files(self) -> List[str]:
         """List all JSONL files under the prefix."""
         try:
@@ -293,11 +295,11 @@ class ConsolidatedHQDataset(IterableDataset):
         except Exception as e:
             print(f"   ⚠️  Error listing {self.prefix}: {e}")
             return []
-    
+
     def _build_weighted_sources(self) -> List[Tuple[str, str]]:
         """Build weighted round-robin source list."""
         sources = []
-        
+
         # Weight: 70% TCM, 30% other
         w_tcm = int(10 * self.tcm_weight)
         w_other = 10 - w_tcm
@@ -331,12 +333,12 @@ class ConsolidatedHQDataset(IterableDataset):
     def _stream_all(self):
         """Stream from all sources in weighted order."""
         while True:
-        for source_type, key in self.sources:
-            for row in self._stream_file(key):
-                text = self.quality_filter.filter_row(row)
-                if text is not None:
-                    yield text
-    
+            for source_type, key in self.sources:
+                for row in self._stream_file(key):
+                    text = self.quality_filter.filter_row(row)
+                    if text is not None:
+                        yield text
+
     def _tokenize_stream(self):
         """Tokenize text stream into continuous token buffer."""
         for text in self._stream_all():
@@ -344,17 +346,16 @@ class ConsolidatedHQDataset(IterableDataset):
                 tokens = self.tokenizer.encode(text, allowed_special="all")
             except:
                 tokens = self.tokenizer.encode(text)
-            
+
             for tok in tokens:
                 yield tok
             yield self.tokenizer.eos_token_id or PAD_ID
-    
     def __iter__(self):
         """Pack tokens into fixed-length sequences aligned to compress_window."""
         buffer = []
         for tok in self._tokenize_stream():
             buffer.append(tok)
-            
+
             while len(buffer) >= self.target_tokens:
                 seq = buffer[:self.target_tokens]
                 buffer = buffer[self.target_tokens:]
@@ -404,7 +405,7 @@ if os.path.exists(LATEST_CKPT):
     ckpt = torch.load(LATEST_CKPT, map_location=device)
     
     model.load_state_dict(ckpt['model_state_dict'], strict=False)
-    opt.load_state_dict(kt['optimizer_state_dict'])
+    opt.load_state_dict(ckpt['optimizer_state_dict'])
     sched.load_state_dict(ckpt['scheduler_state_dict'])
     
     global_step = ckpt.get('global_step', 0)
@@ -428,6 +429,7 @@ else:
 # ═══════════════════════════════════════════════════════════════════════════════
 print(f"\\nLoading consolidated HQ data stream for epoch {start_epoch}...")
 quality_filter = DataQualityFilter(dedup_size=DEDUP_HASH_SIZE)
+secondary_files = []  # Remove all secondary datasets
 
 dataset = ConsolidatedHQDataset(
     bucket=S3_BUCKET,
@@ -438,7 +440,7 @@ dataset = ConsolidatedHQDataset(
     max_seq_len=MAX_SEQ_LEN,
     compress_window=COMPRESS_WINDOW,
     quality_filter=quality_filter,
-    tcm_weight=0.7  # 70% TCM, 30% other
+    tcm_weight=0.7  # 100% TCM, 0% other
 )
 
 loader = DataLoader(dataset, batch_size=BATCH_SIZE, collate_fn=collate, num_workers=0)
@@ -453,6 +455,10 @@ print("="*70)
 
 model.train()
 losses = []
+comp_on_losses = []    # Track losses when compression is ON
+comp_off_losses = []   # Track losses when compression is OFF
+nan_count = 0          # ADD THIS
+NAN_PATIENCE = 2       # ADD THIS - allow 2 bad batches before crashing
 
 for step in tqdm(range(MAX_STEPS), desc=f"Epoch {start_epoch}", initial=global_step):
     try:
@@ -460,35 +466,65 @@ for step in tqdm(range(MAX_STEPS), desc=f"Epoch {start_epoch}", initial=global_s
     except StopIteration:
         data_iter = iter(loader)
         batch = next(data_iter)
-    
+
     batch = batch.to(device)
     input_ids = batch[:, :-1].contiguous()
     target_ids = batch[:, 1:].contiguous()
-    
+
     B, T = input_ids.shape
-    use_comp = (cfg.use_compression and step % COMPRESS_FREQ == 0 and step > 0)
-    
+
+    # ─── CONDITIONAL COMPRESSION LOGIC
+    # Calculate rolling average loss (ALWAYS defined)
+    if len(losses) >= 100:
+        avg_loss = np.mean(losses[-100:])
+    else:
+        avg_loss = 6.0  # Default fallback
+
+    # Enable compression based on threshold
+    use_comp = True
+    if avg_loss < 6.5:  # Your threshold
+        use_comp = (cfg.use_compression and global_step % COMPRESS_FREQ == 0 and global_step > 0)
+
+    # Print when compression activates (avg_loss is now defined)
+    if use_comp and not hasattr(model, '_comp_was_on'):
+        print(f"\n🔧 Compression ENABLED at step {global_step} (avg_loss: {avg_loss:.4f})")
+        model._comp_was_on = True
+# ───────────────────────────────────────
+
     with autocast():
-        logits = model(input_ids, use_compression=use_comp, log_during_train=(step % 100 == 0))
-        
+        # Generate padding mask: True where token equals PAD_ID
+        padding_mask = (input_ids == PAD_ID)  # shape (B, T)
+        logits = model(input_ids, padding_mask=padding_mask, use_compression=use_comp, log_during_train=(step % 100 == 0))
+
         if use_comp and T > COMPRESS_WINDOW:
             compressed_prefix = COMPRESS_WINDOW // COMPRESS_RATIO
             suffix_len = T - COMPRESS_WINDOW
             effective_seq_len = compressed_prefix + suffix_len
             target_ids = target_ids[:, :effective_seq_len]
             logits = logits[:, :effective_seq_len, :]
-        
+
         assert logits.shape[1] == target_ids.shape[1], \
             f"Shape mismatch: logits {logits.shape}, targets {target_ids.shape}"
-        
+
         loss = F.cross_entropy(
             logits.reshape(-1, logits.size(-1)),
             target_ids.reshape(-1),
             ignore_index=PAD_ID
         ) / ACCUM_STEPS
-    
+
+    # ─── NAN/INF GUARD
+    if torch.isnan(loss) or torch.isinf(loss):
+        nan_count += 1
+        if nan_count < NAN_PATIENCE:  # Allow 3 skips before crashing
+            print(f"⚠️ Skipping batch at step {global_step} (loss is NaN/Inf)")
+            opt.zero_grad()
+            continue  # Don't update weights on bad batch
+        else:
+            raise RuntimeError(f"Loss is NaN/Inf at step {global_step} — check LR, data, compression")
+    # ─── NAN/INF GUARD END
+
     scaler.scale(loss).backward()
-    
+
     if (step + 1) % ACCUM_STEPS == 0:
         scaler.unscale_(opt)
         torch.nn.utils.clip_grad_norm_(model.parameters(), GRAD_CLIP)
@@ -496,20 +532,27 @@ for step in tqdm(range(MAX_STEPS), desc=f"Epoch {start_epoch}", initial=global_s
         scaler.update()
         opt.zero_grad()
         sched.step()
-    
+
     losses.append(loss.item() * ACCUM_STEPS)
+
+    # Track compression-state loss for end-of-epoch ratio report
+    if use_comp:
+        comp_on_losses.append(loss.item() * ACCUM_STEPS)
+    else:
+        comp_off_losses.append(loss.item() * ACCUM_STEPS)
+
     global_step += 1
-    
+
     if step % 10 == 0:
         avg = np.mean(losses[-100:]) if losses else 0
         lr = sched.get_last_lr()[0]
         comp_status = "ON" if use_comp else "OFF"
         tqdm.write(f"Step {global_step:5d} | Loss: {avg:.4f} | LR: {lr:.2e} | Comp: {comp_status}")
-    
+
     if step % SAVE_EVERY == 0 and step > 0:
         hex_s = f"{global_step:05x}"
         path = os.path.join(CKPT_DIR, f"mycelia_step_{hex_s}.pt")
-        
+
         checkpoint = {
             'epoch': start_epoch,
             'global_step': global_step,
@@ -520,15 +563,15 @@ for step in tqdm(range(MAX_STEPS), desc=f"Epoch {start_epoch}", initial=global_s
             'avg_loss_100': float(np.mean(losses[-100:])) if len(losses) >= 100 else None,
             'timestamp': datetime.now().isoformat(),
         }
-        
+
         torch.save(checkpoint, path)
         torch.save(checkpoint, LATEST_CKPT)
         print(f"\\n💾 Checkpoint: step {global_step}, epoch {start_epoch}")
-    
+
     if step % 50 == 0 and torch.cuda.is_available():
         torch.cuda.empty_cache()
         gc.collect()
-        
+
     import glob
     ckpts = sorted(glob.glob(os.path.join(CKPT_DIR, "mycelia_step_*.pt")), key=os.path.getmtime)
     for old in ckpts[:-2]:   # keep only the 2 most recent
@@ -566,9 +609,31 @@ torch.save({
 
 quality_filter.print_stats()
 
-print(f"\\n✅ Epoch {start_epoch} complete!")
+# ─── COMPRESSION LOSS RATIO REPORT ──────────────────────────────────────────
+if comp_on_losses and comp_off_losses:
+    mean_on = sum(comp_on_losses) / len(comp_on_losses)
+    mean_off = sum(comp_off_losses) / len(comp_off_losses)
+    ratio = mean_on / mean_off if mean_off > 0 else 0.0
+    print("\n" + "="*70)
+    print("COMPRESSION LOSS RATIO REPORT")
+    print("="*70)
+    print(f"   Compression ON  steps: {len(comp_on_losses):4d} | Mean loss: {mean_on:.4f}")
+    print(f"   Compression OFF steps: {len(comp_off_losses):4d} | Mean loss: {mean_off:.4f}")
+    print(f"   Loss Ratio (ON / OFF): {ratio:.4f}")
+    if ratio > 1.0:
+        print(f"   Effect: Compression adds {(ratio - 1) * 100:.1f}% penalty to loss")
+    elif ratio < 1.0:
+        print(f"   Effect: Compression reduces loss by {(1 - ratio) * 100:.1f}%")
+    else:
+        print(f"   Effect: Compression has neutral impact on loss")
+    print("="*70)
+else:
+    print("\n   [Compression ratio report skipped — insufficient mixed data]")
+# ─── END COMPRESSION REPORT ─────────────────────────────────────────────────
+
+print(f"\n✅ Epoch {start_epoch} complete!")
 print(f"   Total steps: {global_step}")
 print(f"   Final loss: {losses[-1]:.4f}" if losses else "   Final loss: N/A")
 print(f"   Checkpoint: {LATEST_CKPT}")
-print(f"\\n   >>> RUN AGAIN FOR EPOCH {start_epoch + 1} <<<")
+print(f"\n   >>> RUN AGAIN FOR EPOCH {start_epoch + 1} <<<")
 print("="*70)
