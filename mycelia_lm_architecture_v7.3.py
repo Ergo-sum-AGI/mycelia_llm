@@ -37,7 +37,7 @@ class MyceliaConfig:
     use_compression: bool = True
     compress_ratio: int = 8
     compress_window: int = 128
-    compress_freq: int = 100
+    compress_freq: int = 999999 # from low to never
 
 
 def get_sinusoidal_pe(seq_len: int, d_model: int, device: torch.device) -> torch.Tensor:
@@ -175,6 +175,31 @@ class MycelialConsensus(nn.Module):
         
         # Keep variance on GPU until we need it for the boolean veto check
         max_variance_tensor = variance.mean(dim=-1).max()  # 0-d tensor, no sync yet
+
+        # ─── ADD THREE-STATE CLASSIFICATION HERE ────────────────────────────────
+        # Classify each element's variance into three states
+        safe_threshold = 2.5
+        dubito_threshold = 7.0
+    
+        # Flatten variance to count states across all tokens
+        flat_variance = variance.mean(dim=-1).reshape(-1)  # (B*T,)
+    
+        safe_mask = flat_variance <= safe_threshold
+        dissenter_mask = (flat_variance > safe_threshold) & (flat_variance <= dubito_threshold)
+        dubito_mask = flat_variance > dubito_threshold
+    
+        safe_count = safe_mask.sum().item()
+        dissenter_count = dissenter_mask.sum().item()
+        dubito_count = dubito_mask.sum().item()
+        total_count = len(flat_variance)
+    
+        # Store in self for logger to access
+        self._telemetry_stats = {
+            'safe_pct': (safe_count / total_count * 100) if total_count > 0 else 0,
+            'dissenter_pct': (dissenter_count / total_count * 100) if total_count > 0 else 0,
+            'dubito_pct': (dubito_count / total_count * 100) if total_count > 0 else 0,
+        }
+        # ──────────────────────────────────────────────────────────────────────────
         
         # ─── DYNAMIC THRESHOLD ───
         if self.use_dynamic_threshold:
@@ -427,7 +452,9 @@ class MyceliaLM(nn.Module):
         # ─── VRAM SAVINGS CALCULATION ────────────────────────────────────────
         bytes_per_element = 2  # FP16/BF16 training precision
         uncompressed_bytes = B * T * self.config.d_model * bytes_per_element
-        compression_applied = False
+# =========================
+        compression_applied = True # seitched from False
+# =========================
         vram_saved_mb = 0.0
 
         if use_compression and T > self.config.compress_window:

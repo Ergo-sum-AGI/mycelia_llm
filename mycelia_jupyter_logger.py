@@ -54,6 +54,19 @@ class MyceliaJupyterLogger:
             f"Max Variance    : {info_dict.get('variance', 0):.5f}\n"
             f"Veto Threshold  : {info_dict.get('threshold', 0):.3f}\n"
         )
+        
+        # ─── ADD THREE-STATE TELEMETRY DISPLAY HERE ─────────────────────────────
+        # Display the three-state distribution if available
+        if 'telemetry_stats' in info_dict:
+            stats = info_dict['telemetry_stats']
+            output_str += (
+                f"\n───────────────────────────────────────────────────\n"
+                f"📊 TELEMETRY STATE DISTRIBUTION\n"
+                f"🟩 Safe (Var ≤ 2.5):    {stats.get('safe_pct', 0):.1f}%\n"
+                f"🟨 Dissenter (2.5-7.0): {stats.get('dissenter_pct', 0):.1f}%\n"
+                f"🟥 Dubito (Var > 7.0):  {stats.get('dubito_pct', 0):.1f}%\n"
+            )
+        # ──────────────────────────────────────────────────────────────────────────
 
         # Add compression metrics if they exist in info_dict
         if 'compress_ratio' in info_dict:
@@ -65,17 +78,21 @@ class MyceliaJupyterLogger:
                 f"Total Run Savings   : {info_dict.get('cumulative_gb', 0.0):.3f} GB ✨\n"
             )
 
-# ─── ADDED: Sweet Spot Score to Dashboard ────────────────────────────────
-
+        # ─── ADD SWEET SPOT SCORE DISPLAY ───────────────────────────────────────
         if 'sweet_spot_score' in info_dict:
             output_str += (
                 f"\n───────────────────────────────────────────────────\n"
                 f"🎯 ARCHITECTURE OPTIMIZATION TARGET\n"
                 f"Sweet Spot Score: {info_dict.get('sweet_spot_score', 0.0):.4f}"
             )
-            
             if info_dict.get('sweet_spot_score', 0.0) > 1.5:
-                output_str += " ⭐"
+                output_str += " ⭐ (OPTIMAL!)"
+            elif info_dict.get('sweet_spot_score', 0.0) > 1.0:
+                output_str += " ✅ (Good)"
+            elif info_dict.get('sweet_spot_score', 0.0) > 0.5:
+                output_str += " ⚠️ (Suboptimal)"
+            else:
+                output_str += " ❌ (Poor - tune compression)"
 
         if vetoed_pct > 60.0:
             output_str += f"\n⚠️  HIGH DISSENT: {vetoed_pct:.1f}% vetoed!"
@@ -86,8 +103,3 @@ class MyceliaJupyterLogger:
             clear_output(wait=True)
         sys.stdout.write(output_str + "\n")
         sys.stdout.flush()
-
-    def reset(self):
-        """Clear the dashboard display."""
-        if _HAS_IPYTHON:
-            clear_output(wait=True)
