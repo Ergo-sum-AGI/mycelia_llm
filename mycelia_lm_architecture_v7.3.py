@@ -27,7 +27,7 @@ class MyceliaConfig:
     d_model: int = 512
     n_layers: int = 6          # ← FIXED: 6 (was 3)
     n_heads: int = 8           # ← FIXED: 8 (was 4)
-    vocab_size: int = 151643   # ← FIXED: 151643 (your checkpoint's vocab size)
+    vocab_size: int = 151643   # ← FIXED: 151643 (our checkpoint's vocab size)
     max_seq_len: int = 4096
     fib_weights: Tuple = (5, 8, 13, 21, 34, 55)
     dissenter_threshold: float = 2.5
