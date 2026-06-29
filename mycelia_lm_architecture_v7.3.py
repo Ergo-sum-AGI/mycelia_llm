@@ -27,7 +27,7 @@ class MyceliaConfig:
     d_model: int = 512
     n_layers: int = 6          # ← FIXED: 6 (was 3)
     n_heads: int = 8           # ← FIXED: 8 (was 4)
-    vocab_size: int = 151643   # ← FIXED: 151643 (our checkpoint's vocab size)
+    vocab_size: int = 151643   # ← FIXED: 151643 (your checkpoint's vocab size)
     max_seq_len: int = 4096
     fib_weights: Tuple = (5, 8, 13, 21, 34, 55)
     dissenter_threshold: float = 2.5
@@ -137,17 +137,17 @@ class MycelialConsensus(nn.Module):
         self.n_heads = config.n_heads
         self.use_dynamic_threshold = use_dynamic_threshold
         self.base_threshold = config.dissenter_threshold
-        
+
         # Fibonacci weights (unchanged)
         fib = self._generate_fibonacci(self.n_heads)
         self.register_buffer('fib_weights', 
             torch.tensor(fib, dtype=torch.float32) / sum(fib))
-        
+
         # ─── OPTIMIZED: Stats as GPU tensors (no .item() in hot path) ───
         # No hardcoded 'cuda' — register_buffer follows .to(device) automatically
         self.register_buffer('_total', torch.zeros(1, dtype=torch.long))
         self.register_buffer('_kept',  torch.zeros(1, dtype=torch.long))
-        
+
         # CPU cache for logger (only populated when get_stats() is called)
         self.cached_stats = {'total': 0, 'kept': 0, 'vetoed': 0}
         self._last_threshold = 0.0
@@ -172,35 +172,34 @@ class MycelialConsensus(nn.Module):
         consensus = weighted.sum(dim=1)
         mean_heads = head_outputs.mean(dim=1, keepdim=True)
         variance = (head_outputs - mean_heads).pow(2).mean(dim=1)
-        
+
         # Keep variance on GPU until we need it for the boolean veto check
         max_variance_tensor = variance.mean(dim=-1).max()  # 0-d tensor, no sync yet
 
-        # ─── ADD THREE-STATE CLASSIFICATION HERE ────────────────────────────────
+        # ─── ADD THREE-STATE CLASSIFICATION HERE 
         # Classify each element's variance into three states
         safe_threshold = 2.5
         dubito_threshold = 7.0
-    
+
         # Flatten variance to count states across all tokens
         flat_variance = variance.mean(dim=-1).reshape(-1)  # (B*T,)
-    
+
         safe_mask = flat_variance <= safe_threshold
         dissenter_mask = (flat_variance > safe_threshold) & (flat_variance <= dubito_threshold)
         dubito_mask = flat_variance > dubito_threshold
-    
+
         safe_count = safe_mask.sum().item()
         dissenter_count = dissenter_mask.sum().item()
         dubito_count = dubito_mask.sum().item()
         total_count = len(flat_variance)
-    
+
         # Store in self for logger to access
         self._telemetry_stats = {
             'safe_pct': (safe_count / total_count * 100) if total_count > 0 else 0,
             'dissenter_pct': (dissenter_count / total_count * 100) if total_count > 0 else 0,
             'dubito_pct': (dubito_count / total_count * 100) if total_count > 0 else 0,
         }
-        # ──────────────────────────────────────────────────────────────────────────
-        
+
         # ─── DYNAMIC THRESHOLD ───
         if self.use_dynamic_threshold:
             layer_factor = 1.0 + (layer_idx / 6) * 1.5
@@ -209,23 +208,23 @@ class MycelialConsensus(nn.Module):
             threshold = max(0.05, min(0.50, threshold))
         else:
             threshold = self.base_threshold
-        
+
         # ─── OPTIMIZED TELEMETRY (zero syncs here) ───
         with torch.no_grad():
             acclamation_mask = (variance < threshold).float()
             self._total += acclamation_mask.numel()
             self._kept  += acclamation_mask.sum().long()
-        
+
         self._last_threshold = threshold
-        
+
         # ─── ONE sync point — needed for the Python-level if veto: branch ───
         max_variance = max_variance_tensor.item()
         veto = max_variance > threshold
         coherence = 1.0 - min(1.0, max_variance / threshold)
-        
+
         if veto:
             consensus = consensus * 0.85
-        
+
         return consensus, veto, {
             'coherence': coherence,
             'variance': max_variance,
@@ -253,10 +252,10 @@ class MycelialConsensus(nn.Module):
         if total == 0:
             print("No tokens processed yet.")
             return
-        
+
         kept = stats['kept']
         vetoed = stats['vetoed']
-        
+
         print("="*70)
         print("🍄 MYCELIA CONSENSUS TELEMETRY")
         print("="*70)
@@ -331,42 +330,42 @@ class MycelialCompressor(nn.Module):
         self.latent_dim = config.d_model          # 512
         self.encoder_blocks = nn.ModuleList([MycelialBlock(config, i) for i in range(2)])
         self.latent_proj = nn.Linear(config.d_model, config.d_model)
-        
+
         # ─── INPUT-SIDE POSITIONAL EMBEDDING (NEW) ───
         # Shape: (1, compress_window, d_model) = (1, 128, 512)
         self.input_pos = nn.Parameter(
             torch.randn(1, config.compress_window, config.d_model) * 0.02
         )
-        
+
         # ─── OUTPUT-SIDE POSITIONAL EMBEDDING (EXISTING) ───
         # Shape: (1, 512, d_model) — pool of 512 positions
         self.latent_pos = nn.Parameter(
             torch.randn(1, 512, config.d_model) * 0.02
         )
-        
+
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         B, W, D = x.shape
         assert W == self.window, f"Expected window {self.window}, got {W}"
-        
+
         # ─── APPLY INPUT POSITIONS ──────────────────────────────────────────
         x = x + self.input_pos  # (B, 128, 512) + (1, 128, 512)
-        
+
         # ─── ENCODE ──────────────────────────────────────────────────────────
         h = x
         for block in self.encoder_blocks:
             h, _ = block(h)
-        
+
         # ─── POOL ────────────────────────────────────────────────────────────
         h = h.view(B, W // self.ratio, self.ratio, D)  # (B, 16, 8, 512)
         latent = h.mean(dim=2)  # (B, 16, 512)
-        
+
         # ─── PROJECT ─────────────────────────────────────────────────────────
         latent = self.latent_proj(latent)  # (B, 16, 512)
-        
+
         # ─── APPLY LATENT POSITIONS ─────────────────────────────────────────
         seq_len = latent.shape[1]  # 16
         latent = latent + self.latent_pos[:, :seq_len, :]  # (1, 16, 512)
-        
+
         return latent
 
 class DubitoMonitor(nn.Module):
@@ -452,9 +451,7 @@ class MyceliaLM(nn.Module):
         # ─── VRAM SAVINGS CALCULATION ────────────────────────────────────────
         bytes_per_element = 2  # FP16/BF16 training precision
         uncompressed_bytes = B * T * self.config.d_model * bytes_per_element
-# =========================
-        compression_applied = True # seitched from False
-# =========================
+        compression_applied = False  # switched from True
         vram_saved_mb = 0.0
 
         if use_compression and T > self.config.compress_window:
@@ -481,37 +478,46 @@ class MyceliaLM(nn.Module):
                 compressed_pad = compressed_pad.expand(B, compressed_len)
                 suffix_pad = padding_mask[:, prefix_len:]
                 padding_mask = torch.cat([compressed_pad, suffix_pad], dim=1)
-        # ─────────────────────────────────────────────────────────────────────
 
-        # ─── PASS THROUGH BLOCKS ─────────────────────────────────────────────
+        # ─── PASS THROUGH BLOCKS WITH LAYER-WISE COHERENCE ─────────────────
+
+        all_layer_coherence = []
+        max_variance_tracked = 0.0
         last_info = {}
-        for block in self.blocks:
-            x, info = block(x, step=self.depth, padding_mask=padding_mask)
-            last_info = info  # capture the last block's info (overwritten each iter)
-            if log_during_train and 'coherence' in info:
-                self.consensus_stats.append(info['coherence'])
 
+        for block_idx, block in enumerate(self.blocks):
+            x, info = block(x, step=self.depth, padding_mask=padding_mask)
+            last_info = info  # Keep the last block's info for reference
+
+            # ─── CAPTURE COHERENCE FROM EACH LAYER UNCONDITIONALLY ─────────
+            if info and 'coherence' in info:
+                all_layer_coherence.append(info['coherence'])
+                if info.get('variance', 0.0) > max_variance_tracked:
+                    max_variance_tracked = info.get('variance', 0.0)
+
+                if log_during_train and 'coherence' in info:
+                    self.consensus_stats.append(info['coherence'])
+
+        # ─── AFTER ALL BLOCKS: NORMALIZE, PROJECT, AND RETURN ──────────────
         x = self.final_norm(x)
         logits = self.lm_head(x)
 
-        if log_during_train:
-            hidden = self.get_hidden_states()
-            if hidden is not None:
-                dubito = self.dubito_monitor(hidden, self.depth)
-                self.dubito_history.append(dubito)
+        # ─── COMPUTE MEAN COHERENCE ACROSS ALL LAYERS ──────────────────────
+        mean_coherence = sum(all_layer_coherence) / len(all_layer_coherence) if all_layer_coherence else 0.0
 
-        # ─── COMPILE TELEMETRY INFO DICT ─────────────────────────────────────
-        # Merge block-level consensus info + compression VRAM info.
-        # .item() here is fine — only called on the return path, not per-block.
+        # ─── COMPILE TELEMETRY INFO DICT ───────────────────────────────────
         self._last_info = {
-            # From the consensus (last block)
             **last_info,
-            # From compression
+            'coherence': mean_coherence,
+            'avg_coherence': mean_coherence,
+            'num_layers': len(all_layer_coherence),
+            'layer_coherences': all_layer_coherence,
+            'max_variance': max_variance_tracked,
             'compression_applied': compression_applied,
-            'compress_ratio':      self.config.compress_ratio if compression_applied else 1,
-            'vram_saved':          vram_saved_mb,
-            'cumulative_gb':       float(self.cumulative_saved_bytes.item()) / (1024 ** 3),
-            'effective_seq_len':   x.shape[1],
+            'compress_ratio': self.config.compress_ratio if compression_applied else 1,
+            'vram_saved': vram_saved_mb,
+            'cumulative_gb': float(self.cumulative_saved_bytes.item()) / (1024 ** 3),
+            'effective_seq_len': x.shape[1],
         }
         return logits
 
