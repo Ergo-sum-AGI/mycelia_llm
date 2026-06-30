@@ -449,9 +449,9 @@ class MyceliaLM(nn.Module):
         x = x + get_sinusoidal_pe(T, self.config.d_model, x.device)
 
         # ─── VRAM SAVINGS CALCULATION ────────────────────────────────────────
-        bytes_per_element = 2  # FP16/BF16 training precision
+        bytes_per_element = 2
         uncompressed_bytes = B * T * self.config.d_model * bytes_per_element
-        compression_applied = False  # switched from True
+        compression_applied = False
         vram_saved_mb = 0.0
 
         if use_compression and T > self.config.compress_window:
@@ -462,7 +462,6 @@ class MyceliaLM(nn.Module):
             x = torch.cat([latent, suffix], dim=1)
             compression_applied = True
 
-            # Compressed prefix + uncompressed suffix
             compressed_len = self.config.compress_window // self.config.compress_ratio
             compressed_bytes = (
                 B * compressed_len * self.config.d_model * bytes_per_element
@@ -472,7 +471,6 @@ class MyceliaLM(nn.Module):
             vram_saved_mb = step_saved_bytes / (1024 ** 2)
             self.cumulative_saved_bytes += step_saved_bytes
 
-            # ─── EXISTING padding-mask adjustment (preserved) ────────────────
             if padding_mask is not None:
                 compressed_pad = padding_mask[:, :prefix_len].any(dim=1, keepdim=True)
                 compressed_pad = compressed_pad.expand(B, compressed_len)
@@ -482,21 +480,37 @@ class MyceliaLM(nn.Module):
         # ─── PASS THROUGH BLOCKS WITH LAYER-WISE COHERENCE ─────────────────
 
         all_layer_coherence = []
+        layer_variances = []          # ← NEW: track per-layer variance
         max_variance_tracked = 0.0
         last_info = {}
 
         for block_idx, block in enumerate(self.blocks):
             x, info = block(x, step=self.depth, padding_mask=padding_mask)
-            last_info = info  # Keep the last block's info for reference
+            last_info = info
 
-            # ─── CAPTURE COHERENCE FROM EACH LAYER UNCONDITIONALLY ─────────
             if info and 'coherence' in info:
                 all_layer_coherence.append(info['coherence'])
+                
+                # ← NEW: capture raw variance for every layer
+                layer_variances.append(info.get('variance', 0.0))
+                
                 if info.get('variance', 0.0) > max_variance_tracked:
                     max_variance_tracked = info.get('variance', 0.0)
 
                 if log_during_train and 'coherence' in info:
                     self.consensus_stats.append(info['coherence'])
+
+        # ─── COMPUTE DOMAIN FRICTION GRADIENT ──────────────────────────────
+        # ← NEW: early layers (1-2) vs late layers (5-6) variance analysis
+        n_layers = len(layer_variances)
+        if n_layers >= 2:
+            # First half = early layers, second half = late layers
+            mid = n_layers // 2
+            early_variance = sum(layer_variances[:mid]) / mid
+            late_variance = sum(layer_variances[mid:]) / (n_layers - mid)
+        else:
+            early_variance = 0.0
+            late_variance = 0.0
 
         # ─── AFTER ALL BLOCKS: NORMALIZE, PROJECT, AND RETURN ──────────────
         x = self.final_norm(x)
@@ -512,6 +526,10 @@ class MyceliaLM(nn.Module):
             'avg_coherence': mean_coherence,
             'num_layers': len(all_layer_coherence),
             'layer_coherences': all_layer_coherence,
+            'layer_variances': layer_variances,      # ← NEW: full per-layer list
+            'early_var': early_variance,              # ← NEW: early layers mean
+            'late_var': late_variance,                # ← NEW: late layers mean
+            'variance_delta': early_variance - late_variance,  # ← NEW: gradient
             'max_variance': max_variance_tracked,
             'compression_applied': compression_applied,
             'compress_ratio': self.config.compress_ratio if compression_applied else 1,

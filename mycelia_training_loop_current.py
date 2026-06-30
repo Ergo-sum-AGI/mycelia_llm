@@ -685,19 +685,61 @@ for step in tqdm(range(MAX_STEPS), desc=f"Training", initial=global_step):
     losses.append(loss.item() * ACCUM_STEPS)
     global_step += 1
 
-    # ─── LOGGING (EVERY 1000 STEPS)
-    if step % LOG_EVERY == 0 and step > 0:
-        avg_loss = np.mean(losses[-100:]) if losses else 0
-        current_lr = lr_scheduler.get_lr()
-        warmup_status = lr_scheduler.get_warmup_status()
-        
-        # Throughput stats
-        stats = tracker.print_status(global_step)
-        
-        print(f"\n📊 Step {global_step:,} | Loss: {avg_loss:.4f} | LR: {current_lr:.2e} | {warmup_status}")
-        print(f"   Coherence: {coherence:.4f} {'📈' if coherence > 0.8 else '📉' if coherence < 0.5 else '➡️'}")
-        print(f"   Speed: {stats['smoothed_tps']:.0f} tok/s | ETA: {stats['eta_hours']:.1f}h | {stats['progress_pct']:.1f}%")
+# ─── LOGGING (EVERY 1000 STEPS) ──────────────────────────────────────────
 
+if step % LOG_EVERY == 0 and step > 0:
+    avg_loss = np.mean(losses[-100:]) if losses else 0
+    current_lr = lr_scheduler.get_lr()
+    warmup_status = lr_scheduler.get_warmup_status()
+    
+    stats = tracker.print_status(global_step)
+    
+    # ─── DOMAIN FRICTION DASHBOARD ────────────────────────────────────────
+    friction_status = ""
+    if hasattr(model, '_last_info') and model._last_info:
+        info = model._last_info
+        early_var = info.get('early_var', 0.0)
+        late_var = info.get('late_var', 0.0)
+        delta = info.get('variance_delta', 0.0)
+        layer_variances = info.get('layer_variances', [])
+        n_layers = len(layer_variances)
+        
+        if n_layers > 0:
+            if early_var > 20 and late_var < 5:
+                friction_status = "✅ RESOLVED — consensus layers functioning"
+            elif early_var > 20 and late_var > 15:
+                friction_status = "⚠️ UNRESOLVED — threshold too loose"
+            elif early_var < 5 and late_var < 5:
+                friction_status = "➡️ LOW FRICTION — domain already aligned"
+            else:
+                friction_status = "🔍 MONITORING — ambiguous state"
+            
+            mid = n_layers // 2
+            print(f"\n🧪 DOMAIN FRICTION ANALYSIS:")
+            print(f"   Early layers (1-{mid}) variance: {early_var:.2f}")
+            print(f"   Late layers ({mid+1}-{n_layers}) variance:  {late_var:.2f}")
+            print(f"   Delta (early − late):              {delta:+.2f}")
+            print(f"   Status: {friction_status}")
+    
+    # ─── COHERENCE ──────────────────────────────────────────────────────────
+    coherence = 0.0
+    if hasattr(model, '_last_info') and model._last_info:
+        coherence = model._last_info.get('coherence', 0.0)
+    
+    # ─── MAIN DISPLAY ──────────────────────────────────────────────────────
+    print(f"\n📊 Step {global_step:,} | Loss: {avg_loss:.4f} | LR: {current_lr:.2e} | {warmup_status}")
+    print(f"   Coherence: {coherence:.4f} {'📈' if coherence > 0.8 else '📉' if coherence < 0.5 else '➡️'}")
+    print(f"   Speed: {stats['smoothed_tps']:.0f} tok/s | ETA: {stats['eta_hours']:.1f}h | {stats['progress_pct']:.1f}%")
+    
+    # ─── COHERENCE ──────────────────────────────────────────────────────────
+    coherence = 0.0
+    if hasattr(model, '_last_info') and model._last_info:
+        coherence = model._last_info.get('coherence', 0.0)
+    
+    # ─── MAIN DISPLAY ──────────────────────────────────────────────────────
+    print(f"\n📊 Step {global_step:,} | Loss: {avg_loss:.4f} | LR: {current_lr:.2e} | {warmup_status}")
+    print(f"   Coherence: {coherence:.4f} {'📈' if coherence > 0.8 else '📉' if coherence < 0.5 else '➡️'}")
+    print(f"   Speed: {stats['smoothed_tps']:.0f} tok/s | ETA: {stats['eta_hours']:.1f}h | {stats['progress_pct']:.1f}%")
         # ─── ADD BEST CHECKPOINT SAVING HERE ──────────────────────────────────
         if avg_loss < best_loss:
             best_loss = avg_loss
@@ -759,7 +801,7 @@ final_ckpt = {
     'global_step': global_step,
     'model_state_dict': model.state_dict(),
     'optimizer_state_dict': opt.state_dict(),
-    'scheduler_state_dict': sched.state_dict(),
+    'lr_scheduler_step': lr_scheduler.current_step,
     'loss': losses[-1] if losses else None,
     'avg_loss_100': float(np.mean(losses[-100:])) if len(losses) >= 100 else None,
     'timestamp': datetime.now().isoformat(),
