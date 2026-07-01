@@ -75,8 +75,8 @@ Here is what happens inside a single Mycelia layer during one forward pass. Comp
 Input: hidden state h_t ∈ ℝ^512
 
         ┌─────────────────────────────────────┐
-        │  QKV Projection: W_qkv · h_t      │
-        │  → q_t, k_t, v_t ∈ ℝ^512          │
+        │  QKV Projection: W_qkv · h_t        │
+        │  → q_t, k_t, v_t ∈ ℝ^512            │
         └─────────────────────────────────────┘
                       ↓
         ┌─────────────────────────────────────┐
@@ -84,15 +84,15 @@ Input: hidden state h_t ∈ ℝ^512
         │  q_t^(1), ..., q_t^(8) ∈ ℝ^64       │
         └─────────────────────────────────────┘
                       ↓
-        ┌─────────────────────────────────────┐
+        ┌─────────────────────────────────────────────────────────┐
         │  Each head: softmax(q_t^(i)·k_t^(i)^T / √64) · v_t^(i)  │
-        │  → head_output_i ∈ ℝ^64             │
-        └─────────────────────────────────────┘
+        │  → head_output_i ∈ ℝ^64                                 │
+        └─────────────────────────────────────────────────────────┘
                       ↓
-        ┌─────────────────────────────────────┐
+        ┌────────────────────────────────────────────────┐
         │  Concatenate: [head_1 | ... | head_8] ∈ ℝ^512  │
-        │  Project: W_o · concat → output ∈ ℝ^512       │
-        └─────────────────────────────────────┘
+        │  Project: W_o · concat → output ∈ ℝ^512        │
+        └────────────────────────────────────────────────┘
                       ↓
         Output: h_t' = h_t + output (residual)
 ```
@@ -105,64 +105,64 @@ Input: hidden state h_t ∈ ℝ^512
 Input: hidden state h_t ∈ ℝ^512
 
         ┌─────────────────────────────────────┐
-        │  SAME QKV Projection + Attention  │
-        │  → head_outputs ∈ ℝ^(8×64)         │
+        │  SAME QKV Projection + Attention    │
+        │  → head_outputs ∈ ℝ^(8×64)          │
         └─────────────────────────────────────┘
                       ↓
-        ┌─────────────────────────────────────┐
-        │  FIBONACCI CONSENSUS                │
-        │                                       │
+        ┌────────────────────────────────────────────────┐
+        │  FIBONACCI CONSENSUS                           │
+        │                                                │
         │  Weights: w = [5, 8, 13, 21, 34, 55, 89, 144]  │
         │  Normalized: w_i / Σw = [0.012, 0.019, 0.031,  │
-        │                         0.050, 0.081, 0.131,    │
-        │                         0.212, 0.344]            │
-        │                                       │
-        │  consensus = Σ_i (w_i/Σw) · head_i    │
-        │  → consensus ∈ ℝ^64                    │
-        └─────────────────────────────────────┘
+        │                         0.050, 0.081, 0.131,   │
+        │                         0.212, 0.344]          │
+        │                                                │
+        │  consensus = Σ_i (w_i/Σw) · head_i             │
+        │  → consensus ∈ ℝ^64                            │
+        └────────────────────────────────────────────────┘
                       ↓
-        ┌─────────────────────────────────────┐
-        │  VARIANCE TRACKING (per token)        │
-        │                                       │
-        │  For each position t:                 │
+        ┌───────────────────────────────────────────┐
+        │  VARIANCE TRACKING (per token)            │
+        │                                           │
+        │  For each position t:                     │
         │    μ_t = mean(head_1(t), ..., head_8(t))  │
-        │    σ²_t = mean((head_i(t) - μ_t)²)    │
-        │    → token_variance(t) = mean(σ²_t)  │
-        └─────────────────────────────────────┘
+        │    σ²_t = mean((head_i(t) - μ_t)²)        │
+        │    → token_variance(t) = mean(σ²_t)       │
+        └───────────────────────────────────────────┘
                       ↓
-        ┌─────────────────────────────────────┐
-        │  DYNAMIC THRESHOLD                    │
-        │                                       │
-        │  flat_var = token_variance.flatten()  │
-        │  median = flat_var.median()           │
+        ┌────────────────────────────────────────────┐
+        │  DYNAMIC THRESHOLD                         │
+        │                                            │
+        │  flat_var = token_variance.flatten()       │
+        │  median = flat_var.median()                │
         │  mad = (flat_var - median).abs().median()  │
-        │  scale = median + 1.4826 × mad        │
-        │  threshold = 1.5 × scale × layer_factor  │
-        │  (layer_factor: 0.8 → 1.4 across layers)  │
-        └─────────────────────────────────────┘
+        │  scale = median + 1.4826 × mad             │
+        │  threshold = 1.5 × scale × layer_factor    │
+        │  (layer_factor: 0.8 → 1.4 across layers)   │
+        └────────────────────────────────────────────┘
                       ↓
-        ┌─────────────────────────────────────┐
-        │  ACCLAMATION vs. VETO                 │
-        │                                       │
-        │  For each token t:                    │
-        │    if variance(t) < threshold:      │
-        │       → ACCLAIMED (pass through)      │
-        │       veto_factor = 1.0               │
-        │    else:                              │
-        │       → VETOED (attenuate)            │
-        │       veto_factor = 0.85              │
-        │                                       │
+        ┌──────────────────────────────────────────────────┐
+        │  ACCLAMATION vs. VETO                            │
+        │                                                  │
+        │  For each token t:                               │
+        │    if variance(t) < threshold:                   │
+        │       → ACCLAIMED (pass through)                 │
+        │       veto_factor = 1.0                          │
+        │    else:                                         │
+        │       → VETOED (attenuate)                       │
+        │       veto_factor = 0.85                         │
+        │                                                  │
         │  consensus_attenuated = consensus × veto_factor  │
-        └─────────────────────────────────────┘
+        └──────────────────────────────────────────────────┘
                       ↓
-        ┌─────────────────────────────────────┐
-        │  ADAPTIVE MIXING                    │
-        │                                       │
+        ┌────────────────────────────────────────────────────┐
+        │  ADAPTIVE MIXING                                   │
+        │                                                    │
         │  Round 0: output = 0.90 × attn + 0.10 × consensus  │
         │  Round 1: output = 0.85 × attn + 0.15 × consensus  │
         │  Round 2: output = 0.80 × attn + 0.20 × consensus  │
-        │  ... (floor at 0.50 × attn)          │
-        └─────────────────────────────────────┘
+        │  ... (floor at 0.50 × attn)                        │
+        └────────────────────────────────────────────────────┘
                       ↓
         Output: h_t' = h_t + α_attn × output (residual)
 ```
@@ -211,7 +211,7 @@ Their key findings:
 Mycelia's MycelialConsensus differs from their formulation in three ways:
 
 | Feature | Moushegian et al. (2026) | Mycelia LM |
-|---------|-------------------------|------------|
+|---------|--------------------------|------------|
 | **Graph structure** | Learned or predefined adjacency | Fully connected (all heads interact) |
 | **Weights** | Learned edge weights | Hardcoded Fibonacci weights |
 | **Regulation** | Energy minimization | Variance-based thresholding with veto |
