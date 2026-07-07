@@ -846,7 +846,1079 @@ Training: 1707000it [2:38:47,  4.54it/s]
    🎯 Forecast Error: 0.131 (predicted=0.377 vs actual=0.508)
    I-field:  0.05 0.16 0.29 0.41 0.46 0.48
    Conf-field:0.16 0.38 0.36 0.51 0.66 0.75
-Training: 1707619it [2:41:10,  4.99it/s]
+Training: 1708000it [2:42:27,  4.60it/s]
+⏱️  Step 1,708,000 | 716395 tok/s | 7.00/6.8 GB | 102.6% (>6.8B target) | ETA N/A | Elapsed 2:42:45
+
+📊 Step 1,708,000 | Loss: 4.7036 | LR: 9.32e-05 | 📉 Annealing
+   Coherence: 0.7580 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.73 late=2.03 Δ=-1.30
+   FFNVeto: 100.0% mean_norm=89.5 max_norm=236.1
+   AlphaScale: 21.1% scale=0.998 contrib_norm=85.7
+   SoftCap: hit=18.9% max_raw=540.2 mean_raw=372.6
+
+   🔮 MPC: intervene=68.8% control=0.338 I=0.441
+   📊 Pred: 0.383 | Conf: 0.827 (min: 0.827)
+   📈 Dynamics: v=+0.0122 ➡️ a=+0.0175 ➡️
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.000 (persistent curvature)
+   🎯 Forecast Error: 0.312 (predicted=0.376 vs actual=0.688)
+   I-field:  0.06 0.17 0.31 0.41 0.46 0.51
+   Conf-field:0.16 0.40 0.37 0.52 0.66 0.75
+   ⚠️  Forecast error high (0.312), adapting weights
+Training: 1709000it [2:46:07,  4.55it/s]
+⏱️  Step 1,709,000 | 701039 tok/s | 7.00/6.8 GB | 102.6% (>6.8B target) | ETA N/A | Elapsed 2:46:25
+
+📊 Step 1,709,000 | Loss: 4.4766 | LR: 9.31e-05 | 📉 Annealing
+   Coherence: 0.7590 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.81 late=2.02 Δ=-1.20
+   FFNVeto: 100.0% mean_norm=88.8 max_norm=187.6
+   AlphaScale: 27.0% scale=0.997 contrib_norm=87.3
+   SoftCap: hit=14.1% max_raw=453.7 mean_raw=367.4
+
+   🔮 MPC: intervene=58.4% control=0.343 I=0.429
+   📊 Pred: 0.370 | Conf: 0.840 (min: 0.840)
+   📈 Dynamics: v=+0.0072 ➡️ a=+0.0210 🚀
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.215 (predicted=0.369 vs actual=0.584)
+   I-field:  0.06 0.18 0.32 0.42 0.47 0.48
+   Conf-field:0.17 0.40 0.37 0.53 0.66 0.76
+Training: 1710000it [2:49:46,  4.65it/s]
+⏱️  Step 1,710,000 | 686363 tok/s | 7.00/6.8 GB | 102.7% (>6.8B target) | ETA N/A | Elapsed 2:50:04
+
+📊 Step 1,710,000 | Loss: 4.7894 | LR: 9.31e-05 | 📉 Annealing
+   Coherence: 0.7562 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.72 late=1.97 Δ=-1.25
+   FFNVeto: 99.8% mean_norm=96.4 max_norm=206.1
+   AlphaScale: 44.9% scale=0.952 contrib_norm=99.0
+   SoftCap: hit=9.2% max_raw=516.1 mean_raw=363.5
+
+   🔮 MPC: intervene=44.5% control=0.393 I=0.375
+   📊 Pred: 0.366 | Conf: 0.839 (min: 0.839)
+   📈 Dynamics: v=-0.0020 ➡️ a=+0.0013 ➡️
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.071 (predicted=0.375 vs actual=0.445)
+   I-field:  0.06 0.17 0.30 0.41 0.48 0.48
+   Conf-field:0.16 0.40 0.37 0.53 0.66 0.76
+
+💾 Checkpoint: step 1,710,000 → /home/ec2-user/SageMaker/mycelia_checkpoints/mycelia_step_1a17b0.pt
+Training: 1711000it [2:54:01,  4.54it/s]
+⏱️  Step 1,711,000 | 670008 tok/s | 7.01/6.8 GB | 102.8% (>6.8B target) | ETA N/A | Elapsed 2:54:19
+
+📊 Step 1,711,000 | Loss: 4.4732 | LR: 9.31e-05 | 📉 Annealing
+   Coherence: 0.7578 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.78 late=2.05 Δ=-1.27
+   FFNVeto: 99.8% mean_norm=96.0 max_norm=143.6
+   AlphaScale: 0.0% scale=1.000 contrib_norm=45.1
+   SoftCap: hit=2.1% max_raw=423.2 mean_raw=342.9
+
+   🔮 MPC: intervene=100.0% control=0.179 I=0.689
+   📊 Pred: 0.371 | Conf: 0.839 (min: 0.839)
+   📈 Dynamics: v=+0.0004 ➡️ a=+0.1556 🚀
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.623 (predicted=0.377 vs actual=1.000)
+   I-field:  0.05 0.17 0.30 0.43 0.47 0.48
+   Conf-field:0.16 0.40 0.37 0.53 0.66 0.77
+   ⚠️  MPC too aggressive (100%), raising I_target
+   ⚠️  Forecast error high (0.623), adapting weights
+Training: 1712000it [2:57:41,  4.58it/s]
+⏱️  Step 1,712,000 | 656620 tok/s | 7.01/6.8 GB | 102.8% (>6.8B target) | ETA N/A | Elapsed 2:57:59
+
+📊 Step 1,712,000 | Loss: 4.7575 | LR: 9.31e-05 | 📉 Annealing
+   Coherence: 0.7420 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.74 late=2.04 Δ=-1.30
+   FFNVeto: 100.0% mean_norm=97.0 max_norm=192.0
+   AlphaScale: 44.7% scale=0.956 contrib_norm=97.1
+   SoftCap: hit=9.6% max_raw=470.7 mean_raw=356.9
+
+   🔮 MPC: intervene=10.9% control=0.387 I=0.377
+   📊 Pred: 0.370 | Conf: 0.850 (min: 0.850)
+   📈 Dynamics: v=-0.0047 ➡️ a=-0.0142 ➡️
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.272 (predicted=0.381 vs actual=0.109)
+   I-field:  0.05 0.17 0.31 0.42 0.48 0.48
+   Conf-field:0.17 0.41 0.38 0.54 0.67 0.77
+Training: 1713000it [3:01:20,  4.59it/s]
+⏱️  Step 1,713,000 | 643800 tok/s | 7.02/6.8 GB | 102.9% (>6.8B target) | ETA N/A | Elapsed 3:01:38
+
+📊 Step 1,713,000 | Loss: 4.3330 | LR: 9.31e-05 | 📉 Annealing
+   Coherence: 0.7520 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.79 late=1.93 Δ=-1.14
+   FFNVeto: 100.0% mean_norm=95.4 max_norm=162.9
+   AlphaScale: 37.9% scale=0.983 contrib_norm=89.6
+   SoftCap: hit=12.3% max_raw=496.0 mean_raw=363.0
+
+   🔮 MPC: intervene=32.8% control=0.355 I=0.413
+   📊 Pred: 0.374 | Conf: 0.848 (min: 0.848)
+   📈 Dynamics: v=+0.0095 ➡️ a=+0.0089 ➡️
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.043 (predicted=0.371 vs actual=0.328)
+   I-field:  0.05 0.17 0.31 0.41 0.46 0.49
+   Conf-field:0.15 0.40 0.37 0.53 0.67 0.78
+Training: 1714000it [3:04:59,  4.58it/s]
+⏱️  Step 1,714,000 | 631506 tok/s | 7.02/6.8 GB | 102.9% (>6.8B target) | ETA N/A | Elapsed 3:05:17
+
+📊 Step 1,714,000 | Loss: 4.6261 | LR: 9.30e-05 | 📉 Annealing
+   Coherence: 0.7568 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.78 late=2.00 Δ=-1.21
+   FFNVeto: 100.0% mean_norm=90.5 max_norm=219.2
+   AlphaScale: 45.1% scale=0.955 contrib_norm=98.2
+   SoftCap: hit=13.5% max_raw=527.9 mean_raw=366.1
+
+   🔮 MPC: intervene=6.1% control=0.386 I=0.378
+   📊 Pred: 0.371 | Conf: 0.847 (min: 0.847)
+   📈 Dynamics: v=-0.0096 ➡️ a=-0.0098 ➡️
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.327 (predicted=0.388 vs actual=0.061)
+   I-field:  0.05 0.17 0.31 0.42 0.47 0.48
+   Conf-field:0.17 0.41 0.38 0.53 0.67 0.76
+   ⚠️  Forecast error high (0.327), adapting weights
+Training: 1715000it [3:08:38,  4.58it/s]
+⏱️  Step 1,715,000 | 18095 tok/s | 7.02/6.8 GB | 103.0% (>6.8B target) | ETA N/A | Elapsed 3:08:56
+
+📊 Step 1,715,000 | Loss: 4.5317 | LR: 9.30e-05 | 📉 Annealing
+   Coherence: 0.7627 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.73 late=2.03 Δ=-1.30
+   FFNVeto: 100.0% mean_norm=96.8 max_norm=171.2
+   AlphaScale: 41.0% scale=0.962 contrib_norm=95.3
+   SoftCap: hit=8.6% max_raw=471.7 mean_raw=357.6
+
+   🔮 MPC: intervene=10.9% control=0.376 I=0.384
+   📊 Pred: 0.371 | Conf: 0.859 (min: 0.859)
+   📈 Dynamics: v=+0.0042 ➡️ a=+0.0001 ➡️
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.264 (predicted=0.373 vs actual=0.109)
+   I-field:  0.05 0.17 0.30 0.41 0.49 0.50
+   Conf-field:0.16 0.40 0.38 0.54 0.67 0.78
+
+💾 Checkpoint: step 1,715,000 → /home/ec2-user/SageMaker/mycelia_checkpoints/mycelia_step_1a2b38.pt
+Training: 1716000it [3:12:54,  4.59it/s]
+⏱️  Step 1,716,000 | 18081 tok/s | 7.03/6.8 GB | 103.1% (>6.8B target) | ETA N/A | Elapsed 3:13:12
+
+📊 Step 1,716,000 | Loss: 4.5968 | LR: 9.30e-05 | 📉 Annealing
+   Coherence: 0.7559 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.74 late=2.06 Δ=-1.32
+   FFNVeto: 100.0% mean_norm=95.2 max_norm=237.3
+   AlphaScale: 37.1% scale=0.976 contrib_norm=92.1
+   SoftCap: hit=10.2% max_raw=485.5 mean_raw=359.8
+
+   🔮 MPC: intervene=20.9% control=0.362 I=0.398
+   📊 Pred: 0.370 | Conf: 0.859 (min: 0.859)
+   📈 Dynamics: v=+0.0027 ➡️ a=+0.0086 ➡️
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.165 (predicted=0.374 vs actual=0.209)
+   I-field:  0.05 0.18 0.31 0.41 0.46 0.48
+   Conf-field:0.16 0.40 0.37 0.53 0.68 0.78
+Training: 1717000it [3:16:33,  4.59it/s]
+⏱️  Step 1,717,000 | 18083 tok/s | 7.03/6.8 GB | 103.1% (>6.8B target) | ETA N/A | Elapsed 3:16:51
+
+📊 Step 1,717,000 | Loss: 4.5458 | LR: 9.30e-05 | 📉 Annealing
+   Coherence: 0.7560 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.75 late=1.91 Δ=-1.16
+   FFNVeto: 99.8% mean_norm=91.5 max_norm=177.4
+   AlphaScale: 46.5% scale=0.947 contrib_norm=98.9
+   SoftCap: hit=16.6% max_raw=508.2 mean_raw=370.5
+
+   🔮 MPC: intervene=0.8% control=0.388 I=0.372
+   📊 Pred: 0.366 | Conf: 0.859 (min: 0.859)
+   📈 Dynamics: v=-0.0021 ➡️ a=-0.0018 ➡️
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.366 (predicted=0.374 vs actual=0.008)
+   I-field:  0.05 0.17 0.31 0.42 0.50 0.48
+   Conf-field:0.16 0.40 0.38 0.54 0.67 0.78
+   ⚠️  Forecast error high (0.366), adapting weights
+Training: 1718000it [3:20:12,  4.62it/s]
+⏱️  Step 1,718,000 | 18082 tok/s | 7.04/6.8 GB | 103.2% (>6.8B target) | ETA N/A | Elapsed 3:20:30
+
+📊 Step 1,718,000 | Loss: 4.5572 | LR: 9.30e-05 | 📉 Annealing
+   Coherence: 0.7472 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.83 late=2.05 Δ=-1.22
+   FFNVeto: 100.0% mean_norm=98.7 max_norm=190.0
+   AlphaScale: 44.1% scale=0.959 contrib_norm=94.3
+   SoftCap: hit=3.7% max_raw=460.5 mean_raw=352.7
+
+   🔮 MPC: intervene=26.4% control=0.371 I=0.391
+   📊 Pred: 0.382 | Conf: 0.858 (min: 0.858)
+   📈 Dynamics: v=+0.0023 ➡️ a=-0.0076 ➡️
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.000 (persistent curvature)
+   🎯 Forecast Error: 0.122 (predicted=0.386 vs actual=0.264)
+   I-field:  0.05 0.17 0.31 0.42 0.46 0.48
+   Conf-field:0.17 0.41 0.38 0.54 0.68 0.78
+Training: 1719000it [3:23:49,  4.64it/s]
+⏱️  Step 1,719,000 | 18086 tok/s | 7.04/6.8 GB | 103.2% (>6.8B target) | ETA N/A | Elapsed 3:24:07
+
+📊 Step 1,719,000 | Loss: 4.5001 | LR: 9.29e-05 | 📉 Annealing
+   Coherence: 0.7510 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.73 late=1.95 Δ=-1.22
+   FFNVeto: 99.6% mean_norm=88.5 max_norm=142.7
+   AlphaScale: 42.0% scale=0.962 contrib_norm=95.3
+   SoftCap: hit=3.5% max_raw=497.5 mean_raw=337.2
+
+   🔮 MPC: intervene=12.1% control=0.373 I=0.382
+   📊 Pred: 0.362 | Conf: 0.871 (min: 0.871)
+   📈 Dynamics: v=+0.0006 ➡️ a=+0.0062 ➡️
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.247 (predicted=0.368 vs actual=0.121)
+   I-field:  0.05 0.17 0.33 0.43 0.48 0.50
+   Conf-field:0.16 0.40 0.37 0.53 0.68 0.79
+Training: 1720000it [3:27:25,  4.72it/s]
+⏱️  Step 1,720,000 | 18091 tok/s | 7.05/6.8 GB | 103.3% (>6.8B target) | ETA N/A | Elapsed 3:27:43
+
+📊 Step 1,720,000 | Loss: 4.2942 | LR: 9.29e-05 | 📉 Annealing
+   Coherence: 0.7497 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.75 late=2.10 Δ=-1.35
+   FFNVeto: 99.6% mean_norm=91.7 max_norm=187.8
+   AlphaScale: 38.5% scale=0.981 contrib_norm=90.9
+   SoftCap: hit=14.5% max_raw=502.5 mean_raw=369.1
+
+   🔮 MPC: intervene=26.4% control=0.352 I=0.404
+   📊 Pred: 0.370 | Conf: 0.871 (min: 0.871)
+   📈 Dynamics: v=+0.0027 ➡️ a=+0.0128 ➡️
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.109 (predicted=0.372 vs actual=0.264)
+   I-field:  0.06 0.19 0.34 0.43 0.48 0.48
+   Conf-field:0.16 0.40 0.37 0.54 0.68 0.79
+
+💾 Checkpoint: step 1,720,000 → /home/ec2-user/SageMaker/mycelia_checkpoints/mycelia_step_1a3ec0.pt
+Training: 1721000it [3:31:39,  4.56it/s]
+⏱️  Step 1,721,000 | 18091 tok/s | 7.05/6.8 GB | 103.4% (>6.8B target) | ETA N/A | Elapsed 3:31:57
+
+📊 Step 1,721,000 | Loss: 4.5595 | LR: 9.29e-05 | 📉 Annealing
+   Coherence: 0.7539 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.75 late=1.94 Δ=-1.19
+   FFNVeto: 99.8% mean_norm=93.0 max_norm=158.8
+   AlphaScale: 39.6% scale=0.989 contrib_norm=87.5
+   SoftCap: hit=7.4% max_raw=505.3 mean_raw=361.1
+
+   🔮 MPC: intervene=37.7% control=0.341 I=0.424
+   📊 Pred: 0.384 | Conf: 0.859 (min: 0.859)
+   📈 Dynamics: v=+0.0112 ➡️ a=+0.0095 ➡️
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.000 (predicted=0.377 vs actual=0.377)
+   I-field:  0.07 0.19 0.33 0.44 0.47 0.49
+   Conf-field:0.17 0.41 0.39 0.54 0.68 0.79
+Training: 1722000it [3:35:17,  4.64it/s]
+⏱️  Step 1,722,000 | 18091 tok/s | 7.05/6.8 GB | 103.4% (>6.8B target) | ETA N/A | Elapsed 3:35:35
+
+📊 Step 1,722,000 | Loss: 4.5380 | LR: 9.29e-05 | 📉 Annealing
+   Coherence: 0.7630 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.73 late=2.12 Δ=-1.40
+   FFNVeto: 100.0% mean_norm=102.0 max_norm=191.3
+   AlphaScale: 46.7% scale=0.950 contrib_norm=98.9
+   SoftCap: hit=19.5% max_raw=505.6 mean_raw=371.2
+
+   🔮 MPC: intervene=0.4% control=0.384 I=0.372
+   📊 Pred: 0.366 | Conf: 0.866 (min: 0.866)
+   📈 Dynamics: v=-0.0139 ➡️ a=-0.0276 🛑
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.382 (predicted=0.386 vs actual=0.004)
+   I-field:  0.07 0.18 0.32 0.41 0.46 0.48
+   Conf-field:0.17 0.40 0.37 0.53 0.68 0.79
+   ⚠️  Forecast error high (0.382), adapting weights
+Training: 1723000it [3:38:56,  4.59it/s]
+⏱️  Step 1,723,000 | 18091 tok/s | 7.06/6.8 GB | 103.5% (>6.8B target) | ETA N/A | Elapsed 3:39:14
+
+📊 Step 1,723,000 | Loss: 4.6148 | LR: 9.29e-05 | 📉 Annealing
+   Coherence: 0.7614 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.77 late=1.97 Δ=-1.20
+   FFNVeto: 99.8% mean_norm=97.8 max_norm=155.9
+   AlphaScale: 34.8% scale=0.976 contrib_norm=90.5
+   SoftCap: hit=2.3% max_raw=528.3 mean_raw=340.9
+
+   🔮 MPC: intervene=24.4% control=0.354 I=0.399
+   📊 Pred: 0.374 | Conf: 0.878 (min: 0.878)
+   📈 Dynamics: v=+0.0029 ➡️ a=+0.0080 ➡️
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.132 (predicted=0.376 vs actual=0.244)
+   I-field:  0.05 0.18 0.32 0.42 0.49 0.48
+   Conf-field:0.17 0.41 0.38 0.54 0.68 0.80
+Training: 1724000it [3:42:34,  4.66it/s]
+⏱️  Step 1,724,000 | 18093 tok/s | 7.06/6.8 GB | 103.5% (>6.8B target) | ETA N/A | Elapsed 3:42:52
+
+📊 Step 1,724,000 | Loss: 4.6769 | LR: 9.28e-05 | 📉 Annealing
+   Coherence: 0.7671 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.71 late=2.06 Δ=-1.36
+   FFNVeto: 99.8% mean_norm=107.8 max_norm=212.0
+   AlphaScale: 47.1% scale=0.948 contrib_norm=98.3
+   SoftCap: hit=11.5% max_raw=576.0 mean_raw=367.0
+
+   🔮 MPC: intervene=8.4% control=0.382 I=0.370
+   📊 Pred: 0.364 | Conf: 0.878 (min: 0.878)
+   📈 Dynamics: v=-0.0222 ➡️ a=-0.0135 ➡️
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.308 (predicted=0.392 vs actual=0.084)
+   I-field:  0.10 0.21 0.36 0.43 0.47 0.49
+   Conf-field:0.20 0.42 0.39 0.54 0.68 0.80
+   ⚠️  Forecast error high (0.308), adapting weights
+Training: 1724095it [3:43:10,  5.31it/s]
+⚠️  Bad gradients at step 1724095, skipping step
+Training: 1725000it [3:46:13,  4.59it/s]
+⏱️  Step 1,725,000 | 18092 tok/s | 7.07/6.8 GB | 103.6% (>6.8B target) | ETA N/A | Elapsed 3:46:31
+
+📊 Step 1,725,000 | Loss: 4.6014 | LR: 9.28e-05 | 📉 Annealing
+   Coherence: 0.7575 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.74 late=2.00 Δ=-1.26
+   FFNVeto: 99.6% mean_norm=82.4 max_norm=146.8
+   AlphaScale: 41.6% scale=0.964 contrib_norm=94.2
+   SoftCap: hit=27.5% max_raw=501.8 mean_raw=380.1
+
+   🔮 MPC: intervene=19.3% control=0.360 I=0.388
+   📊 Pred: 0.366 | Conf: 0.890 (min: 0.890)
+   📈 Dynamics: v=+0.0035 ➡️ a=+0.0057 ➡️
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.175 (predicted=0.368 vs actual=0.193)
+   I-field:  0.05 0.17 0.31 0.42 0.47 0.48
+   Conf-field:0.17 0.41 0.38 0.54 0.69 0.81
+
+💾 Checkpoint: step 1,725,000 → /home/ec2-user/SageMaker/mycelia_checkpoints/mycelia_step_1a5248.pt
+Training: 1726000it [3:50:30,  4.64it/s]
+⏱️  Step 1,726,000 | 18087 tok/s | 7.07/6.8 GB | 103.7% (>6.8B target) | ETA N/A | Elapsed 3:50:48
+
+📊 Step 1,726,000 | Loss: 4.5681 | LR: 9.28e-05 | 📉 Annealing
+   Coherence: 0.7513 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.70 late=1.85 Δ=-1.15
+   FFNVeto: 100.0% mean_norm=97.0 max_norm=216.7
+   AlphaScale: 30.9% scale=0.987 contrib_norm=87.6
+   SoftCap: hit=1.2% max_raw=480.2 mean_raw=337.1
+
+   🔮 MPC: intervene=27.9% control=0.342 I=0.407
+   📊 Pred: 0.373 | Conf: 0.889 (min: 0.889)
+   📈 Dynamics: v=+0.0072 ➡️ a=+0.0091 ➡️
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.092 (predicted=0.371 vs actual=0.279)
+   I-field:  0.06 0.18 0.31 0.43 0.47 0.48
+   Conf-field:0.16 0.42 0.38 0.55 0.69 0.81
+Training: 1727000it [3:54:08,  4.60it/s]
+⏱️  Step 1,727,000 | 18088 tok/s | 7.07/6.8 GB | 103.7% (>6.8B target) | ETA N/A | Elapsed 3:54:26
+
+📊 Step 1,727,000 | Loss: 4.4084 | LR: 9.28e-05 | 📉 Annealing
+   Coherence: 0.7563 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.76 late=1.86 Δ=-1.10
+   FFNVeto: 100.0% mean_norm=101.7 max_norm=184.9
+   AlphaScale: 36.9% scale=0.984 contrib_norm=89.5
+   SoftCap: hit=1.0% max_raw=415.2 mean_raw=336.6
+
+   🔮 MPC: intervene=25.4% control=0.347 I=0.401
+   📊 Pred: 0.370 | Conf: 0.890 (min: 0.890)
+   📈 Dynamics: v=+0.0055 ➡️ a=+0.0092 ➡️
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.116 (predicted=0.369 vs actual=0.254)
+   I-field:  0.05 0.19 0.32 0.43 0.49 0.49
+   Conf-field:0.17 0.41 0.38 0.54 0.69 0.81
+Training: 1728000it [3:57:51,  4.62it/s]
+⏱️  Step 1,728,000 | 18084 tok/s | 7.08/6.8 GB | 103.8% (>6.8B target) | ETA N/A | Elapsed 3:58:08
+
+📊 Step 1,728,000 | Loss: 4.5469 | LR: 9.28e-05 | 📉 Annealing
+   Coherence: 0.7528 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.73 late=1.93 Δ=-1.20
+   FFNVeto: 100.0% mean_norm=95.6 max_norm=157.9
+   AlphaScale: 39.8% scale=0.952 contrib_norm=97.5
+   SoftCap: hit=18.6% max_raw=492.6 mean_raw=373.4
+
+   🔮 MPC: intervene=5.1% control=0.373 I=0.374
+   📊 Pred: 0.370 | Conf: 0.890 (min: 0.890)
+   📈 Dynamics: v=-0.0001 ➡️ a=-0.0021 ➡️
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.323 (predicted=0.374 vs actual=0.051)
+   I-field:  0.05 0.17 0.31 0.42 0.47 0.49
+   Conf-field:0.16 0.41 0.38 0.54 0.69 0.81
+   ⚠️  Forecast error high (0.323), adapting weights
+Training: 1729000it [4:01:29,  4.64it/s]
+⏱️  Step 1,729,000 | 18085 tok/s | 7.08/6.8 GB | 103.8% (>6.8B target) | ETA N/A | Elapsed 4:01:47
+
+📊 Step 1,729,000 | Loss: 4.5474 | LR: 9.27e-05 | 📉 Annealing
+   Coherence: 0.7567 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.83 late=2.04 Δ=-1.21
+   FFNVeto: 100.0% mean_norm=96.0 max_norm=179.1
+   AlphaScale: 44.1% scale=0.949 contrib_norm=97.6
+   SoftCap: hit=10.9% max_raw=547.7 mean_raw=365.8
+
+   🔮 MPC: intervene=0.0% control=0.373 I=0.369
+   📊 Pred: 0.365 | Conf: 0.901 (min: 0.901)
+   📈 Dynamics: v=-0.0020 ➡️ a=-0.0107 ➡️
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.371 (predicted=0.371 vs actual=0.000)
+   I-field:  0.05 0.18 0.30 0.42 0.46 0.49
+   Conf-field:0.16 0.41 0.36 0.54 0.70 0.82
+   ⚠️  Forecast error high (0.371), adapting weights
+Training: 1730000it [4:05:08,  4.56it/s]
+⏱️  Step 1,730,000 | 18086 tok/s | 7.09/6.8 GB | 103.9% (>6.8B target) | ETA N/A | Elapsed 4:05:26
+
+📊 Step 1,730,000 | Loss: 4.4017 | LR: 9.27e-05 | 📉 Annealing
+   Coherence: 0.7269 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.75 late=1.79 Δ=-1.03
+   FFNVeto: 99.8% mean_norm=85.0 max_norm=146.7
+   AlphaScale: 35.0% scale=0.978 contrib_norm=89.6
+   SoftCap: hit=8.6% max_raw=464.3 mean_raw=355.4
+
+   🔮 MPC: intervene=21.5% control=0.345 I=0.401
+   📊 Pred: 0.389 | Conf: 0.900 (min: 0.900)
+   📈 Dynamics: v=+0.0044 ➡️ a=-0.0001 ➡️
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.175 (predicted=0.390 vs actual=0.215)
+   I-field:  0.08 0.21 0.34 0.43 0.47 0.53
+   Conf-field:0.16 0.43 0.39 0.56 0.70 0.83
+
+💾 Checkpoint: step 1,730,000 → /home/ec2-user/SageMaker/mycelia_checkpoints/mycelia_step_1a65d0.pt
+Training: 1731000it [4:09:23,  4.66it/s]
+⏱️  Step 1,731,000 | 18086 tok/s | 7.09/6.8 GB | 104.0% (>6.8B target) | ETA N/A | Elapsed 4:09:41
+
+📊 Step 1,731,000 | Loss: 4.3089 | LR: 9.27e-05 | 📉 Annealing
+   Coherence: 0.7653 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.76 late=2.04 Δ=-1.27
+   FFNVeto: 100.0% mean_norm=110.9 max_norm=206.0
+   AlphaScale: 43.8% scale=0.956 contrib_norm=95.1
+   SoftCap: hit=1.8% max_raw=443.9 mean_raw=343.4
+
+   🔮 MPC: intervene=2.0% control=0.368 I=0.371
+   📊 Pred: 0.361 | Conf: 0.911 (min: 0.911)
+   📈 Dynamics: v=-0.0015 ➡️ a=+0.0029 ➡️
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.347 (predicted=0.366 vs actual=0.020)
+   I-field:  0.05 0.20 0.34 0.42 0.48 0.51
+   Conf-field:0.18 0.42 0.39 0.56 0.71 0.83
+   ⚠️  Forecast error high (0.347), adapting weights
+Training: 1732000it [4:13:03,  4.58it/s]
+⏱️  Step 1,732,000 | 18086 tok/s | 7.09/6.8 GB | 104.0% (>6.8B target) | ETA N/A | Elapsed 4:13:21
+
+📊 Step 1,732,000 | Loss: 4.5570 | LR: 9.27e-05 | 📉 Annealing
+   Coherence: 0.7593 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.71 late=2.08 Δ=-1.37
+   FFNVeto: 100.0% mean_norm=89.0 max_norm=228.8
+   AlphaScale: 44.5% scale=0.948 contrib_norm=97.5
+   SoftCap: hit=12.9% max_raw=511.9 mean_raw=369.8
+
+   🔮 MPC: intervene=1.4% control=0.370 I=0.365
+   📊 Pred: 0.362 | Conf: 0.921 (min: 0.921)
+   📈 Dynamics: v=-0.0038 ➡️ a=-0.0073 ➡️
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.355 (predicted=0.369 vs actual=0.014)
+   I-field:  0.06 0.18 0.32 0.42 0.47 0.48
+   Conf-field:0.17 0.42 0.38 0.56 0.72 0.84
+   ⚠️  Forecast error high (0.355), adapting weights
+Training: 1733000it [4:16:44,  4.57it/s]
+⏱️  Step 1,733,000 | 18086 tok/s | 7.10/6.8 GB | 104.1% (>6.8B target) | ETA N/A | Elapsed 4:17:02
+
+📊 Step 1,733,000 | Loss: 4.5197 | LR: 9.27e-05 | 📉 Annealing
+   Coherence: 0.7557 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.80 late=1.93 Δ=-1.12
+   FFNVeto: 99.8% mean_norm=97.2 max_norm=168.6
+   AlphaScale: 30.7% scale=0.985 contrib_norm=87.0
+   SoftCap: hit=2.5% max_raw=469.6 mean_raw=341.0
+
+   🔮 MPC: intervene=27.3% control=0.333 I=0.399
+   📊 Pred: 0.374 | Conf: 0.931 (min: 0.931)
+   📈 Dynamics: v=+0.0042 ➡️ a=+0.0081 ➡️
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.099 (predicted=0.372 vs actual=0.273)
+   I-field:  0.07 0.23 0.37 0.47 0.48 0.52
+   Conf-field:0.19 0.44 0.40 0.57 0.72 0.85
+Training: 1734000it [4:20:24,  4.65it/s]
+⏱️  Step 1,734,000 | 18087 tok/s | 7.10/6.8 GB | 104.1% (>6.8B target) | ETA N/A | Elapsed 4:20:42
+
+📊 Step 1,734,000 | Loss: 4.4651 | LR: 9.26e-05 | 📉 Annealing
+   Coherence: 0.7314 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.72 late=1.77 Δ=-1.05
+   FFNVeto: 100.0% mean_norm=93.9 max_norm=165.7
+   AlphaScale: 35.2% scale=0.984 contrib_norm=87.6
+   SoftCap: hit=2.3% max_raw=416.1 mean_raw=343.2
+
+   🔮 MPC: intervene=23.8% control=0.338 I=0.395
+   📊 Pred: 0.377 | Conf: 0.929 (min: 0.929)
+   📈 Dynamics: v=+0.0018 ➡️ a=+0.0060 ➡️
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.140 (predicted=0.379 vs actual=0.238)
+   I-field:  0.05 0.21 0.33 0.43 0.51 0.49
+   Conf-field:0.16 0.42 0.38 0.56 0.71 0.85
+Training: 1735000it [4:24:03,  4.53it/s]
+⏱️  Step 1,735,000 | 18087 tok/s | 7.11/6.8 GB | 104.2% (>6.8B target) | ETA N/A | Elapsed 4:24:21
+
+📊 Step 1,735,000 | Loss: 4.5529 | LR: 9.26e-05 | 📉 Annealing
+   Coherence: 0.7560 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.73 late=2.12 Δ=-1.39
+   FFNVeto: 100.0% mean_norm=97.2 max_norm=185.5
+   AlphaScale: 39.6% scale=0.964 contrib_norm=92.4
+   SoftCap: hit=3.5% max_raw=456.3 mean_raw=341.7
+
+   🔮 MPC: intervene=14.3% control=0.355 I=0.377
+   📊 Pred: 0.364 | Conf: 0.930 (min: 0.930)
+   📈 Dynamics: v=-0.0033 ➡️ a=+0.0045 ➡️
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.229 (predicted=0.371 vs actual=0.143)
+   I-field:  0.05 0.18 0.32 0.43 0.49 0.49
+   Conf-field:0.17 0.43 0.39 0.57 0.73 0.85
+
+💾 Checkpoint: step 1,735,000 → /home/ec2-user/SageMaker/mycelia_checkpoints/mycelia_step_1a7958.pt
+Training: 1736000it [4:28:13,  4.75it/s]
+⏱️  Step 1,736,000 | 18093 tok/s | 7.11/6.8 GB | 104.3% (>6.8B target) | ETA N/A | Elapsed 4:28:31
+
+📊 Step 1,736,000 | Loss: 4.7011 | LR: 9.26e-05 | 📉 Annealing
+   Coherence: 0.7502 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.72 late=2.09 Δ=-1.36
+   FFNVeto: 99.4% mean_norm=89.4 max_norm=177.0
+   AlphaScale: 40.8% scale=0.962 contrib_norm=93.7
+   SoftCap: hit=8.6% max_raw=524.5 mean_raw=353.8
+
+   🔮 MPC: intervene=11.9% control=0.357 I=0.375
+   📊 Pred: 0.363 | Conf: 0.930 (min: 0.930)
+   📈 Dynamics: v=+0.0015 ➡️ a=+0.0030 ➡️
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.246 (predicted=0.365 vs actual=0.119)
+   I-field:  0.05 0.19 0.32 0.43 0.47 0.53
+   Conf-field:0.18 0.43 0.40 0.57 0.73 0.86
+Training: 1737000it [4:31:50,  4.59it/s]
+⏱️  Step 1,737,000 | 18097 tok/s | 7.11/6.8 GB | 104.3% (>6.8B target) | ETA N/A | Elapsed 4:32:08
+
+📊 Step 1,737,000 | Loss: 4.4687 | LR: 9.26e-05 | 📉 Annealing
+   Coherence: 0.7563 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.75 late=2.12 Δ=-1.37
+   FFNVeto: 99.8% mean_norm=108.1 max_norm=242.6
+   AlphaScale: 42.4% scale=0.951 contrib_norm=95.6
+   SoftCap: hit=1.4% max_raw=535.3 mean_raw=333.9
+
+   🔮 MPC: intervene=1.2% control=0.366 I=0.366
+   📊 Pred: 0.363 | Conf: 0.930 (min: 0.930)
+   📈 Dynamics: v=-0.0380 ➡️ a=-0.0794 🛑
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.392 (predicted=0.404 vs actual=0.012)
+   I-field:  0.10 0.19 0.34 0.44 0.47 0.48
+   Conf-field:0.18 0.42 0.39 0.56 0.73 0.85
+   ⚠️  Forecast error high (0.392), adapting weights
+Training: 1738000it [4:35:30,  4.53it/s]
+⏱️  Step 1,738,000 | 18096 tok/s | 7.12/6.8 GB | 104.4% (>6.8B target) | ETA N/A | Elapsed 4:35:48
+
+📊 Step 1,738,000 | Loss: 4.6570 | LR: 9.26e-05 | 📉 Annealing
+   Coherence: 0.7581 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.77 late=2.19 Δ=-1.42
+   FFNVeto: 99.6% mean_norm=91.4 max_norm=175.3
+   AlphaScale: 44.9% scale=0.953 contrib_norm=94.2
+   SoftCap: hit=3.9% max_raw=542.9 mean_raw=345.8
+
+   🔮 MPC: intervene=17.2% control=0.358 I=0.373
+   📊 Pred: 0.370 | Conf: 0.936 (min: 0.936)
+   📈 Dynamics: v=-0.0031 ➡️ a=-0.0083 ➡️
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.204 (predicted=0.376 vs actual=0.172)
+   I-field:  0.05 0.20 0.33 0.43 0.47 0.48
+   Conf-field:0.18 0.44 0.40 0.59 0.74 0.87
+Training: 1739000it [4:39:12,  4.61it/s]
+⏱️  Step 1,739,000 | 18092 tok/s | 7.12/6.8 GB | 104.4% (>6.8B target) | ETA N/A | Elapsed 4:39:30
+
+📊 Step 1,739,000 | Loss: 4.6261 | LR: 9.25e-05 | 📉 Annealing
+   Coherence: 0.7515 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.75 late=2.02 Δ=-1.27
+   FFNVeto: 100.0% mean_norm=93.5 max_norm=196.1
+   AlphaScale: 46.3% scale=0.952 contrib_norm=92.4
+   SoftCap: hit=9.6% max_raw=483.1 mean_raw=353.0
+
+   🔮 MPC: intervene=27.3% control=0.352 I=0.382
+   📊 Pred: 0.380 | Conf: 0.932 (min: 0.932)
+   📈 Dynamics: v=-0.0197 ➡️ a=-0.0479 🛑
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.128 (predicted=0.401 vs actual=0.273)
+   I-field:  0.06 0.18 0.33 0.45 0.50 0.51
+   Conf-field:0.18 0.44 0.40 0.58 0.74 0.87
+Training: 1740000it [4:42:52,  4.55it/s]
+⏱️  Step 1,740,000 | 18089 tok/s | 7.13/6.8 GB | 104.5% (>6.8B target) | ETA N/A | Elapsed 4:43:10
+
+📊 Step 1,740,000 | Loss: 4.4855 | LR: 9.25e-05 | 📉 Annealing
+   Coherence: 0.7622 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.78 late=2.13 Δ=-1.35
+   FFNVeto: 99.6% mean_norm=96.9 max_norm=203.1
+   AlphaScale: 40.2% scale=0.983 contrib_norm=87.9
+   SoftCap: hit=8.2% max_raw=505.6 mean_raw=354.4
+
+   🔮 MPC: intervene=28.7% control=0.331 I=0.399
+   📊 Pred: 0.365 | Conf: 0.939 (min: 0.939)
+   📈 Dynamics: v=+0.0007 ➡️ a=+0.0154 ➡️
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.079 (predicted=0.366 vs actual=0.287)
+   I-field:  0.07 0.19 0.34 0.43 0.47 0.48
+   Conf-field:0.17 0.44 0.41 0.58 0.74 0.87
+
+💾 Checkpoint: step 1,740,000 → /home/ec2-user/SageMaker/mycelia_checkpoints/mycelia_step_1a8ce0.pt
+Training: 1741000it [4:47:08,  4.47it/s]
+⏱️  Step 1,741,000 | 18088 tok/s | 7.13/6.8 GB | 104.6% (>6.8B target) | ETA N/A | Elapsed 4:47:26
+
+📊 Step 1,741,000 | Loss: 4.6688 | LR: 9.25e-05 | 📉 Annealing
+   Coherence: 0.7594 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.76 late=2.02 Δ=-1.27
+   FFNVeto: 100.0% mean_norm=94.6 max_norm=237.0
+   AlphaScale: 38.7% scale=0.967 contrib_norm=91.9
+   SoftCap: hit=6.2% max_raw=473.6 mean_raw=349.1
+
+   🔮 MPC: intervene=16.2% control=0.350 I=0.379
+   📊 Pred: 0.367 | Conf: 0.939 (min: 0.939)
+   📈 Dynamics: v=-0.0011 ➡️ a=+0.0044 ➡️
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.209 (predicted=0.371 vs actual=0.162)
+   I-field:  0.05 0.19 0.32 0.43 0.47 0.48
+   Conf-field:0.17 0.43 0.40 0.58 0.74 0.87
+Training: 1742000it [4:50:48,  4.51it/s]
+⏱️  Step 1,742,000 | 18086 tok/s | 7.14/6.8 GB | 104.6% (>6.8B target) | ETA N/A | Elapsed 4:51:06
+
+📊 Step 1,742,000 | Loss: 4.6213 | LR: 9.25e-05 | 📉 Annealing
+   Coherence: 0.7534 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.74 late=1.90 Δ=-1.16
+   FFNVeto: 99.8% mean_norm=95.6 max_norm=184.1
+   AlphaScale: 41.0% scale=0.957 contrib_norm=94.3
+   SoftCap: hit=1.2% max_raw=424.6 mean_raw=328.6
+
+   🔮 MPC: intervene=9.2% control=0.358 I=0.370
+   📊 Pred: 0.367 | Conf: 0.939 (min: 0.939)
+   📈 Dynamics: v=-0.0030 ➡️ a=-0.0035 ➡️
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.281 (predicted=0.373 vs actual=0.092)
+   I-field:  0.05 0.18 0.32 0.43 0.47 0.48
+   Conf-field:0.17 0.43 0.39 0.58 0.74 0.87
+Training: 1743000it [4:54:27,  4.60it/s]
+⏱️  Step 1,743,000 | 18087 tok/s | 7.14/6.8 GB | 104.7% (>6.8B target) | ETA N/A | Elapsed 4:54:45
+
+📊 Step 1,743,000 | Loss: 4.6171 | LR: 9.25e-05 | 📉 Annealing
+   Coherence: 0.7458 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.88 late=1.98 Δ=-1.10
+   FFNVeto: 99.8% mean_norm=99.5 max_norm=194.2
+   AlphaScale: 0.0% scale=1.000 contrib_norm=80.6
+   SoftCap: hit=0.2% max_raw=402.8 mean_raw=320.8
+
+   🔮 MPC: intervene=39.6% control=0.303 I=0.430
+   📊 Pred: 0.374 | Conf: 0.939 (min: 0.939)
+   📈 Dynamics: v=+0.0112 ➡️ a=+0.0184 ➡️
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.032 (predicted=0.365 vs actual=0.396)
+   I-field:  0.05 0.18 0.32 0.44 0.51 0.54
+   Conf-field:0.17 0.43 0.39 0.57 0.72 0.86
+Training: 1743407it [4:56:07,  5.14it/s]
+⚠️  Bad gradients at step 1743407, skipping step
+Training: 1744000it [4:58:07,  4.55it/s]
+⏱️  Step 1,744,000 | 18085 tok/s | 7.14/6.8 GB | 104.7% (>6.8B target) | ETA N/A | Elapsed 4:58:25
+
+📊 Step 1,744,000 | Loss: 4.5869 | LR: 9.24e-05 | 📉 Annealing
+   Coherence: 0.7562 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.80 late=1.90 Δ=-1.11
+   FFNVeto: 99.8% mean_norm=94.4 max_norm=204.2
+   AlphaScale: 0.0% scale=1.000 contrib_norm=77.9
+   SoftCap: hit=6.4% max_raw=438.7 mean_raw=346.7
+
+   🔮 MPC: intervene=49.0% control=0.294 I=0.442
+   📊 Pred: 0.383 | Conf: 0.935 (min: 0.935)
+   📈 Dynamics: v=+0.0162 ➡️ a=+0.0162 ➡️
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.122 (predicted=0.369 vs actual=0.490)
+   I-field:  0.05 0.18 0.31 0.43 0.47 0.48
+   Conf-field:0.16 0.43 0.39 0.57 0.73 0.87
+Training: 1745000it [5:01:47,  4.50it/s]
+⏱️  Step 1,745,000 | 18085 tok/s | 7.15/6.8 GB | 104.8% (>6.8B target) | ETA N/A | Elapsed 5:02:05
+
+📊 Step 1,745,000 | Loss: 4.4263 | LR: 9.24e-05 | 📉 Annealing
+   Coherence: 0.7660 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.74 late=2.17 Δ=-1.43
+   FFNVeto: 99.6% mean_norm=96.0 max_norm=220.9
+   AlphaScale: 44.9% scale=0.949 contrib_norm=96.7
+   SoftCap: hit=5.5% max_raw=557.6 mean_raw=352.7
+
+   🔮 MPC: intervene=7.4% control=0.362 I=0.368
+   📊 Pred: 0.365 | Conf: 0.936 (min: 0.936)
+   📈 Dynamics: v=-0.0108 ➡️ a=-0.0226 🛑
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.304 (predicted=0.379 vs actual=0.074)
+   I-field:  0.06 0.18 0.32 0.43 0.51 0.48
+   Conf-field:0.18 0.43 0.40 0.58 0.73 0.87
+   ⚠️  Forecast error high (0.304), adapting weights
+
+💾 Checkpoint: step 1,745,000 → /home/ec2-user/SageMaker/mycelia_checkpoints/mycelia_step_1aa068.pt
+Training: 1746000it [5:06:01,  4.61it/s]
+⏱️  Step 1,746,000 | 18087 tok/s | 7.15/6.8 GB | 104.9% (>6.8B target) | ETA N/A | Elapsed 5:06:19
+
+📊 Step 1,746,000 | Loss: 4.1460 | LR: 9.24e-05 | 📉 Annealing
+   Coherence: 0.7632 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.75 late=1.92 Δ=-1.18
+   FFNVeto: 100.0% mean_norm=99.8 max_norm=254.0
+   AlphaScale: 42.0% scale=0.953 contrib_norm=94.4
+   SoftCap: hit=2.1% max_raw=512.4 mean_raw=336.7
+
+   🔮 MPC: intervene=4.9% control=0.357 I=0.370
+   📊 Pred: 0.367 | Conf: 0.944 (min: 0.944)
+   📈 Dynamics: v=-0.0106 ➡️ a=-0.0163 ➡️
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.331 (predicted=0.380 vs actual=0.049)
+   I-field:  0.06 0.19 0.32 0.43 0.47 0.49
+   Conf-field:0.18 0.44 0.41 0.58 0.75 0.88
+   ⚠️  Forecast error high (0.331), adapting weights
+Training: 1747000it [5:09:40,  4.56it/s]
+⏱️  Step 1,747,000 | 18090 tok/s | 7.16/6.8 GB | 104.9% (>6.8B target) | ETA N/A | Elapsed 5:09:58
+
+📊 Step 1,747,000 | Loss: 4.7433 | LR: 9.24e-05 | 📉 Annealing
+   Coherence: 0.7505 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.75 late=2.04 Δ=-1.29
+   FFNVeto: 100.0% mean_norm=111.7 max_norm=215.4
+   AlphaScale: 44.1% scale=0.951 contrib_norm=94.9
+   SoftCap: hit=2.0% max_raw=491.6 mean_raw=335.8
+
+   🔮 MPC: intervene=6.4% control=0.356 I=0.368
+   📊 Pred: 0.362 | Conf: 0.951 (min: 0.951)
+   📈 Dynamics: v=-0.0036 ➡️ a=+0.0017 ➡️
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.304 (predicted=0.368 vs actual=0.064)
+   I-field:  0.06 0.20 0.35 0.45 0.48 0.49
+   Conf-field:0.19 0.45 0.40 0.59 0.75 0.89
+   ⚠️  Forecast error high (0.304), adapting weights
+Training: 1748000it [5:13:20,  4.65it/s]
+⏱️  Step 1,748,000 | 18089 tok/s | 7.16/6.8 GB | 105.0% (>6.8B target) | ETA N/A | Elapsed 5:13:38
+
+📊 Step 1,748,000 | Loss: 4.6365 | LR: 9.24e-05 | 📉 Annealing
+   Coherence: 0.7686 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.75 late=2.20 Δ=-1.45
+   FFNVeto: 100.0% mean_norm=101.9 max_norm=188.3
+   AlphaScale: 38.5% scale=0.968 contrib_norm=90.5
+   SoftCap: hit=2.9% max_raw=465.8 mean_raw=339.6
+
+   🔮 MPC: intervene=16.4% control=0.338 I=0.383
+   📊 Pred: 0.366 | Conf: 0.958 (min: 0.958)
+   📈 Dynamics: v=+0.0032 ➡️ a=+0.0054 ➡️
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.200 (predicted=0.364 vs actual=0.164)
+   I-field:  0.05 0.19 0.32 0.44 0.47 0.48
+   Conf-field:0.18 0.44 0.41 0.59 0.77 0.90
+Training: 1749000it [5:17:00,  4.60it/s]
+⏱️  Step 1,749,000 | 18089 tok/s | 7.16/6.8 GB | 105.0% (>6.8B target) | ETA N/A | Elapsed 5:17:18
+
+📊 Step 1,749,000 | Loss: 4.7537 | LR: 9.23e-05 | 📉 Annealing
+   Coherence: 0.7648 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.75 late=2.03 Δ=-1.29
+   FFNVeto: 99.8% mean_norm=100.4 max_norm=163.0
+   AlphaScale: 39.6% scale=0.956 contrib_norm=93.4
+   SoftCap: hit=1.4% max_raw=536.0 mean_raw=335.6
+
+   🔮 MPC: intervene=8.2% control=0.351 I=0.370
+   📊 Pred: 0.368 | Conf: 0.959 (min: 0.959)
+   📈 Dynamics: v=-0.0061 ➡️ a=-0.0107 ➡️
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.294 (predicted=0.376 vs actual=0.082)
+   I-field:  0.05 0.19 0.33 0.44 0.47 0.47
+   Conf-field:0.18 0.45 0.42 0.59 0.76 0.91
+Training: 1750000it [5:20:41,  4.61it/s]
+⏱️  Step 1,750,000 | 18086 tok/s | 7.17/6.8 GB | 105.1% (>6.8B target) | ETA N/A | Elapsed 5:20:59
+
+📊 Step 1,750,000 | Loss: 4.5135 | LR: 9.23e-05 | 📉 Annealing
+   Coherence: 0.7629 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.76 late=2.01 Δ=-1.25
+   FFNVeto: 99.8% mean_norm=99.3 max_norm=168.1
+   AlphaScale: 46.1% scale=0.948 contrib_norm=95.2
+   SoftCap: hit=3.3% max_raw=504.5 mean_raw=342.6
+
+   🔮 MPC: intervene=4.5% control=0.357 I=0.365
+   📊 Pred: 0.363 | Conf: 0.959 (min: 0.959)
+   📈 Dynamics: v=-0.0044 ➡️ a=-0.0070 ➡️
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.324 (predicted=0.369 vs actual=0.045)
+   I-field:  0.06 0.19 0.35 0.43 0.49 0.52
+   Conf-field:0.18 0.45 0.41 0.59 0.76 0.90
+   ⚠️  Forecast error high (0.324), adapting weights
+
+💾 Checkpoint: step 1,750,000 → /home/ec2-user/SageMaker/mycelia_checkpoints/mycelia_step_1ab3f0.pt
+Training: 1751000it [5:24:56,  4.54it/s]
+⏱️  Step 1,751,000 | 18086 tok/s | 7.17/6.8 GB | 105.2% (>6.8B target) | ETA N/A | Elapsed 5:25:14
+
+📊 Step 1,751,000 | Loss: 4.6287 | LR: 9.23e-05 | 📉 Annealing
+   Coherence: 0.7640 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.77 late=2.17 Δ=-1.40
+   FFNVeto: 100.0% mean_norm=102.9 max_norm=166.0
+   AlphaScale: 33.6% scale=0.986 contrib_norm=85.5
+   SoftCap: hit=2.1% max_raw=481.2 mean_raw=340.7
+
+   🔮 MPC: intervene=27.9% control=0.320 I=0.400
+   📊 Pred: 0.364 | Conf: 0.965 (min: 0.965)
+   📈 Dynamics: v=+0.0044 ➡️ a=+0.0142 ➡️
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.082 (predicted=0.361 vs actual=0.279)
+   I-field:  0.06 0.19 0.33 0.44 0.48 0.48
+   Conf-field:0.18 0.46 0.42 0.60 0.77 0.91
+Training: 1752000it [5:28:35,  4.53it/s]
+⏱️  Step 1,752,000 | 18088 tok/s | 7.18/6.8 GB | 105.2% (>6.8B target) | ETA N/A | Elapsed 5:28:53
+
+📊 Step 1,752,000 | Loss: 4.5481 | LR: 9.23e-05 | 📉 Annealing
+   Coherence: 0.7617 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.76 late=2.16 Δ=-1.39
+   FFNVeto: 99.6% mean_norm=88.6 max_norm=182.3
+   AlphaScale: 43.8% scale=0.947 contrib_norm=96.4
+   SoftCap: hit=10.9% max_raw=468.4 mean_raw=359.8
+
+   🔮 MPC: intervene=5.3% control=0.356 I=0.363
+   📊 Pred: 0.361 | Conf: 0.965 (min: 0.965)
+   📈 Dynamics: v=-0.0117 ➡️ a=-0.0149 ➡️
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.322 (predicted=0.374 vs actual=0.053)
+   I-field:  0.05 0.20 0.35 0.47 0.49 0.48
+   Conf-field:0.18 0.46 0.42 0.61 0.76 0.91
+   ⚠️  Forecast error high (0.322), adapting weights
+Training: 1753000it [5:32:15,  4.58it/s]
+⏱️  Step 1,753,000 | 18089 tok/s | 7.18/6.8 GB | 105.3% (>6.8B target) | ETA N/A | Elapsed 5:32:33
+
+📊 Step 1,753,000 | Loss: 4.6381 | LR: 9.23e-05 | 📉 Annealing
+   Coherence: 0.7563 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.72 late=2.00 Δ=-1.28
+   FFNVeto: 99.8% mean_norm=97.9 max_norm=183.8
+   AlphaScale: 0.0% scale=1.000 contrib_norm=78.2
+   SoftCap: hit=0.6% max_raw=496.6 mean_raw=320.2
+
+   🔮 MPC: intervene=41.8% control=0.292 I=0.430
+   📊 Pred: 0.370 | Conf: 0.970 (min: 0.970)
+   📈 Dynamics: v=+0.0052 ➡️ a=+0.0254 🚀
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.052 (predicted=0.366 vs actual=0.418)
+   I-field:  0.05 0.19 0.33 0.44 0.51 0.53
+   Conf-field:0.18 0.45 0.42 0.62 0.78 0.92
+Training: 1754000it [5:35:54,  4.58it/s]
+⏱️  Step 1,754,000 | 18090 tok/s | 7.18/6.8 GB | 105.3% (>6.8B target) | ETA N/A | Elapsed 5:36:12
+
+📊 Step 1,754,000 | Loss: 4.6387 | LR: 9.22e-05 | 📉 Annealing
+   Coherence: 0.7640 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.77 late=2.08 Δ=-1.31
+   FFNVeto: 100.0% mean_norm=96.1 max_norm=197.9
+   AlphaScale: 38.3% scale=0.960 contrib_norm=92.1
+   SoftCap: hit=1.8% max_raw=428.4 mean_raw=330.6
+
+   🔮 MPC: intervene=11.3% control=0.343 I=0.374
+   📊 Pred: 0.373 | Conf: 0.970 (min: 0.970)
+   📈 Dynamics: v=-0.0062 ➡️ a=-0.0181 ➡️
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.267 (predicted=0.380 vs actual=0.113)
+   I-field:  0.05 0.19 0.33 0.44 0.48 0.48
+   Conf-field:0.18 0.46 0.43 0.61 0.78 0.92
+Training: 1755000it [5:39:34,  4.60it/s]
+⏱️  Step 1,755,000 | 18091 tok/s | 7.19/6.8 GB | 105.4% (>6.8B target) | ETA N/A | Elapsed 5:39:52
+
+📊 Step 1,755,000 | Loss: 4.7367 | LR: 9.22e-05 | 📉 Annealing
+   Coherence: 0.7591 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.71 late=2.21 Δ=-1.50
+   FFNVeto: 99.8% mean_norm=92.8 max_norm=172.8
+   AlphaScale: 39.5% scale=0.953 contrib_norm=94.3
+   SoftCap: hit=4.9% max_raw=467.5 mean_raw=342.3
+
+   🔮 MPC: intervene=10.7% control=0.348 I=0.369
+   📊 Pred: 0.368 | Conf: 0.970 (min: 0.970)
+   📈 Dynamics: v=-0.0018 ➡️ a=-0.0002 ➡️
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.264 (predicted=0.371 vs actual=0.107)
+   I-field:  0.06 0.19 0.34 0.44 0.47 0.48
+   Conf-field:0.18 0.46 0.43 0.62 0.78 0.92
+
+💾 Checkpoint: step 1,755,000 → /home/ec2-user/SageMaker/mycelia_checkpoints/mycelia_step_1ac778.pt
+Training: 1755047it [5:40:36,  5.21it/s]
+⚠️  Bad gradients at step 1755047, skipping step
+Training: 1756000it [5:43:49,  4.42it/s]
+⏱️  Step 1,756,000 | 18091 tok/s | 7.19/6.8 GB | 105.5% (>6.8B target) | ETA N/A | Elapsed 5:44:07
+
+📊 Step 1,756,000 | Loss: 4.6571 | LR: 9.22e-05 | 📉 Annealing
+   Coherence: 0.7653 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.75 late=2.05 Δ=-1.30
+   FFNVeto: 100.0% mean_norm=93.8 max_norm=174.5
+   AlphaScale: 40.6% scale=0.951 contrib_norm=94.3
+   SoftCap: hit=2.9% max_raw=456.5 mean_raw=339.1
+
+   🔮 MPC: intervene=7.2% control=0.350 I=0.367
+   📊 Pred: 0.366 | Conf: 0.970 (min: 0.970)
+   📈 Dynamics: v=-0.0066 ➡️ a=-0.0089 ➡️
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.301 (predicted=0.373 vs actual=0.072)
+   I-field:  0.06 0.20 0.36 0.45 0.48 0.49
+   Conf-field:0.18 0.46 0.43 0.61 0.78 0.92
+   ⚠️  Forecast error high (0.301), adapting weights
+Training: 1757000it [5:47:29,  4.67it/s]
+⏱️  Step 1,757,000 | 18089 tok/s | 7.20/6.8 GB | 105.5% (>6.8B target) | ETA N/A | Elapsed 5:47:47
+
+📊 Step 1,757,000 | Loss: 4.5666 | LR: 9.22e-05 | 📉 Annealing
+   Coherence: 0.7643 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.75 late=2.05 Δ=-1.30
+   FFNVeto: 100.0% mean_norm=106.5 max_norm=168.1
+   AlphaScale: 40.6% scale=0.957 contrib_norm=93.4
+   SoftCap: hit=3.7% max_raw=464.8 mean_raw=342.1
+
+   🔮 MPC: intervene=9.6% control=0.343 I=0.372
+   📊 Pred: 0.371 | Conf: 0.975 (min: 0.975)
+   📈 Dynamics: v=-0.0024 ➡️ a=-0.0110 ➡️
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.279 (predicted=0.375 vs actual=0.096)
+   I-field:  0.05 0.19 0.33 0.44 0.49 0.48
+   Conf-field:0.17 0.45 0.42 0.62 0.78 0.93
+Training: 1758000it [5:51:10,  4.65it/s]
+⏱️  Step 1,758,000 | 18087 tok/s | 7.20/6.8 GB | 105.6% (>6.8B target) | ETA N/A | Elapsed 5:51:28
+
+📊 Step 1,758,000 | Loss: 4.7337 | LR: 9.22e-05 | 📉 Annealing
+   Coherence: 0.7588 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.77 late=1.98 Δ=-1.21
+   FFNVeto: 99.8% mean_norm=96.2 max_norm=233.8
+   AlphaScale: 35.7% scale=0.974 contrib_norm=89.0
+   SoftCap: hit=1.8% max_raw=472.5 mean_raw=339.8
+
+   🔮 MPC: intervene=21.1% control=0.327 I=0.388
+   📊 Pred: 0.368 | Conf: 0.975 (min: 0.975)
+   📈 Dynamics: v=-0.0024 ➡️ a=+0.0093 ➡️
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.161 (predicted=0.372 vs actual=0.211)
+   I-field:  0.05 0.19 0.33 0.44 0.51 0.48
+   Conf-field:0.17 0.45 0.42 0.62 0.78 0.93
+Training: 1759000it [5:54:50,  4.51it/s]
+⏱️  Step 1,759,000 | 18088 tok/s | 7.20/6.8 GB | 105.6% (>6.8B target) | ETA N/A | Elapsed 5:55:07
+
+📊 Step 1,759,000 | Loss: 4.4756 | LR: 9.21e-05 | 📉 Annealing
+   Coherence: 0.7668 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.77 late=1.97 Δ=-1.20
+   FFNVeto: 100.0% mean_norm=94.3 max_norm=160.2
+   AlphaScale: 38.9% scale=0.970 contrib_norm=90.2
+   SoftCap: hit=2.5% max_raw=524.3 mean_raw=339.1
+
+   🔮 MPC: intervene=17.4% control=0.333 I=0.382
+   📊 Pred: 0.367 | Conf: 0.975 (min: 0.975)
+   📈 Dynamics: v=+0.0023 ➡️ a=+0.0051 ➡️
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.192 (predicted=0.366 vs actual=0.174)
+   I-field:  0.06 0.19 0.33 0.45 0.49 0.50
+   Conf-field:0.18 0.46 0.42 0.62 0.79 0.92
+Training: 1760000it [5:58:29,  4.55it/s]
+⏱️  Step 1,760,000 | 18088 tok/s | 7.21/6.8 GB | 105.7% (>6.8B target) | ETA N/A | Elapsed 5:58:47
+
+📊 Step 1,760,000 | Loss: 4.7154 | LR: 9.21e-05 | 📉 Annealing
+   Coherence: 0.7655 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.73 late=1.93 Δ=-1.21
+   FFNVeto: 99.8% mean_norm=97.8 max_norm=231.3
+   AlphaScale: 45.1% scale=0.955 contrib_norm=92.0
+   SoftCap: hit=2.0% max_raw=477.2 mean_raw=330.2
+
+   🔮 MPC: intervene=26.2% control=0.337 I=0.380
+   📊 Pred: 0.379 | Conf: 0.975 (min: 0.975)
+   📈 Dynamics: v=-0.0096 ➡️ a=-0.0349 🛑
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.128 (predicted=0.390 vs actual=0.262)
+   I-field:  0.07 0.23 0.36 0.45 0.48 0.49
+   Conf-field:0.18 0.46 0.43 0.62 0.79 0.93
+
+💾 Checkpoint: step 1,760,000 → /home/ec2-user/SageMaker/mycelia_checkpoints/mycelia_step_1adb00.pt
+Training: 1761000it [6:02:44,  4.58it/s]
+⏱️  Step 1,761,000 | 18089 tok/s | 7.21/6.8 GB | 105.8% (>6.8B target) | ETA N/A | Elapsed 6:03:02
+
+📊 Step 1,761,000 | Loss: 4.5503 | LR: 9.21e-05 | 📉 Annealing
+   Coherence: 0.7603 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.72 late=1.88 Δ=-1.16
+   FFNVeto: 99.8% mean_norm=95.9 max_norm=148.3
+   AlphaScale: 39.6% scale=0.964 contrib_norm=90.4
+   SoftCap: hit=0.0% max_raw=398.0 mean_raw=288.2
+
+   🔮 MPC: intervene=16.6% control=0.335 I=0.380
+   📊 Pred: 0.367 | Conf: 0.975 (min: 0.975)
+   📈 Dynamics: v=+0.0008 ➡️ a=+0.0057 ➡️
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.201 (predicted=0.367 vs actual=0.166)
+   I-field:  0.06 0.19 0.34 0.44 0.48 0.52
+   Conf-field:0.18 0.46 0.43 0.62 0.79 0.93
+Training: 1762000it [6:06:23,  4.57it/s]
+⏱️  Step 1,762,000 | 18089 tok/s | 7.22/6.8 GB | 105.8% (>6.8B target) | ETA N/A | Elapsed 6:06:41
+
+📊 Step 1,762,000 | Loss: 4.5966 | LR: 9.21e-05 | 📉 Annealing
+   Coherence: 0.7673 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.74 late=1.98 Δ=-1.24
+   FFNVeto: 99.8% mean_norm=95.2 max_norm=217.8
+   AlphaScale: 35.2% scale=0.972 contrib_norm=87.8
+   SoftCap: hit=2.7% max_raw=524.9 mean_raw=340.3
+
+   🔮 MPC: intervene=25.8% control=0.321 I=0.395
+   📊 Pred: 0.375 | Conf: 0.975 (min: 0.975)
+   📈 Dynamics: v=+0.0035 ➡️ a=+0.0069 ➡️
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.115 (predicted=0.373 vs actual=0.258)
+   I-field:  0.05 0.19 0.33 0.44 0.49 0.50
+   Conf-field:0.17 0.46 0.43 0.61 0.78 0.92
+Training: 1763000it [6:10:03,  4.58it/s]
+⏱️  Step 1,763,000 | 18087 tok/s | 7.22/6.8 GB | 105.9% (>6.8B target) | ETA N/A | Elapsed 6:10:21
+
+📊 Step 1,763,000 | Loss: 4.5469 | LR: 9.21e-05 | 📉 Annealing
+   Coherence: 0.7463 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.76 late=1.94 Δ=-1.18
+   FFNVeto: 99.6% mean_norm=91.4 max_norm=173.1
+   AlphaScale: 0.0% scale=1.000 contrib_norm=72.1
+   SoftCap: hit=1.0% max_raw=496.4 mean_raw=315.2
+
+   🔮 MPC: intervene=48.0% control=0.265 I=0.466
+   📊 Pred: 0.378 | Conf: 0.970 (min: 0.970)
+   📈 Dynamics: v=+0.0160 ➡️ a=+0.0314 🚀
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.117 (predicted=0.363 vs actual=0.480)
+   I-field:  0.05 0.19 0.34 0.45 0.47 0.50
+   Conf-field:0.18 0.46 0.42 0.61 0.79 0.93
+Training: 1764000it [6:13:42,  4.56it/s]
+⏱️  Step 1,764,000 | 18086 tok/s | 7.23/6.8 GB | 105.9% (>6.8B target) | ETA N/A | Elapsed 6:14:00
+
+📊 Step 1,764,000 | Loss: 4.6733 | LR: 9.21e-05 | 📉 Annealing
+   Coherence: 0.7523 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.73 late=1.85 Δ=-1.12
+   FFNVeto: 100.0% mean_norm=95.4 max_norm=167.3
+   AlphaScale: 21.5% scale=0.998 contrib_norm=81.4
+   SoftCap: hit=0.6% max_raw=437.2 mean_raw=311.1
+
+   🔮 MPC: intervene=40.4% control=0.300 I=0.420
+   📊 Pred: 0.371 | Conf: 0.975 (min: 0.975)
+   📈 Dynamics: v=+0.0065 ➡️ a=+0.0189 ➡️
+   🎯 Confidence: κ-damping=1.000 | Δκ=0.000
+   ⚡ Jerk: 0.001 (persistent curvature)
+   🎯 Forecast Error: 0.039 (predicted=0.365 vs actual=0.404)
+   I-field:  0.06 0.20 0.36 0.46 0.48 0.53
+   Conf-field:0.18 0.47 0.43 0.62 0.79 0.93
+Training: 1764399it [6:15:21,  5.18it/s]
 
 📊 PREVIOUS DATA
 
