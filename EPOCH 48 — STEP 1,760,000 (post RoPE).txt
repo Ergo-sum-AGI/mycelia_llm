@@ -1,0 +1,474 @@
+🍄 Mycelia Architecrure loaded
+
+======================================================================
+🍄 MYCELIA TRAINING v8.8.1
+   Gradual Transition + Interaction Guard
+   Stanford (30%) + FineWeb (70%) | No compression
+======================================================================
+
+📚 Loading tokenizer...
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+   Vocab: 151,643
+
+🏗️ Building model...
+   199,935,516 params on cuda:0
+
+🔥 Scheduler: HF cosine | peak=3.00e-04 | min=3.00e-05 | warmup=500 | total=305,175
+⚙️  Auto-tune: every 5000 steps | control_gain ∈ [0.5, 1.5]
+📈 Gradual transition: FFN 50→150 | α 100→150 over 10,000 steps
+🛡️  Rate governor: DISABLED for first 5,000 steps
+🛡️  LR Burst: DISABLED
+
+======================================================================
+🏆 BEST CHECKPOINT
+======================================================================
+   ✅ Model loaded
+   🔥 Warm-started input_pos
+
+   📊 Resumed: step=1,760,000 | epoch=47 | loss=4.9510
+   🏆 Best loss: 4.1132
+   ✅ Scheduler restored (step 1605312) | LR=4.98e-05
+   📈 Gradual transition starts at step 1,760,000
+   ✅ Auto-tuner restored
+
+📖 Loading datasets...
+   📥 Loading FineWeb chunks...
+   📚 Loading 500 chunks...
+      100 chunks (100,000,000 tokens, 0.40 GB)
+      200 chunks (200,000,000 tokens, 0.80 GB)
+      300 chunks (300,000,000 tokens, 1.20 GB)
+      400 chunks (400,000,000 tokens, 1.60 GB)
+      500 chunks (500,000,000 tokens, 2.00 GB)
+   ✅ 500 arrays | 500,000,000 tokens | 2.00 GB
+   ✅ Data ready
+
+⏱️  Tracker: 16,384 tok/step | 28.8B total
+
+======================================================================
+🚀 EPOCH 48 — STEP 1,760,000
+======================================================================
+
+Training: 1760000it [00:00, ?it/s]
+⏱️  Step 1,760,000 | 7024209385 tok/s | 28.84/28.8 GB | 100.0% | ETA N/A | Elapsed 0:00:04
+
+📊 Step 1,760,000 | Loss: 9.4431 | LR: 0.00e+00 | 📉 Annealing | 📈 Transition: 0% (FFN=50 α=100)
+   Coherence: 0.1295 📉
+   Friction: 🟢 HARMONIZED | early=0.94 late=1.60 Δ=-0.66
+   FFNVeto: 8.6% mean_norm=36.9 max_norm=107.2 | target=50
+   AlphaScale: 32.1% scale=0.963 contrib_norm=93.0 | target=100
+   SoftCap: hit=68.1% max_raw=528.8 mean_raw=412.4
+
+   🔮 MPC: intervene=100.0% control=0.537 I=0.941
+   📊 Pred: 0.684 | Conf: 0.664 (min: 0.664)
+   📈 Dynamics: v=+0.0738 a=+0.0832
+   🎯 Forecast Error: 0.410 (predicted=0.590 vs actual=1.000)
+   I-field:  1.52 1.22 0.77 0.70 0.74 0.73
+   Conf-field:0.77 0.71 0.74 0.71 0.67 0.67
+
+   🔥 Π=43.2 | χ=0.77 | dominant=cap
+   🔥 Π breakdown: ffn=1.2 alpha=3.9 cap=33.4 mpc=4.8
+   📐 Rate Governor: DISABLED (transition progress < 50%)
+
+💾 Checkpoint: step 1,760,000 → /home/ec2-user/SageMaker/mycelia_checkpoints/mycelia_step_1adb00.pt
+Training: 1760031it [00:27,  3.93it/s]
+⚠️  Bad gradients at step 1760031, skipping step
+Training: 1761000it [04:38,  3.92it/s]
+⏱️  Step 1,761,000 | 97464455 tok/s | 28.85/28.8 GB | 100.1% (>28.8B target) | ETA N/A | Elapsed 0:04:56
+
+📊 Step 1,761,000 | Loss: 5.3956 | LR: 4.99e-05 | 📉 Annealing | 📈 Transition: 10% (FFN=52 α=101)
+   Coherence: 0.4075 📉
+   Friction: 🟢 HARMONIZED | early=1.03 late=1.69 Δ=-0.67
+   FFNVeto: 97.9% mean_norm=74.7 max_norm=137.7 | target=52
+   AlphaScale: 99.7% scale=0.740 contrib_norm=135.4 | target=101
+   SoftCap: hit=99.0% max_raw=719.0 mean_raw=521.0
+
+   🔮 MPC: intervene=98.7% control=0.635 I=0.614
+   📊 Pred: 0.586 | Conf: 0.746 (min: 0.746)
+   📈 Dynamics: v=+0.0098 a=+0.0103
+   🎯 Forecast Error: 0.419 (predicted=0.569 vs actual=0.987)
+   I-field:  0.18 0.44 0.51 0.53 0.56 0.58
+   Conf-field:0.34 0.70 0.76 0.73 0.74 0.73
+
+   🔥 Π=351.0 | χ=0.59 | dominant=ffn
+   🔥 Π breakdown: ffn=205.8 alpha=48.1 cap=95.1 mpc=2.0
+   📐 Rate Governor: DISABLED (transition progress < 50%)
+   ⚠️  GOVERNOR INTERACTION GUARD: 4 governors active, limit is 2
+Training: 1762000it [09:14,  3.60it/s]
+⏱️  Step 1,762,000 | 50443834 tok/s | 28.87/28.8 GB | 100.1% (>28.8B target) | ETA N/A | Elapsed 0:09:32
+
+📊 Step 1,762,000 | Loss: 5.1605 | LR: 5.00e-05 | 📉 Annealing | 📈 Transition: 20% (FFN=60 α=105)
+   Coherence: 0.4048 📉
+   Friction: 🟢 HARMONIZED | early=0.88 late=1.50 Δ=-0.62
+   FFNVeto: 99.7% mean_norm=85.6 max_norm=168.5 | target=60
+   AlphaScale: 100.0% scale=0.760 contrib_norm=131.6 | target=105
+   SoftCap: hit=96.6% max_raw=694.6 mean_raw=493.3
+
+   🔮 MPC: intervene=89.9% control=0.650 I=0.577
+   📊 Pred: 0.584 | Conf: 0.754 (min: 0.754)
+   📈 Dynamics: v=-0.0235 a=-0.0458
+   🎯 Forecast Error: 0.299 (predicted=0.601 vs actual=0.899)
+   I-field:  0.16 0.40 0.50 0.55 0.58 0.53
+   Conf-field:0.30 0.66 0.76 0.73 0.74 0.76
+
+   🔥 Π=338.8 | χ=0.64 | dominant=ffn
+   🔥 Π breakdown: ffn=216.7 alpha=44.7 cap=75.5 mpc=1.9
+   📐 Rate Governor: DISABLED (transition progress < 50%)
+   ⚠️  GOVERNOR INTERACTION GUARD: 4 governors active, limit is 2
+Training: 1763000it [13:50,  3.92it/s]
+⏱️  Step 1,763,000 | 34053020 tok/s | 28.88/28.8 GB | 100.2% (>28.8B target) | ETA N/A | Elapsed 0:14:08
+
+📊 Step 1,763,000 | Loss: 5.0439 | LR: 5.01e-05 | 📉 Annealing | 📈 Transition: 30% (FFN=71 α=110)
+   Coherence: 0.3641 📉
+   Friction: 🟢 HARMONIZED | early=1.00 late=1.59 Δ=-0.59
+   FFNVeto: 99.9% mean_norm=91.1 max_norm=187.3 | target=71
+   AlphaScale: 100.0% scale=0.769 contrib_norm=130.1 | target=110
+   SoftCap: hit=96.0% max_raw=686.6 mean_raw=483.7
+
+   🔮 MPC: intervene=100.0% control=0.597 I=0.729
+   📊 Pred: 0.633 | Conf: 0.712 (min: 0.712)
+   📈 Dynamics: v=+0.0242 a=+0.0402
+   🎯 Forecast Error: 0.412 (predicted=0.588 vs actual=1.000)
+   I-field:  0.17 0.39 0.49 0.52 0.53 0.53
+   Conf-field:0.31 0.60 0.74 0.76 0.76 0.77
+
+   🔥 Π=319.2 | χ=0.64 | dominant=ffn
+   🔥 Π breakdown: ffn=205.7 alpha=43.5 cap=68.1 mpc=1.9
+   📐 Rate Governor: DISABLED (transition progress < 50%)
+   ⚠️  GOVERNOR INTERACTION GUARD: 4 governors active, limit is 2
+Training: 1764000it [18:26,  3.58it/s]
+⏱️  Step 1,764,000 | 25704284 tok/s | 28.90/28.8 GB | 100.2% (>28.8B target) | ETA N/A | Elapsed 0:18:44
+
+📊 Step 1,764,000 | Loss: 4.9585 | LR: 5.01e-05 | 📉 Annealing | 📈 Transition: 40% (FFN=85 α=117)
+   Coherence: 0.3401 📉
+   Friction: 🟢 HARMONIZED | early=0.89 late=1.61 Δ=-0.72
+   FFNVeto: 99.7% mean_norm=93.7 max_norm=229.3 | target=85
+   AlphaScale: 100.0% scale=0.760 contrib_norm=131.6 | target=117
+   SoftCap: hit=93.7% max_raw=735.3 mean_raw=474.1
+
+   🔮 MPC: intervene=95.7% control=0.650 I=0.591
+   📊 Pred: 0.600 | Conf: 0.733 (min: 0.733)
+   📈 Dynamics: v=-0.0038 a=-0.0040
+   🎯 Forecast Error: 0.363 (predicted=0.594 vs actual=0.957)
+   I-field:  0.22 0.44 0.50 0.53 0.63 0.56
+   Conf-field:0.32 0.58 0.73 0.74 0.75 0.75
+
+   🔥 Π=316.0 | χ=0.66 | dominant=ffn
+   🔥 Π breakdown: ffn=207.7 alpha=44.8 cap=61.5 mpc=2.0
+   📐 Rate Governor: DISABLED (transition progress < 50%)
+   ⚠️  GOVERNOR INTERACTION GUARD: 4 governors active, limit is 2
+Training: 1765000it [23:02,  3.91it/s]
+⏱️  Step 1,765,000 | 20645857 tok/s | 28.92/28.8 GB | 100.3% (>28.8B target) | ETA N/A | Elapsed 0:23:20
+
+📊 Step 1,765,000 | Loss: 4.9572 | LR: 5.02e-05 | 📉 Annealing | 📈 Transition: 50% (FFN=100 α=125)
+   Coherence: 0.3996 📉
+   Friction: 🟢 HARMONIZED | early=0.94 late=1.58 Δ=-0.64
+   FFNVeto: 99.8% mean_norm=90.5 max_norm=168.2 | target=100
+   AlphaScale: 100.0% scale=0.772 contrib_norm=129.6 | target=125
+   SoftCap: hit=89.8% max_raw=655.6 mean_raw=460.5
+
+   🔮 MPC: intervene=94.9% control=0.647 I=0.593
+   📊 Pred: 0.604 | Conf: 0.740 (min: 0.740)
+   📈 Dynamics: v=+0.0004 a=-0.0080
+   🎯 Forecast Error: 0.358 (predicted=0.591 vs actual=0.949)
+   I-field:  0.22 0.49 0.50 0.51 0.53 0.52
+   Conf-field:0.33 0.59 0.75 0.78 0.76 0.78
+
+   🔥 Π=293.5 | χ=0.67 | dominant=ffn
+   🔥 Π breakdown: ffn=197.2 alpha=42.8 cap=51.6 mpc=1.9
+   📐 Rate Governor: DISABLED (transition progress < 50%)
+   ⚠️  GOVERNOR INTERACTION GUARD: 4 governors active, limit is 2
+   ⚙️  Auto-tune: instability_target↑0.700, coh/fcst weights↑1.02/1.02
+
+💾 Checkpoint: step 1,765,000 → /home/ec2-user/SageMaker/mycelia_checkpoints/mycelia_step_1aee88.pt
+Training: 1766000it [28:21,  3.50it/s]
+⏱️  Step 1,766,000 | 16829446 tok/s | 28.93/28.8 GB | 100.3% (>28.8B target) | ETA N/A | Elapsed 0:28:39
+
+📊 Step 1,766,000 | Loss: 4.8226 | LR: 5.03e-05 | 📉 Annealing | 📈 Transition: 60% (FFN=115 α=133)
+   Coherence: 0.4128 📉
+   Friction: 🟢 HARMONIZED | early=0.93 late=1.50 Δ=-0.57
+   FFNVeto: 99.5% mean_norm=83.9 max_norm=149.0 | target=115
+   AlphaScale: 99.9% scale=0.770 contrib_norm=130.0 | target=133
+   SoftCap: hit=87.3% max_raw=651.4 mean_raw=457.3
+
+   🔮 MPC: intervene=26.9% control=0.509 I=0.606
+   📊 Pred: 0.618 | Conf: 0.755 (min: 0.755)
+   📈 Dynamics: v=+0.0017 a=-0.0077
+   🎯 Forecast Error: 0.333 (predicted=0.601 vs actual=0.269)
+   I-field:  0.22 0.48 0.53 0.62 0.55 0.53
+   Conf-field:0.32 0.68 0.74 0.75 0.76 0.77
+
+   🔥 Π=282.9 | χ=0.67 | dominant=ffn
+   🔥 Π breakdown: ffn=188.4 alpha=42.7 cap=49.1 mpc=2.7
+   📐 Rate Governor: hit=0.0% scale=0.871 | ffn_growth=1.00x res_growth=1.56x
+   ⚠️  GOVERNOR INTERACTION GUARD: 3 governors active, limit is 2
+Training: 1767000it [33:04,  3.82it/s]
+⏱️  Step 1,767,000 | 14455059 tok/s | 28.95/28.8 GB | 100.4% (>28.8B target) | ETA N/A | Elapsed 0:33:22
+
+📊 Step 1,767,000 | Loss: 4.7340 | LR: 5.04e-05 | 📉 Annealing | 📈 Transition: 70% (FFN=129 α=140)
+   Coherence: 0.3901 📉
+   Friction: 🟢 HARMONIZED | early=0.84 late=1.52 Δ=-0.68
+   FFNVeto: 100.0% mean_norm=97.8 max_norm=206.5 | target=129
+   AlphaScale: 100.0% scale=0.766 contrib_norm=130.6 | target=140
+   SoftCap: hit=92.6% max_raw=652.3 mean_raw=470.6
+
+   🔮 MPC: intervene=20.0% control=0.518 I=0.591
+   📊 Pred: 0.601 | Conf: 0.750 (min: 0.750)
+   📈 Dynamics: v=-0.0148 a=-0.0311
+   🎯 Forecast Error: 0.406 (predicted=0.606 vs actual=0.200)
+   I-field:  0.16 0.44 0.51 0.53 0.53 0.53
+   Conf-field:0.29 0.65 0.75 0.75 0.75 0.76
+
+   🔥 Π=322.3 | χ=0.67 | dominant=ffn
+   🔥 Π breakdown: ffn=217.2 alpha=43.6 cap=58.8 mpc=2.6
+   📐 Rate Governor: hit=0.0% scale=0.881 | ffn_growth=1.00x res_growth=1.55x
+   ⚠️  GOVERNOR INTERACTION GUARD: 3 governors active, limit is 2
+Training: 1768000it [37:48,  3.47it/s]
+⏱️  Step 1,768,000 | 12667739 tok/s | 28.97/28.8 GB | 100.5% (>28.8B target) | ETA N/A | Elapsed 0:38:06
+
+📊 Step 1,768,000 | Loss: 4.8702 | LR: 5.04e-05 | 📉 Annealing | 📈 Transition: 80% (FFN=140 α=145)
+   Coherence: 0.3866 📉
+   Friction: 🟢 HARMONIZED | early=0.97 late=1.53 Δ=-0.55
+   FFNVeto: 99.8% mean_norm=85.6 max_norm=148.3 | target=140
+   AlphaScale: 100.0% scale=0.769 contrib_norm=130.1 | target=145
+   SoftCap: hit=89.3% max_raw=643.0 mean_raw=455.8
+
+   🔮 MPC: intervene=19.0% control=0.519 I=0.591
+   📊 Pred: 0.602 | Conf: 0.748 (min: 0.748)
+   📈 Dynamics: v=-0.0101 a=-0.0231
+   🎯 Forecast Error: 0.410 (predicted=0.601 vs actual=0.190)
+   I-field:  0.18 0.39 0.49 0.51 0.53 0.53
+   Conf-field:0.30 0.61 0.71 0.76 0.76 0.77
+
+   🔥 Π=283.6 | χ=0.67 | dominant=ffn
+   🔥 Π breakdown: ffn=190.1 alpha=43.0 cap=47.9 mpc=2.5
+   📐 Rate Governor: hit=0.0% scale=0.894 | ffn_growth=1.00x res_growth=1.54x
+   ⚠️  GOVERNOR INTERACTION GUARD: 3 governors active, limit is 2
+Training: 1769000it [42:31,  3.84it/s]
+⏱️  Step 1,769,000 | 11279779 tok/s | 28.98/28.8 GB | 100.5% (>28.8B target) | ETA N/A | Elapsed 0:42:49
+
+📊 Step 1,769,000 | Loss: 4.8301 | LR: 5.05e-05 | 📉 Annealing | 📈 Transition: 90% (FFN=148 α=149)
+   Coherence: 0.3957 📉
+   Friction: 🟢 HARMONIZED | early=1.00 late=1.50 Δ=-0.50
+   FFNVeto: 99.7% mean_norm=91.5 max_norm=193.6 | target=148
+   AlphaScale: 100.0% scale=0.760 contrib_norm=131.6 | target=149
+   SoftCap: hit=90.2% max_raw=654.4 mean_raw=466.1
+
+   🔮 MPC: intervene=23.9% control=0.514 I=0.587
+   📊 Pred: 0.596 | Conf: 0.766 (min: 0.766)
+   📈 Dynamics: v=-0.0055 a=-0.0033
+   🎯 Forecast Error: 0.353 (predicted=0.593 vs actual=0.239)
+   I-field:  0.18 0.39 0.48 0.50 0.52 0.53
+   Conf-field:0.32 0.58 0.75 0.78 0.76 0.77
+
+   🔥 Π=304.9 | χ=0.66 | dominant=ffn
+   🔥 Π breakdown: ffn=202.5 alpha=44.5 cap=55.4 mpc=2.5
+   📐 Rate Governor: hit=0.0% scale=0.877 | ffn_growth=1.00x res_growth=1.56x
+   ⚠️  GOVERNOR INTERACTION GUARD: 3 governors active, limit is 2
+Training: 1770000it [47:15,  3.50it/s]
+⏱️  Step 1,770,000 | 10164689 tok/s | 29.00/28.8 GB | 100.6% (>28.8B target) | ETA N/A | Elapsed 0:47:32
+
+📊 Step 1,770,000 | Loss: 4.8349 | LR: 5.06e-05 | 📉 Annealing | 📈 Transition: 100% (FFN=150 α=150)
+   Coherence: 0.3798 📉
+   Friction: 🟢 HARMONIZED | early=0.80 late=1.63 Δ=-0.83
+   FFNVeto: 99.6% mean_norm=87.4 max_norm=155.8 | target=150
+   AlphaScale: 100.0% scale=0.768 contrib_norm=130.2 | target=150
+   SoftCap: hit=95.4% max_raw=706.3 mean_raw=476.1
+
+   🔮 MPC: intervene=16.9% control=0.522 I=0.594
+   📊 Pred: 0.609 | Conf: 0.737 (min: 0.737)
+   📈 Dynamics: v=-0.0074 a=-0.0073
+   🎯 Forecast Error: 0.432 (predicted=0.601 vs actual=0.169)
+   I-field:  0.19 0.40 0.49 0.53 0.52 0.53
+   Conf-field:0.30 0.60 0.75 0.75 0.77 0.76
+
+   🔥 Π=301.2 | χ=0.64 | dominant=ffn
+   🔥 Π breakdown: ffn=192.5 alpha=43.3 cap=62.9 mpc=2.5
+   📐 Rate Governor: hit=0.0% scale=0.886 | ffn_growth=1.00x res_growth=1.55x
+   ⚠️  GOVERNOR INTERACTION GUARD: 3 governors active, limit is 2
+
+======================================================================
+✅ TRANSITION COMPLETE at step 1,770,000
+   Loss at completion: 4.8349
+   v8.6 baseline best: 4.1132
+   Δ from baseline: +0.7217
+   FFN target: 150 | α target: 150
+   Pressure χ: 0.64 | Dominant: ffn
+   Interpretation:
+   🔴 REGIME CHANGE HURT: Loss degraded, rollback recommended
+======================================================================
+
+   ⚙️  Auto-tune: coh/fcst weights↑1.04/1.04
+
+💾 Checkpoint: step 1,770,000 → /home/ec2-user/SageMaker/mycelia_checkpoints/mycelia_step_1b0210.pt
+Training: 1771000it [52:33,  3.82it/s]
+⏱️  Step 1,771,000 | 9149389 tok/s | 29.02/28.8 GB | 100.6% (>28.8B target) | ETA N/A | Elapsed 0:52:51
+
+📊 Step 1,771,000 | Loss: 4.8938 | LR: 5.06e-05 | 📉 Annealing | 📈 Transition: 100% (FFN=150 α=150)
+   Coherence: 0.3899 📉
+   Friction: 🟢 HARMONIZED | early=1.07 late=1.61 Δ=-0.54
+   FFNVeto: 99.5% mean_norm=86.6 max_norm=165.0 | target=150
+   AlphaScale: 99.9% scale=0.776 contrib_norm=128.9 | target=150
+   SoftCap: hit=91.5% max_raw=689.7 mean_raw=465.0
+
+   🔮 MPC: intervene=26.1% control=0.509 I=0.595
+   📊 Pred: 0.606 | Conf: 0.771 (min: 0.771)
+   📈 Dynamics: v=-0.0063 a=-0.0218
+   🎯 Forecast Error: 0.341 (predicted=0.601 vs actual=0.261)
+   I-field:  0.17 0.46 0.51 0.57 0.53 0.54
+   Conf-field:0.32 0.65 0.75 0.74 0.76 0.76
+
+   🔥 Π=289.0 | χ=0.66 | dominant=ffn
+   🔥 Π breakdown: ffn=189.8 alpha=41.9 cap=54.8 mpc=2.6
+   📐 Rate Governor: hit=0.0% scale=0.895 | ffn_growth=1.00x res_growth=1.54x
+   ⚠️  GOVERNOR INTERACTION GUARD: 3 governors active, limit is 2
+Training: 1772000it [57:17,  3.50it/s]
+⏱️  Step 1,772,000 | 8402498 tok/s | 29.03/28.8 GB | 100.7% (>28.8B target) | ETA N/A | Elapsed 0:57:35
+
+📊 Step 1,772,000 | Loss: 4.7655 | LR: 5.07e-05 | 📉 Annealing | 📈 Transition: 100% (FFN=150 α=150)
+   Coherence: 0.3945 📉
+   Friction: 🟢 HARMONIZED | early=0.86 late=1.39 Δ=-0.52
+   FFNVeto: 99.5% mean_norm=90.8 max_norm=162.7 | target=150
+   AlphaScale: 100.0% scale=0.776 contrib_norm=129.0 | target=150
+   SoftCap: hit=91.2% max_raw=683.8 mean_raw=465.9
+
+   🔮 MPC: intervene=19.2% control=0.519 I=0.577
+   📊 Pred: 0.583 | Conf: 0.767 (min: 0.767)
+   📈 Dynamics: v=-0.0149 a=-0.0131
+   🎯 Forecast Error: 0.400 (predicted=0.592 vs actual=0.192)
+   I-field:  0.21 0.46 0.50 0.56 0.54 0.54
+   Conf-field:0.31 0.68 0.76 0.75 0.75 0.75
+
+   🔥 Π=298.4 | χ=0.67 | dominant=ffn
+   🔥 Π breakdown: ffn=198.6 alpha=41.7 cap=55.5 mpc=2.7
+   📐 Rate Governor: hit=0.0% scale=0.923 | ffn_growth=1.00x res_growth=1.50x
+   ⚠️  GOVERNOR INTERACTION GUARD: 3 governors active, limit is 2
+Training: 1773000it [1:02:01,  3.79it/s]
+⏱️  Step 1,773,000 | 7768124 tok/s | 29.05/28.8 GB | 100.7% (>28.8B target) | ETA N/A | Elapsed 1:02:19
+
+📊 Step 1,773,000 | Loss: 4.8808 | LR: 5.08e-05 | 📉 Annealing | 📈 Transition: 100% (FFN=150 α=150)
+   Coherence: 0.3751 📉
+   Friction: 🟢 HARMONIZED | early=0.99 late=1.67 Δ=-0.68
+   FFNVeto: 99.8% mean_norm=90.4 max_norm=205.5 | target=150
+   AlphaScale: 100.0% scale=0.769 contrib_norm=130.1 | target=150
+   SoftCap: hit=89.1% max_raw=681.0 mean_raw=452.9
+
+   🔮 MPC: intervene=18.6% control=0.522 I=0.577
+   📊 Pred: 0.584 | Conf: 0.762 (min: 0.762)
+   📈 Dynamics: v=-0.0242 a=-0.0298
+   🎯 Forecast Error: 0.416 (predicted=0.601 vs actual=0.186)
+   I-field:  0.17 0.40 0.51 0.52 0.55 0.54
+   Conf-field:0.31 0.60 0.73 0.77 0.77 0.76
+
+   🔥 Π=284.4 | χ=0.68 | dominant=ffn
+   🔥 Π breakdown: ffn=193.0 alpha=43.0 cap=45.9 mpc=2.5
+   📐 Rate Governor: hit=0.0% scale=0.891 | ffn_growth=1.00x res_growth=1.54x
+   ⚠️  GOVERNOR INTERACTION GUARD: 3 governors active, limit is 2
+Training: 1774000it [1:06:44,  3.48it/s]
+⏱️  Step 1,774,000 | 7226148 tok/s | 29.07/28.8 GB | 100.8% (>28.8B target) | ETA N/A | Elapsed 1:07:02
+
+📊 Step 1,774,000 | Loss: 4.7810 | LR: 5.09e-05 | 📉 Annealing | 📈 Transition: 100% (FFN=150 α=150)
+   Coherence: 0.4115 📉
+   Friction: 🟢 HARMONIZED | early=1.11 late=1.53 Δ=-0.42
+   FFNVeto: 99.6% mean_norm=85.8 max_norm=182.4 | target=150
+   AlphaScale: 100.0% scale=0.765 contrib_norm=130.7 | target=150
+   SoftCap: hit=88.0% max_raw=667.9 mean_raw=453.7
+
+   🔮 MPC: intervene=35.9% control=0.469 I=0.690
+   📊 Pred: 0.611 | Conf: 0.738 (min: 0.738)
+   📈 Dynamics: v=+0.0170 a=+0.0333
+   🎯 Forecast Error: 0.221 (predicted=0.581 vs actual=0.359)
+   I-field:  0.18 0.40 0.49 0.53 0.53 0.53
+   Conf-field:0.31 0.70 0.77 0.77 0.77 0.76
+
+   🔥 Π=286.8 | χ=0.68 | dominant=ffn
+   🔥 Π breakdown: ffn=193.7 alpha=43.7 cap=46.7 mpc=2.7
+   📐 Rate Governor: hit=0.0% scale=0.893 | ffn_growth=1.00x res_growth=1.54x
+   ⚠️  GOVERNOR INTERACTION GUARD: 3 governors active, limit is 2
+Training: 1775000it [1:11:25,  3.85it/s]
+⏱️  Step 1,775,000 | 6757194 tok/s | 29.08/28.8 GB | 100.9% (>28.8B target) | ETA N/A | Elapsed 1:11:43
+
+📊 Step 1,775,000 | Loss: 4.5493 | LR: 5.09e-05 | 📉 Annealing | 📈 Transition: 100% (FFN=150 α=150)
+   Coherence: 0.3896 📉
+   Friction: 🟢 HARMONIZED | early=1.01 late=1.54 Δ=-0.52
+   FFNVeto: 99.4% mean_norm=82.7 max_norm=210.1 | target=150
+   AlphaScale: 99.8% scale=0.775 contrib_norm=129.1 | target=150
+   SoftCap: hit=86.5% max_raw=650.3 mean_raw=451.2
+
+   🔮 MPC: intervene=17.4% control=0.510 I=0.604
+   📊 Pred: 0.594 | Conf: 0.749 (min: 0.749)
+   📈 Dynamics: v=+0.0043 a=+0.0067
+   🎯 Forecast Error: 0.406 (predicted=0.580 vs actual=0.174)
+   I-field:  0.19 0.41 0.50 0.52 0.52 0.53
+   Conf-field:0.32 0.65 0.75 0.77 0.77 0.76
+
+   🔥 Π=272.9 | χ=0.67 | dominant=ffn
+   🔥 Π breakdown: ffn=183.2 alpha=41.9 cap=45.0 mpc=2.9
+   📐 Rate Governor: hit=0.0% scale=0.912 | ffn_growth=1.00x res_growth=1.52x
+   ⚠️  GOVERNOR INTERACTION GUARD: 3 governors active, limit is 2
+   ⚙️  Auto-tune: coh/fcst weights↑1.06/1.06
+
+💾 Checkpoint: step 1,775,000 → /home/ec2-user/SageMaker/mycelia_checkpoints/mycelia_step_1b1598.pt
+Training: 1776000it [1:16:43,  3.51it/s]
+⏱️  Step 1,776,000 | 6296219 tok/s | 29.10/28.8 GB | 100.9% (>28.8B target) | ETA N/A | Elapsed 1:17:01
+
+📊 Step 1,776,000 | Loss: 4.8099 | LR: 5.10e-05 | 📉 Annealing | 📈 Transition: 100% (FFN=150 α=150)
+   Coherence: 0.4111 📉
+   Friction: 🟢 HARMONIZED | early=0.85 late=1.51 Δ=-0.66
+   FFNVeto: 99.7% mean_norm=89.3 max_norm=232.5 | target=150
+   AlphaScale: 100.0% scale=0.782 contrib_norm=128.0 | target=150
+   SoftCap: hit=82.5% max_raw=643.3 mean_raw=441.9
+
+   🔮 MPC: intervene=23.0% control=0.500 I=0.631
+   📊 Pred: 0.615 | Conf: 0.741 (min: 0.741)
+   📈 Dynamics: v=+0.0045 a=+0.0127
+   🎯 Forecast Error: 0.364 (predicted=0.594 vs actual=0.230)
+   I-field:  0.18 0.48 0.52 0.52 0.52 0.53
+   Conf-field:0.32 0.68 0.76 0.77 0.78 0.77
+
+   🔥 Π=267.7 | χ=0.70 | dominant=ffn
+   🔥 Π breakdown: ffn=186.1 alpha=40.9 cap=38.1 mpc=2.7
+   📐 Rate Governor: hit=0.0% scale=0.919 | ffn_growth=1.00x res_growth=1.50x
+   ⚠️  GOVERNOR INTERACTION GUARD: 3 governors active, limit is 2
+Training: 1777000it [1:21:25,  3.82it/s]
+⏱️  Step 1,777,000 | 5937802 tok/s | 29.11/28.8 GB | 101.0% (>28.8B target) | ETA N/A | Elapsed 1:21:43
+
+📊 Step 1,777,000 | Loss: 4.8139 | LR: 5.11e-05 | 📉 Annealing | 📈 Transition: 100% (FFN=150 α=150)
+   Coherence: 0.4142 📉
+   Friction: 🟢 HARMONIZED | early=0.86 late=1.51 Δ=-0.65
+   FFNVeto: 99.7% mean_norm=87.9 max_norm=185.0 | target=150
+   AlphaScale: 100.0% scale=0.773 contrib_norm=129.4 | target=150
+   SoftCap: hit=83.4% max_raw=680.9 mean_raw=450.1
+
+   🔮 MPC: intervene=22.1% control=0.515 I=0.578
+   📊 Pred: 0.586 | Conf: 0.779 (min: 0.779)
+   📈 Dynamics: v=-0.0180 a=-0.0247
+   🎯 Forecast Error: 0.375 (predicted=0.596 vs actual=0.221)
+   I-field:  0.19 0.47 0.52 0.54 0.53 0.54
+   Conf-field:0.31 0.71 0.77 0.75 0.77 0.76
+
+   🔥 Π=279.7 | χ=0.68 | dominant=ffn
+   🔥 Π breakdown: ffn=190.5 alpha=42.3 cap=44.2 mpc=2.6
+   📐 Rate Governor: hit=0.0% scale=0.891 | ffn_growth=1.00x res_growth=1.54x
+   ⚠️  GOVERNOR INTERACTION GUARD: 3 governors active, limit is 2
+Training: 1778000it [1:26:07,  3.51it/s]
+⏱️  Step 1,778,000 | 5617911 tok/s | 29.13/28.8 GB | 101.0% (>28.8B target) | ETA N/A | Elapsed 1:26:25
+
+📊 Step 1,778,000 | Loss: 4.7235 | LR: 5.12e-05 | 📉 Annealing | 📈 Transition: 100% (FFN=150 α=150)
+   Coherence: 0.3754 📉
+   Friction: 🟢 HARMONIZED | early=0.88 late=1.56 Δ=-0.68
+   FFNVeto: 99.7% mean_norm=84.9 max_norm=201.1 | target=150
+   AlphaScale: 100.0% scale=0.761 contrib_norm=131.5 | target=150
+   SoftCap: hit=92.4% max_raw=653.6 mean_raw=460.0
+
+   🔮 MPC: intervene=44.1% control=0.442 I=0.727
+   📊 Pred: 0.628 | Conf: 0.759 (min: 0.759)
+   📈 Dynamics: v=+0.0328 a=+0.0329
+   🎯 Forecast Error: 0.137 (predicted=0.579 vs actual=0.441)
+   I-field:  0.16 0.41 0.50 0.52 0.53 0.54
+   Conf-field:0.29 0.64 0.74 0.75 0.77 0.76
+
+   🔥 Π=284.9 | χ=0.66 | dominant=ffn
+   🔥 Π breakdown: ffn=186.8 alpha=44.6 cap=50.7 mpc=2.8
+   📐 Rate Governor: hit=0.0% scale=0.832 | ffn_growth=1.00x res_growth=1.60x
+   ⚠️  GOVERNOR INTERACTION GUARD: 3 governors active, limit is 2
+Training: 1778315it [1:27:48,  3.85it/s]
