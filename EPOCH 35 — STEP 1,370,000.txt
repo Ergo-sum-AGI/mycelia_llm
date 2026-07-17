@@ -1,0 +1,199 @@
+🍄 Mycelia v8.4 loaded
+
+======================================================================
+🍄 MYCELIA FINAL TRAINING v8.4
+   Stanford (30%) + FineWeb (70%) | No compression
+======================================================================
+
+📚 Loading tokenizer...
+   Vocab: 151,643
+
+🏗️ Building model...
+   181,051,920 params on cuda:0
+
+🔥 Scheduler: peak=3.00e-04 | min=1.00e-05 | warmup=500 | total=610,351
+
+======================================================================
+🏆 BEST CHECKPOINT
+======================================================================
+   ✅ Model loaded
+   🔥 Warm-started input_pos
+
+   📊 Resumed: step=1,370,000 | epoch=34 | loss=5.0918
+   🏆 Best loss: 4.1623
+   📈 Extended training plan: 2,629,649 total steps
+   🚀 LR BURST: Injecting peak LR=3.00e-04 for 500 steps
+   🔥 Scheduler reset: step=1370000 | LR=3.00e-04 | 📉 Annealing
+   🚀 LR BURST ACTIVE: steps 1,370,000 → 1,370,500
+   ⚠️  Optimizer reset: loaded state dict contains a parameter group that doesn't match the size of optimizer's group
+
+📖 Loading datasets...
+   📥 Loading FineWeb chunks...
+   📚 Loading 500 chunks...
+      100 chunks (100,000,000 tokens, 0.40 GB)
+      200 chunks (200,000,000 tokens, 0.80 GB)
+      300 chunks (300,000,000 tokens, 1.20 GB)
+      400 chunks (400,000,000 tokens, 1.60 GB)
+      500 chunks (500,000,000 tokens, 2.00 GB)
+   ✅ 500 arrays | 500,000,000 tokens | 2.00 GB
+   ✅ Data ready
+
+⏱️  Tracker: 8,192 tok/step | 11.2B total
+
+======================================================================
+🚀 EPOCH 35 — STEP 1,370,000
+======================================================================
+
+Training: 1370000it [00:00, ?it/s]
+⏱️  Step 1,370,000 | 1795033079 tok/s | 11.22/11.2 GB | 100.0% | ETA N/A | Elapsed 0:00:06
+
+📊 Step 1,370,000 | Loss: 8.1107 | LR: 3.00e-04 | 📉 Annealing 🚀 BURST
+   Coherence: 0.7943 ➡️
+   Friction: 🟢 HARMONIZED | early=0.65 late=1.01 Δ=-0.36
+
+💾 Checkpoint: step 1,370,000 → /home/ec2-user/SageMaker/mycelia_checkpoints/mycelia_step_14e790.pt
+Training: 1370503it [01:26,  7.47it/s]
+🎯 LR BURST COMPLETE: Resuming cosine decay at step 1,370,503 | LR=1.45e-04
+Training: 1371000it [02:36,  6.38it/s]
+⏱️  Step 1,371,000 | 65302188 tok/s | 11.23/11.2 GB | 100.1% (>11.2B target) | ETA N/A | Elapsed 0:02:51
+
+📊 Step 1,371,000 | Loss: 5.9325 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7972 ➡️
+   Friction: 🟢 HARMONIZED | early=0.73 late=1.08 Δ=-0.35
+Training: 1372000it [05:12,  6.45it/s]
+⏱️  Step 1,372,000 | 34167033 tok/s | 11.24/11.2 GB | 100.1% (>11.2B target) | ETA N/A | Elapsed 0:05:28
+
+📊 Step 1,372,000 | Loss: 5.6035 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7878 ➡️
+   Friction: 🟢 HARMONIZED | early=0.72 late=1.09 Δ=-0.37
+Training: 1373000it [07:50,  6.40it/s]
+⏱️  Step 1,373,000 | 23132391 tok/s | 11.25/11.2 GB | 100.2% (>11.2B target) | ETA N/A | Elapsed 0:08:06
+
+📊 Step 1,373,000 | Loss: 5.4458 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7936 ➡️
+   Friction: 🟢 HARMONIZED | early=0.59 late=1.12 Δ=-0.53
+Training: 1374000it [10:27,  6.35it/s]
+⏱️  Step 1,374,000 | 17476139 tok/s | 11.26/11.2 GB | 100.3% (>11.2B target) | ETA N/A | Elapsed 0:10:44
+
+📊 Step 1,374,000 | Loss: 5.3378 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7996 ➡️
+   Friction: 🟢 HARMONIZED | early=0.59 late=1.06 Δ=-0.47
+Training: 1375000it [13:05,  6.40it/s]
+⏱️  Step 1,375,000 | 14056910 tok/s | 11.26/11.2 GB | 100.4% (>11.2B target) | ETA N/A | Elapsed 0:13:21
+
+📊 Step 1,375,000 | Loss: 5.3790 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7926 ➡️
+   Friction: 🟢 HARMONIZED | early=0.60 late=1.17 Δ=-0.57
+
+💾 Checkpoint: step 1,375,000 → /home/ec2-user/SageMaker/mycelia_checkpoints/mycelia_step_14fb18.pt
+Training: 1376000it [16:14,  6.44it/s]
+⏱️  Step 1,376,000 | 11384839 tok/s | 11.27/11.2 GB | 100.4% (>11.2B target) | ETA N/A | Elapsed 0:16:30
+
+📊 Step 1,376,000 | Loss: 5.2252 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7962 ➡️
+   Friction: 🟢 HARMONIZED | early=0.51 late=1.04 Δ=-0.52
+Training: 1377000it [18:51,  6.42it/s]
+⏱️  Step 1,377,000 | 9830788 tok/s | 11.28/11.2 GB | 100.5% (>11.2B target) | ETA N/A | Elapsed 0:19:07
+
+📊 Step 1,377,000 | Loss: 5.0786 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7892 ➡️
+   Friction: 🟢 HARMONIZED | early=0.54 late=1.09 Δ=-0.54
+Training: 1378000it [21:28,  6.42it/s]
+⏱️  Step 1,378,000 | 8653425 tok/s | 11.29/11.2 GB | 100.6% (>11.2B target) | ETA N/A | Elapsed 0:21:44
+
+📊 Step 1,378,000 | Loss: 5.2897 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7938 ➡️
+   Friction: 🟢 HARMONIZED | early=0.67 late=1.25 Δ=-0.58
+Training: 1379000it [24:05,  6.37it/s]
+⏱️  Step 1,379,000 | 7728441 tok/s | 11.30/11.2 GB | 100.7% (>11.2B target) | ETA N/A | Elapsed 0:24:21
+
+📊 Step 1,379,000 | Loss: 5.1550 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7928 ➡️
+   Friction: 🟢 HARMONIZED | early=0.56 late=1.15 Δ=-0.59
+Training: 1380000it [26:42,  6.39it/s]
+⏱️  Step 1,380,000 | 6983460 tok/s | 11.30/11.2 GB | 100.7% (>11.2B target) | ETA N/A | Elapsed 0:26:58
+
+📊 Step 1,380,000 | Loss: 5.2859 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7964 ➡️
+   Friction: 🟢 HARMONIZED | early=0.61 late=1.14 Δ=-0.52
+
+💾 Checkpoint: step 1,380,000 → /home/ec2-user/SageMaker/mycelia_checkpoints/mycelia_step_150ea0.pt
+Training: 1381000it [29:51,  6.37it/s]
+⏱️  Step 1,381,000 | 6259653 tok/s | 11.31/11.2 GB | 100.8% (>11.2B target) | ETA N/A | Elapsed 0:30:07
+
+📊 Step 1,381,000 | Loss: 5.2249 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7988 ➡️
+   Friction: 🟢 HARMONIZED | early=0.61 late=1.26 Δ=-0.65
+Training: 1382000it [32:28,  6.36it/s]
+⏱️  Step 1,382,000 | 5762736 tok/s | 11.32/11.2 GB | 100.9% (>11.2B target) | ETA N/A | Elapsed 0:32:44
+
+📊 Step 1,382,000 | Loss: 5.1973 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7965 ➡️
+   Friction: 🟢 HARMONIZED | early=0.58 late=1.12 Δ=-0.54
+Training: 1383000it [35:05,  6.41it/s]
+⏱️  Step 1,383,000 | 5340123 tok/s | 11.33/11.2 GB | 100.9% (>11.2B target) | ETA N/A | Elapsed 0:35:21
+
+📊 Step 1,383,000 | Loss: 5.0693 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7951 ➡️
+   Friction: 🟢 HARMONIZED | early=0.52 late=1.16 Δ=-0.63
+Training: 1384000it [37:42,  6.40it/s]
+⏱️  Step 1,384,000 | 4975576 tok/s | 11.34/11.2 GB | 101.0% (>11.2B target) | ETA N/A | Elapsed 0:37:58
+
+📊 Step 1,384,000 | Loss: 5.1374 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7923 ➡️
+   Friction: 🟢 HARMONIZED | early=0.61 late=1.21 Δ=-0.60
+Training: 1385000it [40:19,  6.41it/s]
+⏱️  Step 1,385,000 | 4657695 tok/s | 11.35/11.2 GB | 101.1% (>11.2B target) | ETA N/A | Elapsed 0:40:35
+
+📊 Step 1,385,000 | Loss: 5.0110 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7866 ➡️
+   Friction: 🟢 HARMONIZED | early=0.59 late=1.14 Δ=-0.55
+Training: 1386000it [43:28,  6.38it/s]
+⏱️  Step 1,386,000 | 4325592 tok/s | 11.35/11.2 GB | 101.2% (>11.2B target) | ETA N/A | Elapsed 0:43:44
+
+📊 Step 1,386,000 | Loss: 5.1458 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7860 ➡️
+   Friction: 🟢 HARMONIZED | early=0.61 late=1.16 Δ=-0.55
+Training: 1387000it [46:06,  6.40it/s]
+⏱️  Step 1,387,000 | 4083598 tok/s | 11.36/11.2 GB | 101.2% (>11.2B target) | ETA N/A | Elapsed 0:46:22
+
+📊 Step 1,387,000 | Loss: 5.0592 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7982 ➡️
+   Friction: 🟢 HARMONIZED | early=0.62 late=1.33 Δ=-0.72
+Training: 1388000it [48:43,  6.39it/s]
+⏱️  Step 1,388,000 | 3867842 tok/s | 11.37/11.2 GB | 101.3% (>11.2B target) | ETA N/A | Elapsed 0:48:59
+
+📊 Step 1,388,000 | Loss: 4.9489 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7967 ➡️
+   Friction: 🟢 HARMONIZED | early=0.57 late=1.09 Δ=-0.53
+Training: 1389000it [51:21,  6.41it/s]
+⏱️  Step 1,389,000 | 3673939 tok/s | 11.38/11.2 GB | 101.4% (>11.2B target) | ETA N/A | Elapsed 0:51:37
+
+📊 Step 1,389,000 | Loss: 5.0575 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7891 ➡️
+   Friction: 🟢 HARMONIZED | early=0.56 late=1.11 Δ=-0.55
+Training: 1390000it [53:58,  6.40it/s]
+⏱️  Step 1,390,000 | 3498479 tok/s | 11.39/11.2 GB | 101.5% (>11.2B target) | ETA N/A | Elapsed 0:54:14
+
+📊 Step 1,390,000 | Loss: 4.7581 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7889 ➡️
+   Friction: 🟢 HARMONIZED | early=0.61 late=1.27 Δ=-0.65
+
+💾 Checkpoint: step 1,390,000 → /home/ec2-user/SageMaker/mycelia_checkpoints/mycelia_step_1535b0.pt
+Training: 1391000it [57:07,  6.41it/s]
+⏱️  Step 1,391,000 | 3309292 tok/s | 11.40/11.2 GB | 101.5% (>11.2B target) | ETA N/A | Elapsed 0:57:23
+
+📊 Step 1,391,000 | Loss: 5.0774 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7884 ➡️
+   Friction: 🟢 HARMONIZED | early=0.69 late=1.21 Δ=-0.53
+Training: 1392000it [59:44,  6.41it/s]
+⏱️  Step 1,392,000 | 3167053 tok/s | 11.40/11.2 GB | 101.6% (>11.2B target) | ETA N/A | Elapsed 1:00:00
+
+📊 Step 1,392,000 | Loss: 4.9626 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7910 ➡️
+   Friction: 🟢 HARMONIZED | early=0.69 late=1.38 Δ=-0.70
+Training: 1392540it [1:01:16,  7.27it/s]^C
+
+🛑 Shutdown signal received, finishing current step...
+Training: 1392541it [1:01:16,  7.33it/s]
+🛑 Graceful shutdown, saving checkpoint...

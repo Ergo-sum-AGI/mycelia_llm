@@ -1,0 +1,1198 @@
+🍄 Mycelia v8.5.2 loaded — Triple Governor
+
+======================================================================
+🍄 MYCELIA FINAL TRAINING v8.5.2
+   Triple Governor: FFN Veto + Alpha Scaling + Soft Cap
+   Norm-Aware Consensus Governor + Soft Residual Cap
+   Stanford (30%) + FineWeb (70%) | No compression
+======================================================================
+
+📚 Loading tokenizer...
+   Vocab: 151,643
+
+🏗️ Building model...
+   199,935,516 params on cuda:0
+
+🔥 Scheduler: peak=3.00e-04 | min=1.00e-05 | warmup=500 | total=610,351
+
+======================================================================
+🏆 BEST CHECKPOINT
+======================================================================
+   ✅ Model loaded
+   🔥 Warm-started input_pos
+
+   📊 Resumed: step=1,445,000 | epoch=40 | loss=4.9570
+   🏆 Best loss: 4.1623
+   📈 Extended training plan: 2,779,649 total steps
+   🚀 LR BURST: Injecting peak LR=3.00e-04 for 500 steps
+   🔥 Scheduler reset: step=1445000 | LR=3.00e-04 | 📉 Annealing
+   🚀 LR BURST ACTIVE: steps 1,445,000 → 1,445,500
+   ✅ Optimizer restored
+
+📖 Loading datasets...
+   📥 Loading FineWeb chunks...
+   📚 Loading 500 chunks...
+      100 chunks (100,000,000 tokens, 0.40 GB)
+      200 chunks (200,000,000 tokens, 0.80 GB)
+      300 chunks (300,000,000 tokens, 1.20 GB)
+      400 chunks (400,000,000 tokens, 1.60 GB)
+      500 chunks (500,000,000 tokens, 2.00 GB)
+   ✅ 500 arrays | 500,000,000 tokens | 2.00 GB
+   ✅ Data ready
+
+⏱️  Tracker: 8,192 tok/step | 11.8B total
+
+======================================================================
+🚀 EPOCH 41 — STEP 1,445,000
+======================================================================
+
+Training: 1445000it [00:00, ?it/s]
+⏱️  Step 1,445,000 | 635300430 tok/s | 11.84/11.8 GB | 100.0% | ETA N/A | Elapsed 0:00:18
+
+⏱️  Step 1,445,000 | 635300430 tok/s | 11.84/11.8 GB | 100.0% | ETA N/A | Elapsed 0:00:18
+
+📊 Step 1,445,000 | Loss: 6.4273 | LR: 3.00e-04 | 📉 Annealing 🚀 BURST
+   Coherence: 0.7219 ➡️
+   Friction: 🌋 DEEP DRIFT | early=0.91 late=2.27 Δ=-1.36
+   FFNVeto: 100.0% mean_norm=308.2 max_norm=526.4
+   AlphaScale: 100.0% scale=0.454 contrib_norm=225.1
+   SoftCap: hit=100.0% scale=1.514 max_raw=1041.4 mean_raw=833.0
+   ⚠️  Alpha scale too aggressive (100%), raising target
+   ⚠️  Soft cap too aggressive (100%), raising cap
+
+💾 Checkpoint: step 1,445,000 → /home/ec2-user/SageMaker/mycelia_checkpoints/mycelia_step_160c88.pt
+Training: 1445503it [02:47,  4.61it/s]
+🎯 LR BURST COMPLETE: Resuming cosine decay at step 1,445,503 | LR=1.46e-04
+Training: 1446000it [04:38,  4.16it/s]
+⏱️  Step 1,446,000 | 39877907 tok/s | 11.85/11.8 GB | 100.1% (>11.8B target) | ETA N/A | Elapsed 0:04:57
+
+⏱️  Step 1,446,000 | 39877907 tok/s | 11.85/11.8 GB | 100.1% (>11.8B target) | ETA N/A | Elapsed 0:04:57
+
+📊 Step 1,446,000 | Loss: 5.0161 | LR: 1.46e-04 | 📉 Annealing
+   Coherence: 0.7093 ➡️
+   Friction: 🟢 HARMONIZED | early=0.90 late=1.28 Δ=-0.38
+   FFNVeto: 99.9% mean_norm=181.9 max_norm=325.6
+   AlphaScale: 99.4% scale=0.889 contrib_norm=135.2
+   SoftCap: hit=100.0% scale=1.324 max_raw=861.3 mean_raw=712.5
+   ⚠️  Alpha scale too aggressive (99%), raising target
+   ⚠️  Soft cap too aggressive (100%), raising cap
+Training: 1447000it [08:41,  4.14it/s]
+⏱️  Step 1,447,000 | 21950968 tok/s | 11.85/11.8 GB | 100.1% (>11.8B target) | ETA N/A | Elapsed 0:09:00
+
+⏱️  Step 1,447,000 | 21950968 tok/s | 11.85/11.8 GB | 100.1% (>11.8B target) | ETA N/A | Elapsed 0:09:00
+
+📊 Step 1,447,000 | Loss: 4.9100 | LR: 1.46e-04 | 📉 Annealing
+   Coherence: 0.7165 ➡️
+   Friction: 🟢 HARMONIZED | early=0.79 late=1.13 Δ=-0.34
+   FFNVeto: 99.8% mean_norm=168.2 max_norm=287.4
+   AlphaScale: 97.8% scale=0.935 contrib_norm=154.2
+   SoftCap: hit=100.0% scale=1.315 max_raw=1069.7 mean_raw=843.5
+   ⚠️  Alpha scale too aggressive (98%), raising target
+   ⚠️  Soft cap too aggressive (100%), raising cap
+Training: 1448000it [12:44,  4.14it/s]
+⏱️  Step 1,448,000 | 15153739 tok/s | 11.86/11.8 GB | 100.2% (>11.8B target) | ETA N/A | Elapsed 0:13:02
+
+⏱️  Step 1,448,000 | 15153739 tok/s | 11.86/11.8 GB | 100.2% (>11.8B target) | ETA N/A | Elapsed 0:13:02
+
+📊 Step 1,448,000 | Loss: 4.8682 | LR: 1.46e-04 | 📉 Annealing
+   Coherence: 0.7365 ➡️
+   Friction: 🟢 HARMONIZED | early=0.76 late=1.26 Δ=-0.49
+   FFNVeto: 99.7% mean_norm=161.2 max_norm=280.4
+   AlphaScale: 91.0% scale=0.953 contrib_norm=181.4
+   SoftCap: hit=100.0% scale=1.312 max_raw=1212.9 mean_raw=1009.1
+   ⚠️  Alpha scale too aggressive (91%), raising target
+   ⚠️  Soft cap too aggressive (100%), raising cap
+Training: 1449000it [16:47,  4.13it/s]
+⏱️  Step 1,449,000 | 11575198 tok/s | 11.87/11.8 GB | 100.3% (>11.8B target) | ETA N/A | Elapsed 0:17:05
+
+⏱️  Step 1,449,000 | 11575198 tok/s | 11.87/11.8 GB | 100.3% (>11.8B target) | ETA N/A | Elapsed 0:17:05
+
+📊 Step 1,449,000 | Loss: 4.8289 | LR: 1.46e-04 | 📉 Annealing
+   Coherence: 0.7137 ➡️
+   Friction: 🟢 HARMONIZED | early=0.79 late=1.19 Δ=-0.40
+   FFNVeto: 95.5% mean_norm=163.6 max_norm=296.6
+   AlphaScale: 88.3% scale=0.960 contrib_norm=207.4
+   SoftCap: hit=100.0% scale=1.264 max_raw=1301.8 mean_raw=1092.8
+   ⚠️  Alpha scale too aggressive (88%), raising target
+   ⚠️  Soft cap too aggressive (100%), raising cap
+Training: 1450000it [20:50,  4.13it/s]
+⏱️  Step 1,450,000 | 9363478 tok/s | 11.88/11.8 GB | 100.3% (>11.8B target) | ETA N/A | Elapsed 0:21:08
+
+⏱️  Step 1,450,000 | 9363478 tok/s | 11.88/11.8 GB | 100.3% (>11.8B target) | ETA N/A | Elapsed 0:21:08
+
+📊 Step 1,450,000 | Loss: 4.8974 | LR: 1.46e-04 | 📉 Annealing
+   Coherence: 0.7158 ➡️
+   Friction: 🟢 HARMONIZED | early=0.89 late=1.25 Δ=-0.36
+   FFNVeto: 85.1% mean_norm=164.5 max_norm=323.8
+   AlphaScale: 98.0% scale=0.830 contrib_norm=240.9
+   SoftCap: hit=99.7% scale=1.278 max_raw=1373.0 mean_raw=1113.7
+   ⚠️  Alpha scale too aggressive (98%), raising target
+   ⚠️  Soft cap too aggressive (100%), raising cap
+
+💾 Checkpoint: step 1,450,000 → /home/ec2-user/SageMaker/mycelia_checkpoints/mycelia_step_162010.pt
+Training: 1451000it [25:28,  4.12it/s]
+⏱️  Step 1,451,000 | 7686572 tok/s | 11.89/11.8 GB | 100.4% (>11.8B target) | ETA N/A | Elapsed 0:25:46
+
+⏱️  Step 1,451,000 | 7686572 tok/s | 11.89/11.8 GB | 100.4% (>11.8B target) | ETA N/A | Elapsed 0:25:46
+
+📊 Step 1,451,000 | Loss: 4.7576 | LR: 1.46e-04 | 📉 Annealing
+   Coherence: 0.7144 ➡️
+   Friction: 🟢 HARMONIZED | early=0.78 late=1.76 Δ=-0.99
+   FFNVeto: 68.8% mean_norm=169.2 max_norm=350.5
+   AlphaScale: 97.2% scale=0.732 contrib_norm=274.9
+   SoftCap: hit=100.0% scale=1.274 max_raw=1376.1 mean_raw=1107.4
+   ⚠️  Alpha scale too aggressive (97%), raising target
+   ⚠️  Soft cap too aggressive (100%), raising cap
+Training: 1452000it [29:31,  4.16it/s]
+⏱️  Step 1,452,000 | 6647515 tok/s | 11.89/11.8 GB | 100.5% (>11.8B target) | ETA N/A | Elapsed 0:29:49
+
+⏱️  Step 1,452,000 | 6647515 tok/s | 11.89/11.8 GB | 100.5% (>11.8B target) | ETA N/A | Elapsed 0:29:49
+
+📊 Step 1,452,000 | Loss: 4.7034 | LR: 1.46e-04 | 📉 Annealing
+   Coherence: 0.7254 ➡️
+   Friction: 🟢 HARMONIZED | early=0.82 late=1.29 Δ=-0.47
+   FFNVeto: 52.4% mean_norm=179.3 max_norm=282.8
+   AlphaScale: 97.9% scale=0.649 contrib_norm=313.1
+   SoftCap: hit=99.9% scale=1.248 max_raw=1281.6 mean_raw=1070.8
+   ⚠️  Alpha scale too aggressive (98%), raising target
+   ⚠️  Soft cap too aggressive (100%), raising cap
+Training: 1453000it [33:34,  4.13it/s]
+⏱️  Step 1,453,000 | 5857163 tok/s | 11.90/11.8 GB | 100.6% (>11.8B target) | ETA N/A | Elapsed 0:33:52
+
+⏱️  Step 1,453,000 | 5857163 tok/s | 11.90/11.8 GB | 100.6% (>11.8B target) | ETA N/A | Elapsed 0:33:52
+
+📊 Step 1,453,000 | Loss: 4.8657 | LR: 1.46e-04 | 📉 Annealing
+   Coherence: 0.7290 ➡️
+   Friction: 🟢 HARMONIZED | early=0.82 late=1.30 Δ=-0.48
+   FFNVeto: 37.3% mean_norm=164.0 max_norm=300.7
+   AlphaScale: 94.4% scale=0.692 contrib_norm=297.0
+   SoftCap: hit=99.8% scale=1.275 max_raw=1315.1 mean_raw=1109.2
+   ⚠️  Alpha scale too aggressive (94%), raising target
+   ⚠️  Soft cap too aggressive (100%), raising cap
+Training: 1454000it [37:38,  4.11it/s]
+⏱️  Step 1,454,000 | 5232491 tok/s | 11.91/11.8 GB | 100.6% (>11.8B target) | ETA N/A | Elapsed 0:37:56
+
+⏱️  Step 1,454,000 | 5232491 tok/s | 11.91/11.8 GB | 100.6% (>11.8B target) | ETA N/A | Elapsed 0:37:56
+
+📊 Step 1,454,000 | Loss: 4.8685 | LR: 1.46e-04 | 📉 Annealing
+   Coherence: 0.7113 ➡️
+   Friction: 🟢 HARMONIZED | early=0.84 late=1.25 Δ=-0.41
+   FFNVeto: 18.8% mean_norm=151.5 max_norm=327.7
+   AlphaScale: 95.4% scale=0.723 contrib_norm=283.2
+   SoftCap: hit=99.7% scale=1.259 max_raw=1321.2 mean_raw=1086.6
+   ⚠️  Alpha scale too aggressive (95%), raising target
+   ⚠️  Soft cap too aggressive (100%), raising cap
+Training: 1455000it [41:41,  4.12it/s]
+⏱️  Step 1,455,000 | 4730320 tok/s | 11.92/11.8 GB | 100.7% (>11.8B target) | ETA N/A | Elapsed 0:41:59
+
+⏱️  Step 1,455,000 | 4730320 tok/s | 11.92/11.8 GB | 100.7% (>11.8B target) | ETA N/A | Elapsed 0:41:59
+
+📊 Step 1,455,000 | Loss: 4.9705 | LR: 1.46e-04 | 📉 Annealing
+   Coherence: 0.7261 ➡️
+   Friction: 🟢 HARMONIZED | early=0.79 late=1.34 Δ=-0.55
+   FFNVeto: 12.9% mean_norm=141.8 max_norm=264.8
+   AlphaScale: 94.5% scale=0.747 contrib_norm=273.9
+   SoftCap: hit=99.8% scale=1.274 max_raw=1387.1 mean_raw=1110.0
+   ⚠️  Alpha scale too aggressive (95%), raising target
+   ⚠️  Soft cap too aggressive (100%), raising cap
+
+💾 Checkpoint: step 1,455,000 → /home/ec2-user/SageMaker/mycelia_checkpoints/mycelia_step_163398.pt
+Training: 1456000it [46:19,  4.15it/s]
+⏱️  Step 1,456,000 | 4263539 tok/s | 11.93/11.8 GB | 100.8% (>11.8B target) | ETA N/A | Elapsed 0:46:37
+
+⏱️  Step 1,456,000 | 4263539 tok/s | 11.93/11.8 GB | 100.8% (>11.8B target) | ETA N/A | Elapsed 0:46:37
+
+📊 Step 1,456,000 | Loss: 4.9629 | LR: 1.46e-04 | 📉 Annealing
+   Coherence: 0.7161 ➡️
+   Friction: 🟢 HARMONIZED | early=0.75 late=1.52 Δ=-0.78
+   FFNVeto: 21.4% mean_norm=154.4 max_norm=254.2
+   AlphaScale: 97.4% scale=0.703 contrib_norm=290.9
+   SoftCap: hit=99.9% scale=1.258 max_raw=1278.9 mean_raw=1083.8
+   ⚠️  Alpha scale too aggressive (97%), raising target
+   ⚠️  Soft cap too aggressive (100%), raising cap
+Training: 1457000it [50:22,  4.12it/s]
+⏱️  Step 1,457,000 | 3925398 tok/s | 11.94/11.8 GB | 100.8% (>11.8B target) | ETA N/A | Elapsed 0:50:40
+
+⏱️  Step 1,457,000 | 3925398 tok/s | 11.94/11.8 GB | 100.8% (>11.8B target) | ETA N/A | Elapsed 0:50:40
+
+📊 Step 1,457,000 | Loss: 4.8665 | LR: 1.46e-04 | 📉 Annealing
+   Coherence: 0.7209 ➡️
+   Friction: 🟢 HARMONIZED | early=0.74 late=1.35 Δ=-0.61
+   FFNVeto: 11.2% mean_norm=143.9 max_norm=232.6
+   AlphaScale: 95.1% scale=0.738 contrib_norm=277.2
+   SoftCap: hit=99.6% scale=1.255 max_raw=1318.6 mean_raw=1081.8
+   ⚠️  Alpha scale too aggressive (95%), raising target
+   ⚠️  Soft cap too aggressive (100%), raising cap
+Training: 1458000it [54:25,  4.15it/s]
+⏱️  Step 1,458,000 | 3637779 tok/s | 11.94/11.8 GB | 100.9% (>11.8B target) | ETA N/A | Elapsed 0:54:43
+
+⏱️  Step 1,458,000 | 3637779 tok/s | 11.94/11.8 GB | 100.9% (>11.8B target) | ETA N/A | Elapsed 0:54:43
+
+📊 Step 1,458,000 | Loss: 4.9759 | LR: 1.46e-04 | 📉 Annealing
+   Coherence: 0.7209 ➡️
+   Friction: 🟢 HARMONIZED | early=0.77 late=1.34 Δ=-0.57
+   FFNVeto: 21.8% mean_norm=155.8 max_norm=304.6
+   AlphaScale: 96.7% scale=0.702 contrib_norm=291.1
+   SoftCap: hit=99.8% scale=1.267 max_raw=1359.1 mean_raw=1099.9
+   ⚠️  Alpha scale too aggressive (97%), raising target
+   ⚠️  Soft cap too aggressive (100%), raising cap
+Training: 1459000it [58:28,  4.14it/s]
+⏱️  Step 1,459,000 | 3389413 tok/s | 11.95/11.8 GB | 101.0% (>11.8B target) | ETA N/A | Elapsed 0:58:46
+
+⏱️  Step 1,459,000 | 3389413 tok/s | 11.95/11.8 GB | 101.0% (>11.8B target) | ETA N/A | Elapsed 0:58:46
+
+📊 Step 1,459,000 | Loss: 4.8719 | LR: 1.46e-04 | 📉 Annealing
+   Coherence: 0.7144 ➡️
+   Friction: 🟢 HARMONIZED | early=0.82 late=1.46 Δ=-0.64
+   FFNVeto: 24.9% mean_norm=159.6 max_norm=313.8
+   AlphaScale: 98.3% scale=0.676 contrib_norm=301.4
+   SoftCap: hit=99.7% scale=1.267 max_raw=1335.6 mean_raw=1101.5
+   ⚠️  Alpha scale too aggressive (98%), raising target
+   ⚠️  Soft cap too aggressive (100%), raising cap
+Training: 1460000it [1:02:30,  4.14it/s]
+⏱️  Step 1,460,000 | 3173341 tok/s | 11.96/11.8 GB | 101.0% (>11.8B target) | ETA N/A | Elapsed 1:02:48
+
+⏱️  Step 1,460,000 | 3173341 tok/s | 11.96/11.8 GB | 101.0% (>11.8B target) | ETA N/A | Elapsed 1:02:48
+
+📊 Step 1,460,000 | Loss: 4.7112 | LR: 1.46e-04 | 📉 Annealing
+   Coherence: 0.7155 ➡️
+   Friction: 🟢 HARMONIZED | early=0.74 late=1.35 Δ=-0.61
+   FFNVeto: 8.1% mean_norm=134.7 max_norm=291.9
+   AlphaScale: 91.9% scale=0.777 contrib_norm=263.2
+   SoftCap: hit=99.1% scale=1.245 max_raw=1315.9 mean_raw=1068.9
+   ⚠️  Alpha scale too aggressive (92%), raising target
+   ⚠️  Soft cap too aggressive (99%), raising cap
+
+💾 Checkpoint: step 1,460,000 → /home/ec2-user/SageMaker/mycelia_checkpoints/mycelia_step_164720.pt
+Training: 1461000it [1:07:08,  4.12it/s]
+⏱️  Step 1,461,000 | 2957434 tok/s | 11.97/11.8 GB | 101.1% (>11.8B target) | ETA N/A | Elapsed 1:07:26
+
+⏱️  Step 1,461,000 | 2957434 tok/s | 11.97/11.8 GB | 101.1% (>11.8B target) | ETA N/A | Elapsed 1:07:26
+
+📊 Step 1,461,000 | Loss: 4.9393 | LR: 1.46e-04 | 📉 Annealing
+   Coherence: 0.7207 ➡️
+   Friction: 🟢 HARMONIZED | early=0.82 late=1.37 Δ=-0.55
+   FFNVeto: 8.2% mean_norm=133.2 max_norm=244.9
+   AlphaScale: 86.3% scale=0.779 contrib_norm=260.7
+   SoftCap: hit=99.8% scale=1.254 max_raw=1362.5 mean_raw=1082.0
+   ⚠️  Alpha scale too aggressive (86%), raising target
+   ⚠️  Soft cap too aggressive (100%), raising cap
+Training: 1462000it [1:11:12,  4.15it/s]
+⏱️  Step 1,462,000 | 2791631 tok/s | 11.98/11.8 GB | 101.2% (>11.8B target) | ETA N/A | Elapsed 1:11:30
+
+⏱️  Step 1,462,000 | 2791631 tok/s | 11.98/11.8 GB | 101.2% (>11.8B target) | ETA N/A | Elapsed 1:11:30
+
+📊 Step 1,462,000 | Loss: 4.9375 | LR: 1.46e-04 | 📉 Annealing
+   Coherence: 0.7176 ➡️
+   Friction: 🟢 HARMONIZED | early=0.79 late=1.32 Δ=-0.53
+   FFNVeto: 10.9% mean_norm=138.6 max_norm=298.4
+   AlphaScale: 93.2% scale=0.764 contrib_norm=267.2
+   SoftCap: hit=99.5% scale=1.237 max_raw=1379.2 mean_raw=1056.9
+   ⚠️  Alpha scale too aggressive (93%), raising target
+   ⚠️  Soft cap too aggressive (100%), raising cap
+Training: 1463000it [1:15:15,  4.13it/s]
+⏱️  Step 1,463,000 | 2643585 tok/s | 11.98/11.8 GB | 101.2% (>11.8B target) | ETA N/A | Elapsed 1:15:33
+
+⏱️  Step 1,463,000 | 2643585 tok/s | 11.98/11.8 GB | 101.2% (>11.8B target) | ETA N/A | Elapsed 1:15:33
+
+📊 Step 1,463,000 | Loss: 4.7873 | LR: 1.46e-04 | 📉 Annealing
+   Coherence: 0.7208 ➡️
+   Friction: 🟢 HARMONIZED | early=0.77 late=1.48 Δ=-0.71
+   FFNVeto: 11.1% mean_norm=140.0 max_norm=248.8
+   AlphaScale: 96.9% scale=0.740 contrib_norm=276.7
+   SoftCap: hit=99.9% scale=1.256 max_raw=1361.7 mean_raw=1083.7
+   ⚠️  Alpha scale too aggressive (97%), raising target
+   ⚠️  Soft cap too aggressive (100%), raising cap
+Training: 1464000it [1:19:18,  4.11it/s]
+⏱️  Step 1,464,000 | 2510801 tok/s | 11.99/11.8 GB | 101.3% (>11.8B target) | ETA N/A | Elapsed 1:19:36
+
+⏱️  Step 1,464,000 | 2510801 tok/s | 11.99/11.8 GB | 101.3% (>11.8B target) | ETA N/A | Elapsed 1:19:36
+
+📊 Step 1,464,000 | Loss: 4.9420 | LR: 1.46e-04 | 📉 Annealing
+   Coherence: 0.7279 ➡️
+   Friction: 🟢 HARMONIZED | early=0.80 late=1.22 Δ=-0.42
+   FFNVeto: 8.8% mean_norm=135.7 max_norm=257.9
+   AlphaScale: 90.7% scale=0.777 contrib_norm=262.5
+   SoftCap: hit=98.7% scale=1.211 max_raw=1272.3 mean_raw=1023.0
+   ⚠️  Alpha scale too aggressive (91%), raising target
+   ⚠️  Soft cap too aggressive (99%), raising cap
+Training: 1465000it [1:23:21,  4.10it/s]
+⏱️  Step 1,465,000 | 2390921 tok/s | 12.00/11.8 GB | 101.4% (>11.8B target) | ETA N/A | Elapsed 1:23:39
+
+⏱️  Step 1,465,000 | 2390921 tok/s | 12.00/11.8 GB | 101.4% (>11.8B target) | ETA N/A | Elapsed 1:23:39
+
+📊 Step 1,465,000 | Loss: 4.6452 | LR: 1.46e-04 | 📉 Annealing
+   Coherence: 0.7101 ➡️
+   Friction: 🟢 HARMONIZED | early=0.82 late=1.40 Δ=-0.59
+   FFNVeto: 22.6% mean_norm=152.3 max_norm=294.5
+   AlphaScale: 95.3% scale=0.715 contrib_norm=288.1
+   SoftCap: hit=99.9% scale=1.233 max_raw=1317.8 mean_raw=1050.3
+   ⚠️  Alpha scale too aggressive (95%), raising target
+   ⚠️  Soft cap too aggressive (100%), raising cap
+
+💾 Checkpoint: step 1,465,000 → /home/ec2-user/SageMaker/mycelia_checkpoints/mycelia_step_165aa8.pt
+Training: 1466000it [1:27:58,  4.15it/s]
+⏱️  Step 1,466,000 | 2267218 tok/s | 12.01/11.8 GB | 101.5% (>11.8B target) | ETA N/A | Elapsed 1:28:17
+
+⏱️  Step 1,466,000 | 2267218 tok/s | 12.01/11.8 GB | 101.5% (>11.8B target) | ETA N/A | Elapsed 1:28:17
+
+📊 Step 1,466,000 | Loss: 4.9160 | LR: 1.46e-04 | 📉 Annealing
+   Coherence: 0.7190 ➡️
+   Friction: 🟢 HARMONIZED | early=0.80 late=1.44 Δ=-0.64
+   FFNVeto: 9.5% mean_norm=139.8 max_norm=276.3
+   AlphaScale: 95.5% scale=0.742 contrib_norm=275.4
+   SoftCap: hit=99.7% scale=1.239 max_raw=1314.6 mean_raw=1059.3
+   ⚠️  Alpha scale too aggressive (96%), raising target
+   ⚠️  Soft cap too aggressive (100%), raising cap
+Training: 1467000it [1:32:02,  4.10it/s]
+⏱️  Step 1,467,000 | 2169041 tok/s | 12.02/11.8 GB | 101.5% (>11.8B target) | ETA N/A | Elapsed 1:32:20
+
+⏱️  Step 1,467,000 | 2169041 tok/s | 12.02/11.8 GB | 101.5% (>11.8B target) | ETA N/A | Elapsed 1:32:20
+
+📊 Step 1,467,000 | Loss: 4.9010 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7142 ➡️
+   Friction: 🟢 HARMONIZED | early=0.75 late=1.39 Δ=-0.65
+   FFNVeto: 15.7% mean_norm=147.5 max_norm=268.3
+   AlphaScale: 95.9% scale=0.714 contrib_norm=286.6
+   SoftCap: hit=99.6% scale=1.228 max_raw=1317.0 mean_raw=1045.0
+   ⚠️  Alpha scale too aggressive (96%), raising target
+   ⚠️  Soft cap too aggressive (100%), raising cap
+Training: 1468000it [1:36:05,  4.13it/s]
+⏱️  Step 1,468,000 | 2079194 tok/s | 12.03/11.8 GB | 101.6% (>11.8B target) | ETA N/A | Elapsed 1:36:23
+
+⏱️  Step 1,468,000 | 2079194 tok/s | 12.03/11.8 GB | 101.6% (>11.8B target) | ETA N/A | Elapsed 1:36:23
+
+📊 Step 1,468,000 | Loss: 5.0052 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7138 ➡️
+   Friction: 🟢 HARMONIZED | early=0.78 late=1.36 Δ=-0.59
+   FFNVeto: 14.2% mean_norm=144.7 max_norm=274.9
+   AlphaScale: 95.7% scale=0.723 contrib_norm=283.2
+   SoftCap: hit=99.3% scale=1.222 max_raw=1316.4 mean_raw=1036.3
+   ⚠️  Alpha scale too aggressive (96%), raising target
+   ⚠️  Soft cap too aggressive (99%), raising cap
+Training: 1469000it [1:40:08,  4.14it/s]
+⏱️  Step 1,469,000 | 1996784 tok/s | 12.03/11.8 GB | 101.7% (>11.8B target) | ETA N/A | Elapsed 1:40:26
+
+⏱️  Step 1,469,000 | 1996784 tok/s | 12.03/11.8 GB | 101.7% (>11.8B target) | ETA N/A | Elapsed 1:40:26
+
+📊 Step 1,469,000 | Loss: 4.8091 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7241 ➡️
+   Friction: 🟢 HARMONIZED | early=0.76 late=1.42 Δ=-0.65
+   FFNVeto: 38.9% mean_norm=168.2 max_norm=292.6
+   AlphaScale: 96.4% scale=0.655 contrib_norm=312.9
+   SoftCap: hit=99.6% scale=1.240 max_raw=1305.1 mean_raw=1061.2
+   ⚠️  Alpha scale too aggressive (96%), raising target
+   ⚠️  Soft cap too aggressive (100%), raising cap
+Training: 1470000it [1:44:11,  4.15it/s]
+⏱️  Step 1,470,000 | 1920815 tok/s | 12.04/11.8 GB | 101.7% (>11.8B target) | ETA N/A | Elapsed 1:44:29
+
+⏱️  Step 1,470,000 | 1920815 tok/s | 12.04/11.8 GB | 101.7% (>11.8B target) | ETA N/A | Elapsed 1:44:29
+
+📊 Step 1,470,000 | Loss: 4.9780 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7172 ➡️
+   Friction: 🟢 HARMONIZED | early=0.84 late=1.62 Δ=-0.78
+   FFNVeto: 8.8% mean_norm=136.6 max_norm=241.8
+   AlphaScale: 90.1% scale=0.758 contrib_norm=268.6
+   SoftCap: hit=98.8% scale=1.220 max_raw=1284.8 mean_raw=1033.6
+   ⚠️  Alpha scale too aggressive (90%), raising target
+   ⚠️  Soft cap too aggressive (99%), raising cap
+
+💾 Checkpoint: step 1,470,000 → /home/ec2-user/SageMaker/mycelia_checkpoints/mycelia_step_166e30.pt
+Training: 1471000it [1:48:49,  4.14it/s]
+⏱️  Step 1,471,000 | 1840553 tok/s | 12.05/11.8 GB | 101.8% (>11.8B target) | ETA N/A | Elapsed 1:49:07
+
+⏱️  Step 1,471,000 | 1840553 tok/s | 12.05/11.8 GB | 101.8% (>11.8B target) | ETA N/A | Elapsed 1:49:07
+
+📊 Step 1,471,000 | Loss: 4.8027 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7196 ➡️
+   Friction: 🟢 HARMONIZED | early=0.73 late=1.24 Δ=-0.51
+   FFNVeto: 11.6% mean_norm=137.4 max_norm=290.4
+   AlphaScale: 95.3% scale=0.743 contrib_norm=276.0
+   SoftCap: hit=99.5% scale=1.248 max_raw=1311.9 mean_raw=1072.2
+   ⚠️  Alpha scale too aggressive (95%), raising target
+   ⚠️  Soft cap too aggressive (100%), raising cap
+Training: 1472000it [1:52:53,  4.11it/s]
+⏱️  Step 1,472,000 | 1775576 tok/s | 12.06/11.8 GB | 101.9% (>11.8B target) | ETA N/A | Elapsed 1:53:11
+
+⏱️  Step 1,472,000 | 1775576 tok/s | 12.06/11.8 GB | 101.9% (>11.8B target) | ETA N/A | Elapsed 1:53:11
+
+📊 Step 1,472,000 | Loss: 4.7957 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7154 ➡️
+   Friction: 🟢 HARMONIZED | early=0.82 late=1.26 Δ=-0.44
+   FFNVeto: 9.5% mean_norm=135.6 max_norm=272.7
+   AlphaScale: 92.7% scale=0.759 contrib_norm=269.5
+   SoftCap: hit=99.4% scale=1.239 max_raw=1329.7 mean_raw=1059.6
+   ⚠️  Alpha scale too aggressive (93%), raising target
+   ⚠️  Soft cap too aggressive (99%), raising cap
+Training: 1473000it [1:56:58,  4.13it/s]
+⏱️  Step 1,473,000 | 1714962 tok/s | 12.07/11.8 GB | 101.9% (>11.8B target) | ETA N/A | Elapsed 1:57:16
+
+⏱️  Step 1,473,000 | 1714962 tok/s | 12.07/11.8 GB | 101.9% (>11.8B target) | ETA N/A | Elapsed 1:57:16
+
+📊 Step 1,473,000 | Loss: 4.9371 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7152 ➡️
+   Friction: 🟢 HARMONIZED | early=0.77 late=1.39 Δ=-0.62
+   FFNVeto: 12.1% mean_norm=140.7 max_norm=276.4
+   AlphaScale: 97.7% scale=0.727 contrib_norm=281.8
+   SoftCap: hit=99.5% scale=1.249 max_raw=1322.0 mean_raw=1076.3
+   ⚠️  Alpha scale too aggressive (98%), raising target
+   ⚠️  Soft cap too aggressive (100%), raising cap
+Training: 1474000it [2:01:01,  4.10it/s]
+⏱️  Step 1,474,000 | 1658837 tok/s | 12.08/11.8 GB | 102.0% (>11.8B target) | ETA N/A | Elapsed 2:01:19
+
+⏱️  Step 1,474,000 | 1658837 tok/s | 12.08/11.8 GB | 102.0% (>11.8B target) | ETA N/A | Elapsed 2:01:19
+
+📊 Step 1,474,000 | Loss: 4.8854 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7163 ➡️
+   Friction: 🟢 HARMONIZED | early=0.86 late=1.32 Δ=-0.46
+   FFNVeto: 14.2% mean_norm=144.4 max_norm=311.6
+   AlphaScale: 97.1% scale=0.713 contrib_norm=287.9
+   SoftCap: hit=99.7% scale=1.248 max_raw=1332.8 mean_raw=1073.5
+   ⚠️  Alpha scale too aggressive (97%), raising target
+   ⚠️  Soft cap too aggressive (100%), raising cap
+Training: 1475000it [2:05:04,  4.15it/s]
+⏱️  Step 1,475,000 | 1606250 tok/s | 12.08/11.8 GB | 102.1% (>11.8B target) | ETA N/A | Elapsed 2:05:22
+
+⏱️  Step 1,475,000 | 1606250 tok/s | 12.08/11.8 GB | 102.1% (>11.8B target) | ETA N/A | Elapsed 2:05:22
+
+📊 Step 1,475,000 | Loss: 4.9789 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7165 ➡️
+   Friction: 🟢 HARMONIZED | early=0.75 late=1.22 Δ=-0.48
+   FFNVeto: 11.0% mean_norm=143.0 max_norm=287.5
+   AlphaScale: 96.3% scale=0.724 contrib_norm=282.3
+   SoftCap: hit=99.0% scale=1.212 max_raw=1344.4 mean_raw=1023.9
+   ⚠️  Alpha scale too aggressive (96%), raising target
+   ⚠️  Soft cap too aggressive (99%), raising cap
+
+💾 Checkpoint: step 1,475,000 → /home/ec2-user/SageMaker/mycelia_checkpoints/mycelia_step_1681b8.pt
+Training: 1476000it [2:09:43,  4.11it/s]
+⏱️  Step 1,476,000 | 1549947 tok/s | 12.09/11.8 GB | 102.1% (>11.8B target) | ETA N/A | Elapsed 2:10:01
+
+⏱️  Step 1,476,000 | 1549947 tok/s | 12.09/11.8 GB | 102.1% (>11.8B target) | ETA N/A | Elapsed 2:10:01
+
+📊 Step 1,476,000 | Loss: 4.7782 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7216 ➡️
+   Friction: 🟢 HARMONIZED | early=0.89 late=1.53 Δ=-0.63
+   FFNVeto: 18.6% mean_norm=150.5 max_norm=261.4
+   AlphaScale: 97.4% scale=0.690 contrib_norm=297.3
+   SoftCap: hit=99.6% scale=1.227 max_raw=1283.3 mean_raw=1042.1
+   ⚠️  Alpha scale too aggressive (97%), raising target
+   ⚠️  Soft cap too aggressive (100%), raising cap
+Training: 1477000it [2:13:46,  4.15it/s]
+⏱️  Step 1,477,000 | 1504133 tok/s | 12.10/11.8 GB | 102.2% (>11.8B target) | ETA N/A | Elapsed 2:14:04
+
+⏱️  Step 1,477,000 | 1504133 tok/s | 12.10/11.8 GB | 102.2% (>11.8B target) | ETA N/A | Elapsed 2:14:04
+
+📊 Step 1,477,000 | Loss: 4.8512 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7216 ➡️
+   Friction: 🟢 HARMONIZED | early=0.83 late=1.35 Δ=-0.52
+   FFNVeto: 19.4% mean_norm=151.1 max_norm=339.4
+   AlphaScale: 97.5% scale=0.688 contrib_norm=297.7
+   SoftCap: hit=99.6% scale=1.246 max_raw=1363.3 mean_raw=1070.3
+   ⚠️  Alpha scale too aggressive (97%), raising target
+   ⚠️  Soft cap too aggressive (100%), raising cap
+Training: 1478000it [2:17:49,  4.13it/s]
+⏱️  Step 1,478,000 | 1460999 tok/s | 12.11/11.8 GB | 102.3% (>11.8B target) | ETA N/A | Elapsed 2:18:07
+
+⏱️  Step 1,478,000 | 1460999 tok/s | 12.11/11.8 GB | 102.3% (>11.8B target) | ETA N/A | Elapsed 2:18:07
+
+📊 Step 1,478,000 | Loss: 4.7465 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7133 ➡️
+   Friction: 🟢 HARMONIZED | early=0.81 late=1.36 Δ=-0.55
+   FFNVeto: 10.3% mean_norm=143.6 max_norm=247.3
+   AlphaScale: 95.8% scale=0.718 contrib_norm=285.1
+   SoftCap: hit=99.8% scale=1.225 max_raw=1321.9 mean_raw=1039.7
+   ⚠️  Alpha scale too aggressive (96%), raising target
+   ⚠️  Soft cap too aggressive (100%), raising cap
+Training: 1479000it [2:21:52,  4.10it/s]
+⏱️  Step 1,479,000 | 1420266 tok/s | 12.12/11.8 GB | 102.4% (>11.8B target) | ETA N/A | Elapsed 2:22:10
+
+⏱️  Step 1,479,000 | 1420266 tok/s | 12.12/11.8 GB | 102.4% (>11.8B target) | ETA N/A | Elapsed 2:22:10
+
+📊 Step 1,479,000 | Loss: 4.8143 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7135 ➡️
+   Friction: 🟢 HARMONIZED | early=0.76 late=1.31 Δ=-0.55
+   FFNVeto: 11.7% mean_norm=141.5 max_norm=245.9
+   AlphaScale: 95.0% scale=0.724 contrib_norm=283.9
+   SoftCap: hit=99.7% scale=1.227 max_raw=1268.9 mean_raw=1041.8
+   ⚠️  Alpha scale too aggressive (95%), raising target
+   ⚠️  Soft cap too aggressive (100%), raising cap
+Training: 1480000it [2:25:57,  4.16it/s]
+⏱️  Step 1,480,000 | 1381576 tok/s | 12.12/11.8 GB | 102.4% (>11.8B target) | ETA N/A | Elapsed 2:26:15
+
+⏱️  Step 1,480,000 | 1381576 tok/s | 12.12/11.8 GB | 102.4% (>11.8B target) | ETA N/A | Elapsed 2:26:15
+
+📊 Step 1,480,000 | Loss: 4.9250 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7263 ➡️
+   Friction: 🟢 HARMONIZED | early=0.83 late=1.25 Δ=-0.41
+   FFNVeto: 9.0% mean_norm=135.8 max_norm=296.2
+   AlphaScale: 93.8% scale=0.744 contrib_norm=275.3
+   SoftCap: hit=99.3% scale=1.208 max_raw=1339.2 mean_raw=1019.6
+   ⚠️  Alpha scale too aggressive (94%), raising target
+   ⚠️  Soft cap too aggressive (99%), raising cap
+
+💾 Checkpoint: step 1,480,000 → /home/ec2-user/SageMaker/mycelia_checkpoints/mycelia_step_169540.pt
+Training: 1481000it [2:30:35,  4.12it/s]
+⏱️  Step 1,481,000 | 1340086 tok/s | 12.13/11.8 GB | 102.5% (>11.8B target) | ETA N/A | Elapsed 2:30:53
+
+⏱️  Step 1,481,000 | 1340086 tok/s | 12.13/11.8 GB | 102.5% (>11.8B target) | ETA N/A | Elapsed 2:30:53
+
+📊 Step 1,481,000 | Loss: 4.8716 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7192 ➡️
+   Friction: 🟢 HARMONIZED | early=0.80 late=1.33 Δ=-0.54
+   FFNVeto: 8.7% mean_norm=135.3 max_norm=267.7
+   AlphaScale: 95.7% scale=0.742 contrib_norm=276.0
+   SoftCap: hit=99.4% scale=1.212 max_raw=1292.5 mean_raw=1024.4
+   ⚠️  Alpha scale too aggressive (96%), raising target
+   ⚠️  Soft cap too aggressive (99%), raising cap
+Training: 1482000it [2:34:38,  4.12it/s]
+⏱️  Step 1,482,000 | 1305913 tok/s | 12.14/11.8 GB | 102.6% (>11.8B target) | ETA N/A | Elapsed 2:34:56
+
+⏱️  Step 1,482,000 | 1305913 tok/s | 12.14/11.8 GB | 102.6% (>11.8B target) | ETA N/A | Elapsed 2:34:56
+
+📊 Step 1,482,000 | Loss: 4.9566 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7144 ➡️
+   Friction: 🟢 HARMONIZED | early=0.81 late=1.40 Δ=-0.58
+   FFNVeto: 12.2% mean_norm=138.8 max_norm=277.8
+   AlphaScale: 97.0% scale=0.722 contrib_norm=284.6
+   SoftCap: hit=99.6% scale=1.228 max_raw=1317.8 mean_raw=1045.1
+   ⚠️  Alpha scale too aggressive (97%), raising target
+   ⚠️  Soft cap too aggressive (100%), raising cap
+Training: 1483000it [2:38:41,  4.13it/s]
+⏱️  Step 1,483,000 | 1273511 tok/s | 12.15/11.8 GB | 102.6% (>11.8B target) | ETA N/A | Elapsed 2:38:59
+
+⏱️  Step 1,483,000 | 1273511 tok/s | 12.15/11.8 GB | 102.6% (>11.8B target) | ETA N/A | Elapsed 2:38:59
+
+📊 Step 1,483,000 | Loss: 4.8939 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7279 ➡️
+   Friction: 🟢 HARMONIZED | early=0.87 late=1.19 Δ=-0.31
+   FFNVeto: 9.6% mean_norm=137.0 max_norm=299.0
+   AlphaScale: 94.7% scale=0.739 contrib_norm=277.3
+   SoftCap: hit=99.2% scale=1.219 max_raw=1313.3 mean_raw=1032.8
+   ⚠️  Alpha scale too aggressive (95%), raising target
+   ⚠️  Soft cap too aggressive (99%), raising cap
+Training: 1484000it [2:42:44,  4.11it/s]
+⏱️  Step 1,484,000 | 1242653 tok/s | 12.16/11.8 GB | 102.7% (>11.8B target) | ETA N/A | Elapsed 2:43:03
+
+⏱️  Step 1,484,000 | 1242653 tok/s | 12.16/11.8 GB | 102.7% (>11.8B target) | ETA N/A | Elapsed 2:43:03
+
+📊 Step 1,484,000 | Loss: 4.9259 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7228 ➡️
+   Friction: 🟢 HARMONIZED | early=0.75 late=1.21 Δ=-0.47
+   FFNVeto: 5.1% mean_norm=127.9 max_norm=276.1
+   AlphaScale: 97.6% scale=0.759 contrib_norm=269.2
+   SoftCap: hit=99.4% scale=1.231 max_raw=1322.8 mean_raw=1050.5
+   ⚠️  Alpha scale too aggressive (98%), raising target
+   ⚠️  Soft cap too aggressive (99%), raising cap
+Training: 1485000it [2:46:47,  4.09it/s]
+⏱️  Step 1,485,000 | 1213350 tok/s | 12.17/11.8 GB | 102.8% (>11.8B target) | ETA N/A | Elapsed 2:47:06
+
+⏱️  Step 1,485,000 | 1213350 tok/s | 12.17/11.8 GB | 102.8% (>11.8B target) | ETA N/A | Elapsed 2:47:06
+
+📊 Step 1,485,000 | Loss: 4.8911 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7154 ➡️
+   Friction: 🟢 HARMONIZED | early=0.80 late=1.36 Δ=-0.56
+   FFNVeto: 7.2% mean_norm=129.4 max_norm=274.9
+   AlphaScale: 94.0% scale=0.761 contrib_norm=269.5
+   SoftCap: hit=99.1% scale=1.223 max_raw=1295.2 mean_raw=1039.6
+   ⚠️  Alpha scale too aggressive (94%), raising target
+   ⚠️  Soft cap too aggressive (99%), raising cap
+
+💾 Checkpoint: step 1,485,000 → /home/ec2-user/SageMaker/mycelia_checkpoints/mycelia_step_16a8c8.pt
+Training: 1486000it [2:51:25,  4.14it/s]
+⏱️  Step 1,486,000 | 1181433 tok/s | 12.17/11.8 GB | 102.8% (>11.8B target) | ETA N/A | Elapsed 2:51:43
+
+⏱️  Step 1,486,000 | 1181433 tok/s | 12.17/11.8 GB | 102.8% (>11.8B target) | ETA N/A | Elapsed 2:51:43
+
+📊 Step 1,486,000 | Loss: 4.9820 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7218 ➡️
+   Friction: 🟢 HARMONIZED | early=0.85 late=1.19 Δ=-0.34
+   FFNVeto: 5.3% mean_norm=127.0 max_norm=241.2
+   AlphaScale: 89.6% scale=0.775 contrib_norm=264.1
+   SoftCap: hit=99.1% scale=1.216 max_raw=1353.1 mean_raw=1028.1
+   ⚠️  Alpha scale too aggressive (90%), raising target
+   ⚠️  Soft cap too aggressive (99%), raising cap
+Training: 1487000it [2:55:28,  4.15it/s]
+⏱️  Step 1,487,000 | 1154988 tok/s | 12.18/11.8 GB | 102.9% (>11.8B target) | ETA N/A | Elapsed 2:55:46
+
+⏱️  Step 1,487,000 | 1154988 tok/s | 12.18/11.8 GB | 102.9% (>11.8B target) | ETA N/A | Elapsed 2:55:46
+
+📊 Step 1,487,000 | Loss: 4.9578 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7278 ➡️
+   Friction: 🟢 HARMONIZED | early=0.88 late=1.64 Δ=-0.76
+   FFNVeto: 7.0% mean_norm=135.2 max_norm=317.4
+   AlphaScale: 96.0% scale=0.735 contrib_norm=279.0
+   SoftCap: hit=99.7% scale=1.222 max_raw=1274.9 mean_raw=1035.6
+   ⚠️  Alpha scale too aggressive (96%), raising target
+   ⚠️  Soft cap too aggressive (100%), raising cap
+Training: 1488000it [2:59:31,  4.16it/s]
+⏱️  Step 1,488,000 | 1129764 tok/s | 12.19/11.8 GB | 103.0% (>11.8B target) | ETA N/A | Elapsed 2:59:49
+
+⏱️  Step 1,488,000 | 1129764 tok/s | 12.19/11.8 GB | 103.0% (>11.8B target) | ETA N/A | Elapsed 2:59:49
+
+📊 Step 1,488,000 | Loss: 4.9829 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7126 ➡️
+   Friction: 🟢 HARMONIZED | early=0.86 late=1.44 Δ=-0.57
+   FFNVeto: 7.9% mean_norm=135.0 max_norm=259.0
+   AlphaScale: 93.6% scale=0.740 contrib_norm=277.4
+   SoftCap: hit=99.1% scale=1.198 max_raw=1377.6 mean_raw=1005.2
+   ⚠️  Alpha scale too aggressive (94%), raising target
+   ⚠️  Soft cap too aggressive (99%), raising cap
+Training: 1489000it [3:03:34,  4.12it/s]
+⏱️  Step 1,489,000 | 1105645 tok/s | 12.20/11.8 GB | 103.0% (>11.8B target) | ETA N/A | Elapsed 3:03:52
+
+⏱️  Step 1,489,000 | 1105645 tok/s | 12.20/11.8 GB | 103.0% (>11.8B target) | ETA N/A | Elapsed 3:03:52
+
+📊 Step 1,489,000 | Loss: 4.9659 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7091 ➡️
+   Friction: 🟢 HARMONIZED | early=0.84 late=1.44 Δ=-0.60
+   FFNVeto: 4.6% mean_norm=125.6 max_norm=259.9
+   AlphaScale: 93.1% scale=0.772 contrib_norm=265.6
+   SoftCap: hit=99.2% scale=1.205 max_raw=1419.4 mean_raw=1014.5
+   ⚠️  Alpha scale too aggressive (93%), raising target
+   ⚠️  Soft cap too aggressive (99%), raising cap
+Training: 1490000it [3:07:37,  4.13it/s]
+⏱️  Step 1,490,000 | 1082547 tok/s | 12.21/11.8 GB | 103.1% (>11.8B target) | ETA N/A | Elapsed 3:07:55
+
+⏱️  Step 1,490,000 | 1082547 tok/s | 12.21/11.8 GB | 103.1% (>11.8B target) | ETA N/A | Elapsed 3:07:55
+
+📊 Step 1,490,000 | Loss: 5.0407 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7158 ➡️
+   Friction: 🟢 HARMONIZED | early=0.79 late=1.43 Δ=-0.64
+   FFNVeto: 34.9% mean_norm=134.9 max_norm=279.6
+   AlphaScale: 97.5% scale=0.743 contrib_norm=272.5
+   SoftCap: hit=99.1% scale=1.207 max_raw=1300.2 mean_raw=1017.1
+   ⚠️  Alpha scale too aggressive (97%), raising target
+   ⚠️  Soft cap too aggressive (99%), raising cap
+
+💾 Checkpoint: step 1,490,000 → /home/ec2-user/SageMaker/mycelia_checkpoints/mycelia_step_16bc50.pt
+Training: 1491000it [3:12:15,  4.11it/s]
+⏱️  Step 1,491,000 | 1057176 tok/s | 12.21/11.8 GB | 103.2% (>11.8B target) | ETA N/A | Elapsed 3:12:33
+
+⏱️  Step 1,491,000 | 1057176 tok/s | 12.21/11.8 GB | 103.2% (>11.8B target) | ETA N/A | Elapsed 3:12:33
+
+📊 Step 1,491,000 | Loss: 4.9538 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7233 ➡️
+   Friction: 🟢 HARMONIZED | early=0.70 late=1.31 Δ=-0.60
+   FFNVeto: 27.7% mean_norm=130.0 max_norm=262.9
+   AlphaScale: 93.4% scale=0.775 contrib_norm=261.5
+   SoftCap: hit=99.0% scale=1.205 max_raw=1311.6 mean_raw=1015.6
+   ⚠️  Alpha scale too aggressive (93%), raising target
+   ⚠️  Soft cap too aggressive (99%), raising cap
+Training: 1492000it [3:16:18,  4.14it/s]
+⏱️  Step 1,492,000 | 1036070 tok/s | 12.22/11.8 GB | 103.3% (>11.8B target) | ETA N/A | Elapsed 3:16:36
+
+⏱️  Step 1,492,000 | 1036070 tok/s | 12.22/11.8 GB | 103.3% (>11.8B target) | ETA N/A | Elapsed 3:16:36
+
+📊 Step 1,492,000 | Loss: 4.7927 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7218 ➡️
+   Friction: 🟢 HARMONIZED | early=0.80 late=1.31 Δ=-0.51
+   FFNVeto: 40.2% mean_norm=139.4 max_norm=293.0
+   AlphaScale: 97.0% scale=0.741 contrib_norm=272.8
+   SoftCap: hit=98.7% scale=1.198 max_raw=1294.3 mean_raw=1006.0
+   ⚠️  Alpha scale too aggressive (97%), raising target
+   ⚠️  Soft cap too aggressive (99%), raising cap
+Training: 1493000it [3:20:22,  4.13it/s]
+⏱️  Step 1,493,000 | 1015776 tok/s | 12.23/11.8 GB | 103.3% (>11.8B target) | ETA N/A | Elapsed 3:20:40
+
+⏱️  Step 1,493,000 | 1015776 tok/s | 12.23/11.8 GB | 103.3% (>11.8B target) | ETA N/A | Elapsed 3:20:40
+
+📊 Step 1,493,000 | Loss: 4.6736 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7214 ➡️
+   Friction: 🟢 HARMONIZED | early=0.81 late=1.73 Δ=-0.92
+   FFNVeto: 39.4% mean_norm=138.2 max_norm=254.2
+   AlphaScale: 96.5% scale=0.739 contrib_norm=274.8
+   SoftCap: hit=98.9% scale=1.194 max_raw=1247.9 mean_raw=1000.8
+   ⚠️  Alpha scale too aggressive (96%), raising target
+   ⚠️  Soft cap too aggressive (99%), raising cap
+Training: 1494000it [3:24:25,  4.13it/s]
+⏱️  Step 1,494,000 | 996314 tok/s | 12.24/11.8 GB | 103.4% (>11.8B target) | ETA N/A | Elapsed 3:24:44
+
+⏱️  Step 1,494,000 | 996314 tok/s | 12.24/11.8 GB | 103.4% (>11.8B target) | ETA N/A | Elapsed 3:24:44
+
+📊 Step 1,494,000 | Loss: 4.8932 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7178 ➡️
+   Friction: 🟢 HARMONIZED | early=0.82 late=1.34 Δ=-0.52
+   FFNVeto: 22.9% mean_norm=125.2 max_norm=244.0
+   AlphaScale: 93.4% scale=0.790 contrib_norm=257.0
+   SoftCap: hit=97.9% scale=1.190 max_raw=1291.1 mean_raw=996.4
+   ⚠️  Alpha scale too aggressive (93%), raising target
+   ⚠️  Soft cap too aggressive (98%), raising cap
+Training: 1495000it [3:28:29,  4.14it/s]
+⏱️  Step 1,495,000 | 32746 tok/s | 12.25/11.8 GB | 103.5% (>11.8B target) | ETA N/A | Elapsed 3:28:47
+
+⏱️  Step 1,495,000 | 32746 tok/s | 12.25/11.8 GB | 103.5% (>11.8B target) | ETA N/A | Elapsed 3:28:47
+
+📊 Step 1,495,000 | Loss: 4.8622 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7168 ➡️
+   Friction: 🟢 HARMONIZED | early=0.76 late=1.34 Δ=-0.57
+   FFNVeto: 16.9% mean_norm=115.7 max_norm=294.2
+   AlphaScale: 90.5% scale=0.814 contrib_norm=249.8
+   SoftCap: hit=99.2% scale=1.225 max_raw=1418.3 mean_raw=1043.8
+   ⚠️  Alpha scale too aggressive (91%), raising target
+   ⚠️  Soft cap too aggressive (99%), raising cap
+
+💾 Checkpoint: step 1,495,000 → /home/ec2-user/SageMaker/mycelia_checkpoints/mycelia_step_16cfd8.pt
+Training: 1496000it [3:33:07,  4.13it/s]
+⏱️  Step 1,496,000 | 32746 tok/s | 12.26/11.8 GB | 103.5% (>11.8B target) | ETA N/A | Elapsed 3:33:25
+
+⏱️  Step 1,496,000 | 32746 tok/s | 12.26/11.8 GB | 103.5% (>11.8B target) | ETA N/A | Elapsed 3:33:25
+
+📊 Step 1,496,000 | Loss: 4.8838 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7158 ➡️
+   Friction: 🟢 HARMONIZED | early=0.83 late=1.30 Δ=-0.48
+   FFNVeto: 30.5% mean_norm=130.8 max_norm=270.5
+   AlphaScale: 95.6% scale=0.755 contrib_norm=268.7
+   SoftCap: hit=98.7% scale=1.200 max_raw=1284.3 mean_raw=1009.1
+   ⚠️  Alpha scale too aggressive (96%), raising target
+   ⚠️  Soft cap too aggressive (99%), raising cap
+Training: 1497000it [3:37:10,  4.12it/s]
+⏱️  Step 1,497,000 | 32745 tok/s | 12.26/11.8 GB | 103.6% (>11.8B target) | ETA N/A | Elapsed 3:37:28
+
+⏱️  Step 1,497,000 | 32745 tok/s | 12.26/11.8 GB | 103.6% (>11.8B target) | ETA N/A | Elapsed 3:37:28
+
+📊 Step 1,497,000 | Loss: 4.8941 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7144 ➡️
+   Friction: 🟢 HARMONIZED | early=0.87 late=1.51 Δ=-0.64
+   FFNVeto: 23.7% mean_norm=126.0 max_norm=241.1
+   AlphaScale: 93.5% scale=0.777 contrib_norm=261.4
+   SoftCap: hit=98.0% scale=1.174 max_raw=1326.9 mean_raw=975.9
+   ⚠️  Alpha scale too aggressive (93%), raising target
+   ⚠️  Soft cap too aggressive (98%), raising cap
+Training: 1498000it [3:41:14,  4.12it/s]
+⏱️  Step 1,498,000 | 32742 tok/s | 12.27/11.8 GB | 103.7% (>11.8B target) | ETA N/A | Elapsed 3:41:32
+
+⏱️  Step 1,498,000 | 32742 tok/s | 12.27/11.8 GB | 103.7% (>11.8B target) | ETA N/A | Elapsed 3:41:32
+
+📊 Step 1,498,000 | Loss: 4.7639 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7167 ➡️
+   Friction: 🟢 HARMONIZED | early=0.72 late=1.37 Δ=-0.64
+   FFNVeto: 42.1% mean_norm=140.3 max_norm=295.6
+   AlphaScale: 98.5% scale=0.722 contrib_norm=280.5
+   SoftCap: hit=99.1% scale=1.203 max_raw=1336.3 mean_raw=1012.4
+   ⚠️  Alpha scale too aggressive (99%), raising target
+   ⚠️  Soft cap too aggressive (99%), raising cap
+Training: 1499000it [3:45:17,  4.14it/s]
+⏱️  Step 1,499,000 | 32741 tok/s | 12.28/11.8 GB | 103.7% (>11.8B target) | ETA N/A | Elapsed 3:45:35
+
+⏱️  Step 1,499,000 | 32741 tok/s | 12.28/11.8 GB | 103.7% (>11.8B target) | ETA N/A | Elapsed 3:45:35
+
+📊 Step 1,499,000 | Loss: 4.9491 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7141 ➡️
+   Friction: 🟢 HARMONIZED | early=0.85 late=1.40 Δ=-0.55
+   FFNVeto: 21.3% mean_norm=124.6 max_norm=267.1
+   AlphaScale: 94.1% scale=0.781 contrib_norm=260.1
+   SoftCap: hit=96.6% scale=1.160 max_raw=1335.5 mean_raw=960.8
+   ⚠️  Alpha scale too aggressive (94%), raising target
+   ⚠️  Soft cap too aggressive (97%), raising cap
+Training: 1500000it [3:49:21,  4.10it/s]
+⏱️  Step 1,500,000 | 32740 tok/s | 12.29/11.8 GB | 103.8% (>11.8B target) | ETA N/A | Elapsed 3:49:39
+
+⏱️  Step 1,500,000 | 32740 tok/s | 12.29/11.8 GB | 103.8% (>11.8B target) | ETA N/A | Elapsed 3:49:39
+
+📊 Step 1,500,000 | Loss: 4.8591 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7144 ➡️
+   Friction: 🟢 HARMONIZED | early=0.88 late=1.23 Δ=-0.35
+   FFNVeto: 24.0% mean_norm=125.2 max_norm=264.2
+   AlphaScale: 93.2% scale=0.775 contrib_norm=262.0
+   SoftCap: hit=98.9% scale=1.204 max_raw=1292.4 mean_raw=1013.6
+   ⚠️  Alpha scale too aggressive (93%), raising target
+   ⚠️  Soft cap too aggressive (99%), raising cap
+
+💾 Checkpoint: step 1,500,000 → /home/ec2-user/SageMaker/mycelia_checkpoints/mycelia_step_16e360.pt
+Training: 1500263it [3:51:13,  4.61it/s]
+⚠️  Bad gradients at step 1500263, skipping step
+Training: 1501000it [3:53:59,  4.12it/s]
+⏱️  Step 1,501,000 | 32739 tok/s | 12.30/11.8 GB | 103.9% (>11.8B target) | ETA N/A | Elapsed 3:54:17
+
+⏱️  Step 1,501,000 | 32739 tok/s | 12.30/11.8 GB | 103.9% (>11.8B target) | ETA N/A | Elapsed 3:54:17
+
+📊 Step 1,501,000 | Loss: 4.8173 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7174 ➡️
+   Friction: 🟢 HARMONIZED | early=0.81 late=1.40 Δ=-0.59
+   FFNVeto: 15.1% mean_norm=118.2 max_norm=218.6
+   AlphaScale: 93.6% scale=0.789 contrib_norm=257.3
+   SoftCap: hit=97.7% scale=1.180 max_raw=1395.8 mean_raw=983.5
+   ⚠️  Alpha scale too aggressive (94%), raising target
+   ⚠️  Soft cap too aggressive (98%), raising cap
+Training: 1502000it [3:58:02,  4.11it/s]
+⏱️  Step 1,502,000 | 32737 tok/s | 12.30/11.8 GB | 103.9% (>11.8B target) | ETA N/A | Elapsed 3:58:21
+
+⏱️  Step 1,502,000 | 32737 tok/s | 12.30/11.8 GB | 103.9% (>11.8B target) | ETA N/A | Elapsed 3:58:21
+
+📊 Step 1,502,000 | Loss: 4.7323 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7154 ➡️
+   Friction: 🟢 HARMONIZED | early=0.80 late=1.32 Δ=-0.52
+   FFNVeto: 22.2% mean_norm=124.8 max_norm=292.5
+   AlphaScale: 93.8% scale=0.772 contrib_norm=262.9
+   SoftCap: hit=99.1% scale=1.203 max_raw=1486.1 mean_raw=1012.6
+   ⚠️  Alpha scale too aggressive (94%), raising target
+   ⚠️  Soft cap too aggressive (99%), raising cap
+Training: 1503000it [4:02:06,  4.11it/s]
+⏱️  Step 1,503,000 | 32736 tok/s | 12.31/11.8 GB | 104.0% (>11.8B target) | ETA N/A | Elapsed 4:02:24
+
+⏱️  Step 1,503,000 | 32736 tok/s | 12.31/11.8 GB | 104.0% (>11.8B target) | ETA N/A | Elapsed 4:02:24
+
+📊 Step 1,503,000 | Loss: 4.7034 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7285 ➡️
+   Friction: 🟢 HARMONIZED | early=0.79 late=1.46 Δ=-0.67
+   FFNVeto: 16.6% mean_norm=120.4 max_norm=237.1
+   AlphaScale: 97.1% scale=0.780 contrib_norm=260.7
+   SoftCap: hit=98.6% scale=1.183 max_raw=1275.0 mean_raw=986.6
+   ⚠️  Alpha scale too aggressive (97%), raising target
+   ⚠️  Soft cap too aggressive (99%), raising cap
+Training: 1504000it [4:06:09,  4.14it/s]
+⏱️  Step 1,504,000 | 32739 tok/s | 12.32/11.8 GB | 104.1% (>11.8B target) | ETA N/A | Elapsed 4:06:27
+
+⏱️  Step 1,504,000 | 32739 tok/s | 12.32/11.8 GB | 104.1% (>11.8B target) | ETA N/A | Elapsed 4:06:27
+
+📊 Step 1,504,000 | Loss: 4.7244 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7092 ➡️
+   Friction: 🟢 HARMONIZED | early=0.84 late=1.55 Δ=-0.71
+   FFNVeto: 33.4% mean_norm=131.8 max_norm=242.3
+   AlphaScale: 94.9% scale=0.735 contrib_norm=277.0
+   SoftCap: hit=98.7% scale=1.197 max_raw=1288.3 mean_raw=1005.3
+   ⚠️  Alpha scale too aggressive (95%), raising target
+   ⚠️  Soft cap too aggressive (99%), raising cap
+Training: 1505000it [4:10:12,  4.17it/s]
+⏱️  Step 1,505,000 | 32741 tok/s | 12.33/11.8 GB | 104.2% (>11.8B target) | ETA N/A | Elapsed 4:10:30
+
+⏱️  Step 1,505,000 | 32741 tok/s | 12.33/11.8 GB | 104.2% (>11.8B target) | ETA N/A | Elapsed 4:10:30
+
+📊 Step 1,505,000 | Loss: 4.9515 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7258 ➡️
+   Friction: 🟢 HARMONIZED | early=0.87 late=1.27 Δ=-0.40
+   FFNVeto: 28.3% mean_norm=129.4 max_norm=260.8
+   AlphaScale: 95.8% scale=0.754 contrib_norm=269.7
+   SoftCap: hit=97.7% scale=1.181 max_raw=1383.9 mean_raw=986.1
+   ⚠️  Alpha scale too aggressive (96%), raising target
+   ⚠️  Soft cap too aggressive (98%), raising cap
+
+💾 Checkpoint: step 1,505,000 → /home/ec2-user/SageMaker/mycelia_checkpoints/mycelia_step_16f6e8.pt
+Training: 1506000it [4:14:50,  4.13it/s]
+⏱️  Step 1,506,000 | 32740 tok/s | 12.34/11.8 GB | 104.2% (>11.8B target) | ETA N/A | Elapsed 4:15:08
+
+⏱️  Step 1,506,000 | 32740 tok/s | 12.34/11.8 GB | 104.2% (>11.8B target) | ETA N/A | Elapsed 4:15:08
+
+📊 Step 1,506,000 | Loss: 4.7895 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7251 ➡️
+   Friction: 🟢 HARMONIZED | early=0.80 late=1.35 Δ=-0.55
+   FFNVeto: 18.6% mean_norm=118.3 max_norm=252.5
+   AlphaScale: 91.4% scale=0.796 contrib_norm=255.3
+   SoftCap: hit=97.7% scale=1.175 max_raw=1262.5 mean_raw=978.7
+   ⚠️  Alpha scale too aggressive (91%), raising target
+   ⚠️  Soft cap too aggressive (98%), raising cap
+Training: 1507000it [4:18:53,  4.15it/s]
+⏱️  Step 1,507,000 | 32740 tok/s | 12.35/11.8 GB | 104.3% (>11.8B target) | ETA N/A | Elapsed 4:19:11
+
+⏱️  Step 1,507,000 | 32740 tok/s | 12.35/11.8 GB | 104.3% (>11.8B target) | ETA N/A | Elapsed 4:19:11
+
+📊 Step 1,507,000 | Loss: 4.6831 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7073 ➡️
+   Friction: 🟢 HARMONIZED | early=0.85 late=1.28 Δ=-0.43
+   FFNVeto: 24.1% mean_norm=127.7 max_norm=255.0
+   AlphaScale: 97.6% scale=0.741 contrib_norm=274.1
+   SoftCap: hit=97.7% scale=1.164 max_raw=1371.6 mean_raw=964.4
+   ⚠️  Alpha scale too aggressive (98%), raising target
+   ⚠️  Soft cap too aggressive (98%), raising cap
+Training: 1508000it [4:22:56,  4.14it/s]
+⏱️  Step 1,508,000 | 32738 tok/s | 12.35/11.8 GB | 104.4% (>11.8B target) | ETA N/A | Elapsed 4:23:14
+
+⏱️  Step 1,508,000 | 32738 tok/s | 12.35/11.8 GB | 104.4% (>11.8B target) | ETA N/A | Elapsed 4:23:14
+
+📊 Step 1,508,000 | Loss: 4.7684 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7202 ➡️
+   Friction: 🟢 HARMONIZED | early=0.82 late=1.23 Δ=-0.41
+   FFNVeto: 21.2% mean_norm=123.2 max_norm=229.8
+   AlphaScale: 94.5% scale=0.769 contrib_norm=264.7
+   SoftCap: hit=98.1% scale=1.183 max_raw=1279.7 mean_raw=987.9
+   ⚠️  Alpha scale too aggressive (95%), raising target
+   ⚠️  Soft cap too aggressive (98%), raising cap
+Training: 1509000it [4:26:59,  4.13it/s]
+⏱️  Step 1,509,000 | 32738 tok/s | 12.36/11.8 GB | 104.4% (>11.8B target) | ETA N/A | Elapsed 4:27:17
+
+⏱️  Step 1,509,000 | 32738 tok/s | 12.36/11.8 GB | 104.4% (>11.8B target) | ETA N/A | Elapsed 4:27:17
+
+📊 Step 1,509,000 | Loss: 4.8044 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7126 ➡️
+   Friction: 🟢 HARMONIZED | early=0.94 late=1.58 Δ=-0.65
+   FFNVeto: 27.7% mean_norm=129.3 max_norm=240.7
+   AlphaScale: 97.2% scale=0.738 contrib_norm=275.5
+   SoftCap: hit=98.4% scale=1.181 max_raw=1291.9 mean_raw=986.1
+   ⚠️  Alpha scale too aggressive (97%), raising target
+   ⚠️  Soft cap too aggressive (98%), raising cap
+Training: 1509687it [4:29:52,  4.59it/s]
+⚠️  Bad gradients at step 1509687, skipping step
+Training: 1510000it [4:31:02,  4.13it/s]
+⏱️  Step 1,510,000 | 32737 tok/s | 12.37/11.8 GB | 104.5% (>11.8B target) | ETA N/A | Elapsed 4:31:20
+
+⏱️  Step 1,510,000 | 32737 tok/s | 12.37/11.8 GB | 104.5% (>11.8B target) | ETA N/A | Elapsed 4:31:20
+
+📊 Step 1,510,000 | Loss: 4.8356 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7140 ➡️
+   Friction: 🟢 HARMONIZED | early=0.81 late=1.52 Δ=-0.71
+   FFNVeto: 20.7% mean_norm=123.2 max_norm=243.0
+   AlphaScale: 96.1% scale=0.755 contrib_norm=269.9
+   SoftCap: hit=98.5% scale=1.177 max_raw=1251.0 mean_raw=980.5
+   ⚠️  Alpha scale too aggressive (96%), raising target
+   ⚠️  Soft cap too aggressive (99%), raising cap
+
+💾 Checkpoint: step 1,510,000 → /home/ec2-user/SageMaker/mycelia_checkpoints/mycelia_step_170a70.pt
+Training: 1511000it [4:35:41,  4.10it/s]
+⏱️  Step 1,511,000 | 32735 tok/s | 12.38/11.8 GB | 104.6% (>11.8B target) | ETA N/A | Elapsed 4:35:59
+
+⏱️  Step 1,511,000 | 32735 tok/s | 12.38/11.8 GB | 104.6% (>11.8B target) | ETA N/A | Elapsed 4:35:59
+
+📊 Step 1,511,000 | Loss: 4.6066 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7217 ➡️
+   Friction: 🟢 HARMONIZED | early=0.83 late=1.45 Δ=-0.62
+   FFNVeto: 22.3% mean_norm=124.9 max_norm=290.3
+   AlphaScale: 97.0% scale=0.745 contrib_norm=272.9
+   SoftCap: hit=97.9% scale=1.166 max_raw=1343.6 mean_raw=967.0
+   ⚠️  Alpha scale too aggressive (97%), raising target
+   ⚠️  Soft cap too aggressive (98%), raising cap
+Training: 1512000it [4:39:44,  4.14it/s]
+⏱️  Step 1,512,000 | 32736 tok/s | 12.39/11.8 GB | 104.6% (>11.8B target) | ETA N/A | Elapsed 4:40:02
+
+⏱️  Step 1,512,000 | 32736 tok/s | 12.39/11.8 GB | 104.6% (>11.8B target) | ETA N/A | Elapsed 4:40:02
+
+📊 Step 1,512,000 | Loss: 4.8687 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7207 ➡️
+   Friction: 🟢 HARMONIZED | early=0.88 late=1.66 Δ=-0.78
+   FFNVeto: 20.4% mean_norm=121.6 max_norm=329.0
+   AlphaScale: 92.8% scale=0.777 contrib_norm=262.0
+   SoftCap: hit=97.3% scale=1.165 max_raw=1271.8 mean_raw=965.6
+   ⚠️  Alpha scale too aggressive (93%), raising target
+   ⚠️  Soft cap too aggressive (97%), raising cap
+Training: 1513000it [4:43:47,  4.12it/s]
+⏱️  Step 1,513,000 | 32736 tok/s | 12.39/11.8 GB | 104.7% (>11.8B target) | ETA N/A | Elapsed 4:44:05
+
+⏱️  Step 1,513,000 | 32736 tok/s | 12.39/11.8 GB | 104.7% (>11.8B target) | ETA N/A | Elapsed 4:44:05
+
+📊 Step 1,513,000 | Loss: 4.7437 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7004 ➡️
+   Friction: 🟢 HARMONIZED | early=0.72 late=1.49 Δ=-0.77
+   FFNVeto: 20.2% mean_norm=124.0 max_norm=278.2
+   AlphaScale: 96.4% scale=0.750 contrib_norm=271.3
+   SoftCap: hit=98.2% scale=1.164 max_raw=1285.1 mean_raw=963.8
+   ⚠️  Alpha scale too aggressive (96%), raising target
+   ⚠️  Soft cap too aggressive (98%), raising cap
+Training: 1514000it [4:47:50,  4.17it/s]
+⏱️  Step 1,514,000 | 32736 tok/s | 12.40/11.8 GB | 104.8% (>11.8B target) | ETA N/A | Elapsed 4:48:08
+
+⏱️  Step 1,514,000 | 32736 tok/s | 12.40/11.8 GB | 104.8% (>11.8B target) | ETA N/A | Elapsed 4:48:08
+
+📊 Step 1,514,000 | Loss: 4.8141 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7135 ➡️
+   Friction: 🟢 HARMONIZED | early=0.82 late=1.41 Δ=-0.59
+   FFNVeto: 17.0% mean_norm=121.8 max_norm=309.7
+   AlphaScale: 94.3% scale=0.759 contrib_norm=268.1
+   SoftCap: hit=97.1% scale=1.162 max_raw=1285.0 mean_raw=961.7
+   ⚠️  Alpha scale too aggressive (94%), raising target
+   ⚠️  Soft cap too aggressive (97%), raising cap
+Training: 1515000it [4:51:53,  4.14it/s]
+⏱️  Step 1,515,000 | 32736 tok/s | 12.41/11.8 GB | 104.8% (>11.8B target) | ETA N/A | Elapsed 4:52:11
+
+⏱️  Step 1,515,000 | 32736 tok/s | 12.41/11.8 GB | 104.8% (>11.8B target) | ETA N/A | Elapsed 4:52:11
+
+📊 Step 1,515,000 | Loss: 4.7205 | LR: 1.45e-04 | 📉 Annealing
+   Coherence: 0.7159 ➡️
+   Friction: 🟢 HARMONIZED | early=0.76 late=1.51 Δ=-0.75
+   FFNVeto: 23.7% mean_norm=125.1 max_norm=257.3
+   AlphaScale: 95.6% scale=0.752 contrib_norm=270.9
+   SoftCap: hit=97.5% scale=1.165 max_raw=1265.4 mean_raw=966.3
+   ⚠️  Alpha scale too aggressive (96%), raising target
+   ⚠️  Soft cap too aggressive (97%), raising cap
+
+💾 Checkpoint: step 1,515,000 → /home/ec2-user/SageMaker/mycelia_checkpoints/mycelia_step_171df8.pt
+Training: 1516000it [4:56:31,  4.14it/s]
+⏱️  Step 1,516,000 | 32734 tok/s | 12.42/11.8 GB | 104.9% (>11.8B target) | ETA N/A | Elapsed 4:56:49
+
+⏱️  Step 1,516,000 | 32734 tok/s | 12.42/11.8 GB | 104.9% (>11.8B target) | ETA N/A | Elapsed 4:56:49
+
+📊 Step 1,516,000 | Loss: 5.0902 | LR: 1.44e-04 | 📉 Annealing
+   Coherence: 0.7220 ➡️
+   Friction: 🟢 HARMONIZED | early=0.92 late=1.57 Δ=-0.65
+   FFNVeto: 38.7% mean_norm=137.7 max_norm=257.8
+   AlphaScale: 97.6% scale=0.694 contrib_norm=292.8
+   SoftCap: hit=99.3% scale=1.204 max_raw=1359.0 mean_raw=1013.9
+   ⚠️  Alpha scale too aggressive (98%), raising target
+   ⚠️  Soft cap too aggressive (99%), raising cap
+Training: 1517000it [5:00:34,  4.13it/s]
+⏱️  Step 1,517,000 | 32735 tok/s | 12.43/11.8 GB | 105.0% (>11.8B target) | ETA N/A | Elapsed 5:00:53
+
+⏱️  Step 1,517,000 | 32735 tok/s | 12.43/11.8 GB | 105.0% (>11.8B target) | ETA N/A | Elapsed 5:00:53
+
+📊 Step 1,517,000 | Loss: 4.6658 | LR: 1.44e-04 | 📉 Annealing
+   Coherence: 0.7215 ➡️
+   Friction: 🟢 HARMONIZED | early=0.77 late=1.48 Δ=-0.72
+   FFNVeto: 17.5% mean_norm=122.9 max_norm=264.8
+   AlphaScale: 97.1% scale=0.749 contrib_norm=272.0
+   SoftCap: hit=97.9% scale=1.170 max_raw=1376.2 mean_raw=972.2
+   ⚠️  Alpha scale too aggressive (97%), raising target
+   ⚠️  Soft cap too aggressive (98%), raising cap
+Training: 1518000it [5:04:37,  4.14it/s]
+⏱️  Step 1,518,000 | 32737 tok/s | 12.44/11.8 GB | 105.1% (>11.8B target) | ETA N/A | Elapsed 5:04:55
+
+⏱️  Step 1,518,000 | 32737 tok/s | 12.44/11.8 GB | 105.1% (>11.8B target) | ETA N/A | Elapsed 5:04:55
+
+📊 Step 1,518,000 | Loss: 4.9123 | LR: 1.44e-04 | 📉 Annealing
+   Coherence: 0.7274 ➡️
+   Friction: 🟢 HARMONIZED | early=0.84 late=1.48 Δ=-0.64
+   FFNVeto: 25.9% mean_norm=127.5 max_norm=244.4
+   AlphaScale: 95.5% scale=0.734 contrib_norm=277.3
+   SoftCap: hit=96.0% scale=1.150 max_raw=1265.7 mean_raw=948.9
+   ⚠️  Alpha scale too aggressive (96%), raising target
+   ⚠️  Soft cap too aggressive (96%), raising cap
+Training: 1519000it [5:08:40,  4.16it/s]
+⏱️  Step 1,519,000 | 32736 tok/s | 12.44/11.8 GB | 105.1% (>11.8B target) | ETA N/A | Elapsed 5:08:58
+
+⏱️  Step 1,519,000 | 32736 tok/s | 12.44/11.8 GB | 105.1% (>11.8B target) | ETA N/A | Elapsed 5:08:58
+
+📊 Step 1,519,000 | Loss: 4.8362 | LR: 1.44e-04 | 📉 Annealing
+   Coherence: 0.7157 ➡️
+   Friction: 🟢 HARMONIZED | early=0.98 late=1.33 Δ=-0.36
+   FFNVeto: 16.2% mean_norm=117.7 max_norm=265.9
+   AlphaScale: 95.8% scale=0.767 contrib_norm=266.1
+   SoftCap: hit=97.9% scale=1.167 max_raw=1247.8 mean_raw=968.5
+   ⚠️  Alpha scale too aggressive (96%), raising target
+   ⚠️  Soft cap too aggressive (98%), raising cap
+Training: 1520000it [5:12:44,  4.16it/s]
+⏱️  Step 1,520,000 | 32734 tok/s | 12.45/11.8 GB | 105.2% (>11.8B target) | ETA N/A | Elapsed 5:13:02
+
+⏱️  Step 1,520,000 | 32734 tok/s | 12.45/11.8 GB | 105.2% (>11.8B target) | ETA N/A | Elapsed 5:13:02
+
+📊 Step 1,520,000 | Loss: 4.8393 | LR: 1.44e-04 | 📉 Annealing
+   Coherence: 0.7157 ➡️
+   Friction: 🟢 HARMONIZED | early=0.79 late=1.36 Δ=-0.57
+   FFNVeto: 27.4% mean_norm=129.8 max_norm=303.1
+   AlphaScale: 98.5% scale=0.715 contrib_norm=284.5
+   SoftCap: hit=97.3% scale=1.163 max_raw=1308.1 mean_raw=963.7
+   ⚠️  Alpha scale too aggressive (99%), raising target
+   ⚠️  Soft cap too aggressive (97%), raising cap
+
+💾 Checkpoint: step 1,520,000 → /home/ec2-user/SageMaker/mycelia_checkpoints/mycelia_step_173180.pt
+Training: 1521000it [5:17:22,  4.15it/s]
+⏱️  Step 1,521,000 | 32734 tok/s | 12.46/11.8 GB | 105.3% (>11.8B target) | ETA N/A | Elapsed 5:17:40
+
+⏱️  Step 1,521,000 | 32734 tok/s | 12.46/11.8 GB | 105.3% (>11.8B target) | ETA N/A | Elapsed 5:17:40
+
+📊 Step 1,521,000 | Loss: 4.7183 | LR: 1.44e-04 | 📉 Annealing
+   Coherence: 0.6911 ➡️
+   Friction: 🟢 HARMONIZED | early=0.75 late=1.45 Δ=-0.69
+   FFNVeto: 29.4% mean_norm=129.1 max_norm=229.9
+   AlphaScale: 95.6% scale=0.726 contrib_norm=280.8
+   SoftCap: hit=99.3% scale=1.192 max_raw=1254.0 mean_raw=995.9
+   ⚠️  Alpha scale too aggressive (96%), raising target
+   ⚠️  Soft cap too aggressive (99%), raising cap
+Training: 1522000it [5:21:24,  4.13it/s]
+⏱️  Step 1,522,000 | 32737 tok/s | 12.47/11.8 GB | 105.3% (>11.8B target) | ETA N/A | Elapsed 5:21:43
+
+⏱️  Step 1,522,000 | 32737 tok/s | 12.47/11.8 GB | 105.3% (>11.8B target) | ETA N/A | Elapsed 5:21:43
+
+📊 Step 1,522,000 | Loss: 4.6120 | LR: 1.44e-04 | 📉 Annealing
+   Coherence: 0.7175 ➡️
+   Friction: 🟢 HARMONIZED | early=0.76 late=1.42 Δ=-0.66
+   FFNVeto: 23.8% mean_norm=124.9 max_norm=231.1
+   AlphaScale: 93.5% scale=0.738 contrib_norm=276.4
+   SoftCap: hit=97.9% scale=1.164 max_raw=1238.0 mean_raw=963.4
+   ⚠️  Alpha scale too aggressive (93%), raising target
+   ⚠️  Soft cap too aggressive (98%), raising cap
+Training: 1523000it [5:25:27,  4.13it/s]
+⏱️  Step 1,523,000 | 32743 tok/s | 12.48/11.8 GB | 105.4% (>11.8B target) | ETA N/A | Elapsed 5:25:45
+
+⏱️  Step 1,523,000 | 32743 tok/s | 12.48/11.8 GB | 105.4% (>11.8B target) | ETA N/A | Elapsed 5:25:45
+
+📊 Step 1,523,000 | Loss: 4.8553 | LR: 1.44e-04 | 📉 Annealing
+   Coherence: 0.7205 ➡️
+   Friction: 🟢 HARMONIZED | early=0.77 late=1.61 Δ=-0.84
+   FFNVeto: 24.8% mean_norm=123.4 max_norm=253.1
+   AlphaScale: 96.5% scale=0.738 contrib_norm=276.8
+   SoftCap: hit=97.8% scale=1.167 max_raw=1327.9 mean_raw=968.4
+   ⚠️  Alpha scale too aggressive (96%), raising target
+   ⚠️  Soft cap too aggressive (98%), raising cap
+Training: 1524000it [5:29:30,  4.13it/s]
+⏱️  Step 1,524,000 | 32742 tok/s | 12.48/11.8 GB | 105.5% (>11.8B target) | ETA N/A | Elapsed 5:29:49
+
+⏱️  Step 1,524,000 | 32742 tok/s | 12.48/11.8 GB | 105.5% (>11.8B target) | ETA N/A | Elapsed 5:29:49
+
+📊 Step 1,524,000 | Loss: 4.7702 | LR: 1.44e-04 | 📉 Annealing
+   Coherence: 0.7183 ➡️
+   Friction: 🟢 HARMONIZED | early=0.79 late=1.31 Δ=-0.52
+   FFNVeto: 15.6% mean_norm=118.3 max_norm=274.8
+   AlphaScale: 97.0% scale=0.757 contrib_norm=269.5
+   SoftCap: hit=98.3% scale=1.176 max_raw=1314.7 mean_raw=978.9
+   ⚠️  Alpha scale too aggressive (97%), raising target
+   ⚠️  Soft cap too aggressive (98%), raising cap
+Training: 1525000it [5:33:34,  4.14it/s]
+⏱️  Step 1,525,000 | 32743 tok/s | 12.49/11.8 GB | 105.5% (>11.8B target) | ETA N/A | Elapsed 5:33:52
+
+⏱️  Step 1,525,000 | 32743 tok/s | 12.49/11.8 GB | 105.5% (>11.8B target) | ETA N/A | Elapsed 5:33:52
+
+📊 Step 1,525,000 | Loss: 4.7574 | LR: 1.44e-04 | 📉 Annealing
+   Coherence: 0.7121 ➡️
+   Friction: 🟢 HARMONIZED | early=0.74 late=1.38 Δ=-0.63
+   FFNVeto: 12.7% mean_norm=110.1 max_norm=237.0
+   AlphaScale: 91.4% scale=0.794 contrib_norm=257.6
+   SoftCap: hit=98.0% scale=1.181 max_raw=1301.3 mean_raw=986.0
+   ⚠️  Alpha scale too aggressive (91%), raising target
+   ⚠️  Soft cap too aggressive (98%), raising cap
+
+💾 Checkpoint: step 1,525,000 → /home/ec2-user/SageMaker/mycelia_checkpoints/mycelia_step_174508.pt
+Training: 1526000it [5:38:12,  4.14it/s]
+⏱️  Step 1,526,000 | 32742 tok/s | 12.50/11.8 GB | 105.6% (>11.8B target) | ETA N/A | Elapsed 5:38:30
+
+⏱️  Step 1,526,000 | 32742 tok/s | 12.50/11.8 GB | 105.6% (>11.8B target) | ETA N/A | Elapsed 5:38:30
+
+📊 Step 1,526,000 | Loss: 4.8128 | LR: 1.44e-04 | 📉 Annealing
+   Coherence: 0.7253 ➡️
+   Friction: 🟢 HARMONIZED | early=0.81 late=1.41 Δ=-0.60
+   FFNVeto: 18.5% mean_norm=121.3 max_norm=261.9
+   AlphaScale: 95.6% scale=0.744 contrib_norm=274.3
+   SoftCap: hit=95.8% scale=1.152 max_raw=1374.3 mean_raw=950.6
+   ⚠️  Alpha scale too aggressive (96%), raising target
+   ⚠️  Soft cap too aggressive (96%), raising cap
+Training: 1527000it [5:42:16,  4.12it/s]
+⏱️  Step 1,527,000 | 32741 tok/s | 12.51/11.8 GB | 105.7% (>11.8B target) | ETA N/A | Elapsed 5:42:34
+
+⏱️  Step 1,527,000 | 32741 tok/s | 12.51/11.8 GB | 105.7% (>11.8B target) | ETA N/A | Elapsed 5:42:34
+
+📊 Step 1,527,000 | Loss: 4.8514 | LR: 1.44e-04 | 📉 Annealing
+   Coherence: 0.7239 ➡️
+   Friction: 🟢 HARMONIZED | early=0.79 late=1.39 Δ=-0.60
+   FFNVeto: 20.1% mean_norm=122.0 max_norm=221.5
+   AlphaScale: 97.3% scale=0.734 contrib_norm=278.1
+   SoftCap: hit=96.1% scale=1.151 max_raw=1292.0 mean_raw=949.6
+   ⚠️  Alpha scale too aggressive (97%), raising target
+   ⚠️  Soft cap too aggressive (96%), raising cap
+Training: 1528000it [5:46:19,  4.15it/s]
+⏱️  Step 1,528,000 | 32741 tok/s | 12.52/11.8 GB | 105.7% (>11.8B target) | ETA N/A | Elapsed 5:46:37
+
+⏱️  Step 1,528,000 | 32741 tok/s | 12.52/11.8 GB | 105.7% (>11.8B target) | ETA N/A | Elapsed 5:46:37
+
+📊 Step 1,528,000 | Loss: 4.8066 | LR: 1.44e-04 | 📉 Annealing
+   Coherence: 0.7109 ➡️
+   Friction: 🟢 HARMONIZED | early=0.83 late=1.47 Δ=-0.63
+   FFNVeto: 21.8% mean_norm=120.9 max_norm=240.0
+   AlphaScale: 97.0% scale=0.735 contrib_norm=278.2
+   SoftCap: hit=98.5% scale=1.183 max_raw=1418.4 mean_raw=986.6
+   ⚠️  Alpha scale too aggressive (97%), raising target
+   ⚠️  Soft cap too aggressive (99%), raising cap
+Training: 1529000it [5:50:22,  4.14it/s]
+⏱️  Step 1,529,000 | 32741 tok/s | 12.53/11.8 GB | 105.8% (>11.8B target) | ETA N/A | Elapsed 5:50:41
+
+⏱️  Step 1,529,000 | 32741 tok/s | 12.53/11.8 GB | 105.8% (>11.8B target) | ETA N/A | Elapsed 5:50:41
+
+📊 Step 1,529,000 | Loss: 4.7822 | LR: 1.44e-04 | 📉 Annealing
+   Coherence: 0.7116 ➡️
+   Friction: 🟢 HARMONIZED | early=0.86 late=1.57 Δ=-0.72
+   FFNVeto: 27.1% mean_norm=128.1 max_norm=271.2
+   AlphaScale: 97.2% scale=0.718 contrib_norm=284.4
+   SoftCap: hit=96.5% scale=1.169 max_raw=1276.4 mean_raw=970.2
+   ⚠️  Alpha scale too aggressive (97%), raising target
+   ⚠️  Soft cap too aggressive (96%), raising cap
+Training: 1529289it [5:51:46,  4.31it/s]^C
+
+🛑 Shutdown signal received, finishing current step...
+Training: 1529290it [5:51:46,  4.41it/s]
+🛑 Graceful shutdown, saving checkpoint...

@@ -1,0 +1,1011 @@
+NVIDIA NIM reachable: 200
+🍄 Mycelia architecture loaded successfully - get ready for the ride!
+
+======================================================================
+🍄 MYCELIA TRAINING v8.8.1
+   Gradual Transition + Interaction Guard + No Adaptive Targets
+   Stanford (30%) + FineWeb (70%) | No compression
+======================================================================
+
+📚 Loading tokenizer...
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+   Vocab: 151,643
+
+🏗️ Building model...
+   199,935,516 params on cuda:0
+
+==================================================
+DEBUG SCHEDULER STATE (fresh creation)
+  type = LambdaLR
+  last_epoch = 0
+  base_lrs = [0.0003]
+  get_last_lr() = [0.0]
+  LR = 0.00e+00
+==================================================
+
+
+🔥 Scheduler: HF cosine | peak=3.00e-04 | min=3.00e-05 | warmup=500 | total=305,175
+⚙️  Auto-tune: every 5000 steps | control_gain ∈ [0.5, 1.5]
+📈 Gradual transition: FFN 50→150 | α 100→150 over 10,000 steps
+🛡️  Rate governor: DISABLED for first 5,000 steps
+🛡️  LR Burst: DISABLED
+
+======================================================================
+🏆 BEST CHECKPOINT
+======================================================================
+   ✅ Model loaded
+   🔥 Warm-started input_pos
+
+   📊 Resumed: step=1,955,000 | epoch=51 | loss=4.0018
+   🏆 Best loss: 4.0018
+   ✅ Scheduler restored | LR=6.46e-05
+   📈 Gradual transition starts at step 1,955,000
+   ✅ Auto-tuner restored
+
+📖 Loading datasets...
+   📥 Loading FineWeb chunks...
+   📚 Loading 500 chunks...
+      100 chunks (100,000,000 tokens, 0.40 GB)
+      200 chunks (200,000,000 tokens, 0.80 GB)
+      300 chunks (300,000,000 tokens, 1.20 GB)
+      400 chunks (400,000,000 tokens, 1.60 GB)
+      500 chunks (500,000,000 tokens, 2.00 GB)
+   ✅ 500 arrays | 500,000,000 tokens | 2.00 GB
+   ✅ Data ready
+
+⏱️  Tracker: 16,384 tok/step | 32.0B total
+
+======================================================================
+🚀 EPOCH 52 — STEP 1,955,000
+======================================================================
+
+Training: 1955000it [00:00, ?it/s]
+⏱️  Step 1,955,000 | 4235109146 tok/s | 32.03/32.0 GB | 100.0% | ETA N/A | Elapsed 0:00:07
+
+📊 Step 1,955,000 | Loss: 5.0409 | LR: 0.00e+00 | 📉 Annealing | 📈 Transition: 0% (FFN=50 α=100)
+   Coherence: 0.4351 📉
+   Friction: 🟢 HARMONIZED | early=0.60 late=1.53 Δ=-0.92
+   FFNVeto: 5.1% mean_norm=75.0 max_norm=125.6 | target=50
+   AlphaScale: 99.4% scale=0.692 contrib_norm=184.8 | target=100
+   SoftCap: hit=98.2% max_raw=693.0 mean_raw=506.5
+
+   🔮 MPC: intervene=100.0% control=0.625 I=0.660
+   📊 Pred: 0.619 | Conf: 0.715 (min: 0.715)
+   📈 Dynamics: v=+0.0137 a=+0.0189
+   🎯 Forecast Error: 0.412 (predicted=0.588 vs actual=1.000)
+   I-field:  0.22 0.32 0.44 0.50 0.53 0.55
+   Conf-field:0.31 0.62 0.64 0.73 0.75 0.74
+
+   🔥 Π=312.2 | χ=0.55 | dominant=alpha
+   🔥 Π breakdown: ffn=51.6 alpha=173.0 cap=85.6 mpc=1.9
+   📐 Rate Governor: DISABLED (transition progress < 50%)
+   ⚠️  GOVERNOR INTERACTION GUARD: 3 governors active, limit is 2
+   📡 Meta-Governor: Groq LPU mode (Qwen3-32B + Llama-3.1-8B)
+   📡 Groq LPU client initialized
+   📡 Macro: qwen/qwen3-32b (60 RPM)
+   📡 Micro: llama-3.1-8b-instant (30 RPM)
+      RAW [llama-3.1-8b-instant]: {
+  "variable": "control_gain",
+   "direction": "lower",
+   "magnitude": "medium",
+   "value": 0.2,
+   "enactable": "runtime",
+   "duration_steps": 500,
+   "confidence": 0.8,
+   "rationale": "MPC is firing on noise (mpc_intervention > 0.60 AND forecast_error > 0.20). Lowering control_gain reduces th
+      NORM [llama-3.1-8b-instant]: {"variable": "control_gain", "direction": "lower", "magnitude": "medium", "value": 0.2, "enactable": "runtime", "duration_steps": 500, "confidence": 0.8, "rationale": "MPC is firing on noise (mpc_intervention > 0.60 AND forecast_error > 0.20). Lowering control_gain reduces the controller's authority
+      RAW [qwen/qwen3-32b]: {  "variable": "alpha_norm_target",
+  "direction": "raise",
+  "magnitude": "medium",
+  "value": 150.0,
+  "enactable": "runtime",
+  "duration_steps": 1000,
+  "confidence": 0.82,
+  "rationale": "Alpha contribution (184.85) exceeds target (125.0) by 47.8%, creating pressure concentration in alpha gover
+      NORM [qwen/qwen3-32b]: {"variable": "alpha_norm_target", "direction": "raise", "magnitude": "medium", "value": 150.0, "enactable": "runtime", "duration_steps": 1000, "confidence": 0.82, "rationale": "Alpha contribution (184.85) exceeds target (125.0) by 47.8%, creating pressure concentration in alpha governor (55.4% of to
+
+   🎭 === META-GOVERNOR ROUND @ step 1,955,000 ===
+   📊 Telemetry: loss=5.0409 lr=0.00e+00 coherence=0.435
+   ❌ qwen/qwen3-32b: Schema validation: 1 validation error for MetaGovernorAction
+   ✅ llama-3.1-8b-instant: control_gain → lower (conf=0.80, mag=medium, lat=547ms)
+      🎓 High intervention with high forecast error means the predictive
+      controller is chasing ghosts — it predicts instability where none
+      exists. This is the classic control-theory problem of a controller
+      amplifying noise.
+   🏛️  Consensus: SINGLE
+   📜 Rationale: MPC is firing on noise (mpc_intervention > 0.60 AND forecast_error > 0.20). Lowering control_gain reduces the controller
+      🎓 TEACHING: High intervention with high forecast error means the
+      predictive controller is chasing ghosts — it predicts instability
+      where none exists. This is the classic control-theory problem of a
+      controller amplifying noise.
+   ==================================================
+   🎓 Lesson stored: High intervention with high forecast error means the predictive controller is ch...
+🛠  Meta-Governor [single]: control_gain lower 0.800 (conf=0.80, agents=['llama-3.1-8b-instant'])
+   🛠  Meta-Governor: ['SUGGEST_control_gain_lower_0.800']
+   📡 Meta-Gov: CB=🟢 | pending=1 | history=1 | conf={'Qwen3_32B_Gov': 0.5, 'Llama_3.1_8B_Gov': 0.5}
+
+💾 Checkpoint: step 1,955,000 → /home/ec2-user/SageMaker/mycelia_checkpoints/mycelia_step_1dd4b8.pt
+Training: 1955250it [01:47,  2.94it/s]
+⏱️  Step 1,955,250 | 254812340 tok/s | 32.03/32.0 GB | 100.0% (>32.0B target) | ETA N/A | Elapsed 0:02:05
+
+📊 Step 1,955,250 | Loss: 4.2887 | LR: 6.49e-05 | 📉 Annealing | 📈 Transition: 2% (FFN=50 α=100)
+   Coherence: 0.4450 📉
+   Friction: 🟢 HARMONIZED | early=0.73 late=1.56 Δ=-0.83
+   FFNVeto: 7.0% mean_norm=77.9 max_norm=190.4 | target=50
+   AlphaScale: 99.7% scale=0.677 contrib_norm=188.5 | target=100
+   SoftCap: hit=92.5% max_raw=723.1 mean_raw=465.7
+
+   🔮 MPC: intervene=100.0% control=0.646 I=0.613
+   📊 Pred: 0.609 | Conf: 0.715 (min: 0.715)
+   📈 Dynamics: v=+0.0026 a=+0.0081
+   🎯 Forecast Error: 0.409 (predicted=0.591 vs actual=1.000)
+   I-field:  0.18 0.34 0.47 0.53 0.51 0.56
+   Conf-field:0.31 0.62 0.65 0.74 0.76 0.75
+
+   🔥 Π=288.6 | χ=0.61 | dominant=alpha
+   🔥 Π breakdown: ffn=54.2 alpha=176.7 cap=55.9 mpc=1.9
+   📐 Rate Governor: DISABLED (transition progress < 50%)
+   ⚠️  GOVERNOR INTERACTION GUARD: 3 governors active, limit is 2
+      RAW [llama-3.1-8b-instant]: {
+  "variable": "ffn_norm_target",
+   "direction": "raise",
+   "magnitude": "small",
+   "value": 110.0,
+   "enactable": "runtime",
+   "duration_steps": 200,
+   "confidence": 0.8,
+   "rationale": "FFN veto ratio is 7.03%, which is below the threshold of 90%. However, the current ffn_norm_target is 10
+      NORM [llama-3.1-8b-instant]: {"variable": "ffn_norm_target", "direction": "raise", "magnitude": "small", "value": 110.0, "enactable": "runtime", "duration_steps": 200, "confidence": 0.8, "rationale": "FFN veto ratio is 7.03%, which is below the threshold of 90%. However, the current ffn_norm_target is 100.0, which is the maximu
+
+   🎭 === META-GOVERNOR ROUND @ step 1,955,250 ===
+   📊 Telemetry: loss=4.2887 lr=6.49e-05 coherence=0.445
+   ❌ qwen/qwen3-32b: Groq error: Error code: 413 - {'error': {'message': 'Request
+   ✅ llama-3.1-8b-instant: ffn_norm_target → raise (conf=0.80, mag=small, lat=599ms)
+      🎓 The FFN veto is a safety valve that prevents the FFN from growing
+      too quickly. When the veto ratio is below 90%, it is a sign that the
+      FFN is not growing quickly enough, and the target should be raised to
+      allow for more growth.
+   🏛️  Consensus: SINGLE
+   📜 Rationale: FFN veto ratio is 7.03%, which is below the threshold of 90%. However, the current ffn_norm_target is 100.0, which is th
+      🎓 TEACHING: The FFN veto is a safety valve that prevents the FFN from
+      growing too quickly. When the veto ratio is below 90%, it is a sign
+      that the FFN is not growing quickly enough, and the target should be
+      raised to allow for more growth.
+   ==================================================
+   📡 Meta-Gov: CB=🟢 | pending=1 | history=2 | conf={'Qwen3_32B_Gov': 0.5, 'Llama_3.1_8B_Gov': 0.5}
+Training: 1955500it [03:31,  2.93it/s]
+⏱️  Step 1,955,500 | 139232134 tok/s | 32.04/32.0 GB | 100.0% (>32.0B target) | ETA N/A | Elapsed 0:03:50
+
+📊 Step 1,955,500 | Loss: 4.2859 | LR: 6.53e-05 | 📉 Annealing | 📈 Transition: 5% (FFN=51 α=100)
+   Coherence: 0.4431 📉
+   Friction: 🟢 HARMONIZED | early=0.70 late=1.52 Δ=-0.83
+   FFNVeto: 15.5% mean_norm=85.8 max_norm=193.8 | target=51
+   AlphaScale: 99.9% scale=0.620 contrib_norm=205.2 | target=100
+   SoftCap: hit=94.6% max_raw=660.4 mean_raw=475.6
+
+   🔮 MPC: intervene=98.6% control=0.655 I=0.590
+   📊 Pred: 0.602 | Conf: 0.721 (min: 0.721)
+   📈 Dynamics: v=-0.0072 a=-0.0072
+   🎯 Forecast Error: 0.390 (predicted=0.597 vs actual=0.986)
+   I-field:  0.19 0.36 0.47 0.50 0.51 0.53
+   Conf-field:0.30 0.62 0.65 0.75 0.75 0.75
+
+   🔥 Π=313.5 | χ=0.63 | dominant=alpha
+   🔥 Π breakdown: ffn=50.8 alpha=197.9 cap=63.1 mpc=1.7
+   📐 Rate Governor: DISABLED (transition progress < 50%)
+   ⚠️  GOVERNOR INTERACTION GUARD: 3 governors active, limit is 2
+📊 Verification: ❌ control_gain -> expected=unknown
+
+   🎭 === META-GOVERNOR ROUND @ step 1,955,500 ===
+   📊 Telemetry: loss=4.2859 lr=6.53e-05 coherence=0.443
+   ❌ qwen/qwen3-32b: Groq error: Error code: 413 - {'error': {'message': 'Request
+   ❌ llama-3.1-8b-instant: Groq error: Error code: 413 - {'error': {'message': 'Request
+   🏛️  Consensus: NONE
+   📜 Rationale: No valid agent responses above confidence threshold
+   ==================================================
+   🛠  Meta-Governor: ['NO_CONSENSUS: No valid agent responses above confidence threshold']
+   📡 Meta-Gov: CB=🟢 | pending=0 | history=3 | conf={'Qwen3_32B_Gov': 0.5, 'Llama_3.1_8B_Gov': 0.5, 'llama-3.1-8b-instant': 0.45}
+Training: 1955750it [05:15,  2.93it/s]
+⏱️  Step 1,955,750 | 95936032 tok/s | 32.04/32.0 GB | 100.0% (>32.0B target) | ETA N/A | Elapsed 0:05:34
+
+📊 Step 1,955,750 | Loss: 4.2358 | LR: 6.56e-05 | 📉 Annealing | 📈 Transition: 8% (FFN=51 α=101)
+   Coherence: 0.4533 📉
+   Friction: 🟢 HARMONIZED | early=0.73 late=1.46 Δ=-0.73
+   FFNVeto: 33.1% mean_norm=94.2 max_norm=162.6 | target=51
+   AlphaScale: 100.0% scale=0.576 contrib_norm=220.2 | target=101
+   SoftCap: hit=96.6% max_raw=671.3 mean_raw=476.6
+
+   🔮 MPC: intervene=99.9% control=0.653 I=0.612
+   📊 Pred: 0.618 | Conf: 0.698 (min: 0.698)
+   📈 Dynamics: v=+0.0029 a=+0.0044
+   🎯 Forecast Error: 0.403 (predicted=0.596 vs actual=0.999)
+   I-field:  0.16 0.30 0.43 0.50 0.51 0.53
+   Conf-field:0.29 0.58 0.63 0.74 0.76 0.75
+
+   🔥 Π=343.6 | χ=0.65 | dominant=alpha
+   🔥 Π breakdown: ffn=55.9 alpha=221.7 cap=64.4 mpc=1.7
+   📐 Rate Governor: DISABLED (transition progress < 50%)
+   ⚠️  GOVERNOR INTERACTION GUARD: 3 governors active, limit is 2
+
+   🎭 === META-GOVERNOR ROUND @ step 1,955,750 ===
+   📊 Telemetry: loss=4.2358 lr=6.56e-05 coherence=0.453
+   ❌ qwen/qwen3-32b: Groq error: Error code: 413 - {'error': {'message': 'Request
+   ❌ llama-3.1-8b-instant: Groq error: Error code: 413 - {'error': {'message': 'Request
+   🏛️  Consensus: NONE
+   📜 Rationale: No valid agent responses above confidence threshold
+   ==================================================
+   🛠  Meta-Governor: ['NO_CONSENSUS: No valid agent responses above confidence threshold']
+   📡 Meta-Gov: CB=🟢 | pending=0 | history=4 | conf={'Qwen3_32B_Gov': 0.5, 'Llama_3.1_8B_Gov': 0.5, 'llama-3.1-8b-instant': 0.45}
+Training: 1956000it [06:59,  2.93it/s]
+⏱️  Step 1,956,000 | 73158578 tok/s | 32.05/32.0 GB | 100.1% (>32.0B target) | ETA N/A | Elapsed 0:07:18
+
+📊 Step 1,956,000 | Loss: 4.3622 | LR: 6.59e-05 | 📉 Annealing | 📈 Transition: 10% (FFN=52 α=101)
+   Coherence: 0.4259 📉
+   Friction: 🟢 HARMONIZED | early=0.69 late=1.49 Δ=-0.80
+   FFNVeto: 23.5% mean_norm=90.6 max_norm=144.4 | target=52
+   AlphaScale: 100.0% scale=0.588 contrib_norm=215.5 | target=101
+   SoftCap: hit=94.9% max_raw=649.3 mean_raw=474.8
+
+   🔮 MPC: intervene=100.0% control=0.660 I=0.605
+   📊 Pred: 0.627 | Conf: 0.687 (min: 0.687)
+   📈 Dynamics: v=-0.0098 a=-0.0170
+   🎯 Forecast Error: 0.386 (predicted=0.614 vs actual=1.000)
+   I-field:  0.16 0.33 0.45 0.51 0.51 0.53
+   Conf-field:0.28 0.61 0.64 0.73 0.75 0.74
+
+   🔥 Π=339.6 | χ=0.63 | dominant=alpha
+   🔥 Π breakdown: ffn=60.6 alpha=214.8 cap=62.5 mpc=1.7
+   📐 Rate Governor: DISABLED (transition progress < 50%)
+   ⚠️  GOVERNOR INTERACTION GUARD: 3 governors active, limit is 2
+
+   🎭 === META-GOVERNOR ROUND @ step 1,956,000 ===
+   📊 Telemetry: loss=4.3622 lr=6.59e-05 coherence=0.426
+   ❌ qwen/qwen3-32b: Groq error: Error code: 413 - {'error': {'message': 'Request
+   ❌ llama-3.1-8b-instant: Groq error: Error code: 413 - {'error': {'message': 'Request
+   🏛️  Consensus: NONE
+   📜 Rationale: No valid agent responses above confidence threshold
+   ==================================================
+   🛠  Meta-Governor: ['NO_CONSENSUS: No valid agent responses above confidence threshold']
+   📡 Meta-Gov: CB=🟢 | pending=0 | history=5 | conf={'Qwen3_32B_Gov': 0.5, 'Llama_3.1_8B_Gov': 0.5, 'llama-3.1-8b-instant': 0.45}
+Training: 1956250it [08:43,  2.92it/s]
+⏱️  Step 1,956,250 | 59107005 tok/s | 32.05/32.0 GB | 100.1% (>32.0B target) | ETA N/A | Elapsed 0:09:02
+
+📊 Step 1,956,250 | Loss: 4.4570 | LR: 6.62e-05 | 📉 Annealing | 📈 Transition: 12% (FFN=54 α=102)
+   Coherence: 0.4508 📉
+   Friction: 🟢 HARMONIZED | early=0.71 late=1.43 Δ=-0.72
+   FFNVeto: 24.5% mean_norm=90.6 max_norm=147.6 | target=54
+   AlphaScale: 100.0% scale=0.576 contrib_norm=220.2 | target=102
+   SoftCap: hit=97.9% max_raw=750.1 mean_raw=482.2
+
+   🔮 MPC: intervene=100.0% control=0.661 I=0.594
+   📊 Pred: 0.611 | Conf: 0.698 (min: 0.698)
+   📈 Dynamics: v=-0.0004 a=-0.0007
+   🎯 Forecast Error: 0.405 (predicted=0.595 vs actual=1.000)
+   I-field:  0.15 0.35 0.46 0.52 0.51 0.52
+   Conf-field:0.27 0.59 0.64 0.74 0.77 0.76
+
+   🔥 Π=359.1 | χ=0.62 | dominant=alpha
+   🔥 Π breakdown: ffn=64.9 alpha=223.6 cap=68.8 mpc=1.7
+   📐 Rate Governor: DISABLED (transition progress < 50%)
+   ⚠️  GOVERNOR INTERACTION GUARD: 3 governors active, limit is 2
+
+   🎭 === META-GOVERNOR ROUND @ step 1,956,250 ===
+   📊 Telemetry: loss=4.4570 lr=6.62e-05 coherence=0.451
+   ❌ qwen/qwen3-32b: Groq error: Error code: 413 - {'error': {'message': 'Request
+   ❌ llama-3.1-8b-instant: Groq error: Error code: 413 - {'error': {'message': 'Request
+   🏛️  Consensus: NONE
+   📜 Rationale: No valid agent responses above confidence threshold
+   ==================================================
+   🛠  Meta-Governor: ['NO_CONSENSUS: No valid agent responses above confidence threshold']
+   📡 Meta-Gov: CB=🟢 | pending=0 | history=6 | conf={'Qwen3_32B_Gov': 0.5, 'Llama_3.1_8B_Gov': 0.5, 'llama-3.1-8b-instant': 0.45}
+Training: 1956500it [10:27,  2.91it/s]
+⏱️  Step 1,956,500 | 49618804 tok/s | 32.06/32.0 GB | 100.1% (>32.0B target) | ETA N/A | Elapsed 0:10:46
+
+📊 Step 1,956,500 | Loss: 4.3571 | LR: 6.65e-05 | 📉 Annealing | 📈 Transition: 15% (FFN=55 α=103)
+   Coherence: 0.4681 📉
+   Friction: 🟢 HARMONIZED | early=0.78 late=1.56 Δ=-0.78
+   FFNVeto: 18.2% mean_norm=86.3 max_norm=149.8 | target=55
+   AlphaScale: 99.7% scale=0.612 contrib_norm=208.4 | target=103
+   SoftCap: hit=97.3% max_raw=652.4 mean_raw=484.3
+
+   🔮 MPC: intervene=100.0% control=0.628 I=0.654
+   📊 Pred: 0.613 | Conf: 0.715 (min: 0.715)
+   📈 Dynamics: v=+0.0114 a=+0.0209
+   🎯 Forecast Error: 0.417 (predicted=0.583 vs actual=1.000)
+   I-field:  0.16 0.30 0.43 0.50 0.52 0.53
+   Conf-field:0.28 0.58 0.62 0.74 0.76 0.75
+
+   🔥 Π=327.7 | χ=0.61 | dominant=alpha
+   🔥 Π breakdown: ffn=53.7 alpha=201.3 cap=71.0 mpc=1.7
+   📐 Rate Governor: DISABLED (transition progress < 50%)
+   ⚠️  GOVERNOR INTERACTION GUARD: 3 governors active, limit is 2
+
+   🎭 === META-GOVERNOR ROUND @ step 1,956,500 ===
+   📊 Telemetry: loss=4.3571 lr=6.65e-05 coherence=0.468
+   ❌ qwen/qwen3-32b: Groq error: Error code: 413 - {'error': {'message': 'Request
+   ❌ llama-3.1-8b-instant: Groq error: Error code: 413 - {'error': {'message': 'Request
+   🏛️  Consensus: NONE
+   📜 Rationale: No valid agent responses above confidence threshold
+   ==================================================
+   🛠  Meta-Governor: ['NO_CONSENSUS: No valid agent responses above confidence threshold']
+   📡 Meta-Gov: CB=🟢 | pending=0 | history=7 | conf={'Qwen3_32B_Gov': 0.5, 'Llama_3.1_8B_Gov': 0.5, 'llama-3.1-8b-instant': 0.45}
+Training: 1956750it [12:10,  2.93it/s]
+⏱️  Step 1,956,750 | 42750577 tok/s | 32.06/32.0 GB | 100.1% (>32.0B target) | ETA N/A | Elapsed 0:12:29
+
+📊 Step 1,956,750 | Loss: 4.3825 | LR: 6.69e-05 | 📉 Annealing | 📈 Transition: 18% (FFN=57 α=104)
+   Coherence: 0.4414 📉
+   Friction: 🟢 HARMONIZED | early=0.71 late=1.47 Δ=-0.75
+   FFNVeto: 23.2% mean_norm=90.4 max_norm=181.7 | target=57
+   AlphaScale: 100.0% scale=0.585 contrib_norm=217.0 | target=104
+   SoftCap: hit=99.4% max_raw=720.2 mean_raw=500.6
+
+   🔮 MPC: intervene=100.0% control=0.607 I=0.713
+   📊 Pred: 0.617 | Conf: 0.703 (min: 0.703)
+   📈 Dynamics: v=+0.0229 a=+0.0392
+   🎯 Forecast Error: 0.422 (predicted=0.578 vs actual=1.000)
+   I-field:  0.17 0.31 0.45 0.49 0.51 0.55
+   Conf-field:0.29 0.59 0.62 0.74 0.76 0.75
+
+   🔥 Π=356.6 | χ=0.61 | dominant=alpha
+   🔥 Π breakdown: ffn=55.8 alpha=217.3 cap=81.6 mpc=1.8
+   📐 Rate Governor: DISABLED (transition progress < 50%)
+   ⚠️  GOVERNOR INTERACTION GUARD: 3 governors active, limit is 2
+
+   🎭 === META-GOVERNOR ROUND @ step 1,956,750 ===
+   📊 Telemetry: loss=4.3825 lr=6.69e-05 coherence=0.441
+   ❌ qwen/qwen3-32b: Groq error: Error code: 413 - {'error': {'message': 'Request
+   ❌ llama-3.1-8b-instant: Groq error: Error code: 413 - {'error': {'message': 'Request
+   🏛️  Consensus: NONE
+   📜 Rationale: No valid agent responses above confidence threshold
+   ==================================================
+   🛠  Meta-Governor: ['NO_CONSENSUS: No valid agent responses above confidence threshold']
+   📡 Meta-Gov: CB=🟢 | pending=0 | history=8 | conf={'Qwen3_32B_Gov': 0.5, 'Llama_3.1_8B_Gov': 0.5, 'llama-3.1-8b-instant': 0.45}
+Training: 1957000it [13:54,  2.92it/s]
+⏱️  Step 1,957,000 | 37551745 tok/s | 32.06/32.0 GB | 100.1% (>32.0B target) | ETA N/A | Elapsed 0:14:13
+
+📊 Step 1,957,000 | Loss: 4.4887 | LR: 6.72e-05 | 📉 Annealing | 📈 Transition: 20% (FFN=60 α=105)
+   Coherence: 0.4580 📉
+   Friction: 🟢 HARMONIZED | early=0.71 late=1.65 Δ=-0.95
+   FFNVeto: 24.8% mean_norm=88.8 max_norm=160.2 | target=60
+   AlphaScale: 100.0% scale=0.605 contrib_norm=210.8 | target=105
+   SoftCap: hit=98.6% max_raw=660.5 mean_raw=501.2
+
+   🔮 MPC: intervene=98.9% control=0.641 I=0.608
+   📊 Pred: 0.603 | Conf: 0.736 (min: 0.736)
+   📈 Dynamics: v=+0.0001 a=+0.0090
+   🎯 Forecast Error: 0.399 (predicted=0.590 vs actual=0.989)
+   I-field:  0.16 0.31 0.43 0.50 0.51 0.55
+   Conf-field:0.29 0.58 0.63 0.74 0.77 0.75
+
+   🔥 Π=351.3 | χ=0.60 | dominant=alpha
+   🔥 Π breakdown: ffn=57.2 alpha=210.0 cap=82.4 mpc=1.8
+   📐 Rate Governor: DISABLED (transition progress < 50%)
+   ⚠️  GOVERNOR INTERACTION GUARD: 3 governors active, limit is 2
+
+   🎭 === META-GOVERNOR ROUND @ step 1,957,000 ===
+   📊 Telemetry: loss=4.4887 lr=6.72e-05 coherence=0.458
+   ❌ qwen/qwen3-32b: Groq error: Error code: 413 - {'error': {'message': 'Request
+   ❌ llama-3.1-8b-instant: Groq error: Error code: 413 - {'error': {'message': 'Request
+   🏛️  Consensus: NONE
+   📜 Rationale: No valid agent responses above confidence threshold
+   ==================================================
+   🛠  Meta-Governor: ['NO_CONSENSUS: No valid agent responses above confidence threshold']
+   📡 Meta-Gov: CB=🟢 | pending=0 | history=9 | conf={'Qwen3_32B_Gov': 0.5, 'Llama_3.1_8B_Gov': 0.5, 'llama-3.1-8b-instant': 0.45}
+Training: 1957250it [15:39,  2.91it/s]
+⏱️  Step 1,957,250 | 33473688 tok/s | 32.07/32.0 GB | 100.1% (>32.0B target) | ETA N/A | Elapsed 0:15:57
+
+📊 Step 1,957,250 | Loss: 4.6286 | LR: 6.75e-05 | 📉 Annealing | 📈 Transition: 22% (FFN=62 α=106)
+   Coherence: 0.4427 📉
+   Friction: 🌋 DEEP DRIFT | early=0.72 late=1.88 Δ=-1.17
+   FFNVeto: 14.9% mean_norm=86.3 max_norm=147.6 | target=62
+   AlphaScale: 99.7% scale=0.613 contrib_norm=207.3 | target=106
+   SoftCap: hit=97.2% max_raw=642.2 mean_raw=482.1
+
+   🔮 MPC: intervene=100.0% control=0.659 I=0.596
+   📊 Pred: 0.612 | Conf: 0.702 (min: 0.702)
+   📈 Dynamics: v=-0.0001 a=-0.0028
+   🎯 Forecast Error: 0.403 (predicted=0.597 vs actual=1.000)
+   I-field:  0.17 0.32 0.44 0.50 0.54 0.55
+   Conf-field:0.29 0.60 0.64 0.74 0.76 0.75
+
+   🔥 Π=332.5 | χ=0.62 | dominant=alpha
+   🔥 Π breakdown: ffn=54.9 alpha=207.3 cap=68.5 mpc=1.8
+   📐 Rate Governor: DISABLED (transition progress < 50%)
+   ⚠️  GOVERNOR INTERACTION GUARD: 3 governors active, limit is 2
+
+   🎭 === META-GOVERNOR ROUND @ step 1,957,250 ===
+   📊 Telemetry: loss=4.6286 lr=6.75e-05 coherence=0.443
+   ❌ qwen/qwen3-32b: Groq error: Error code: 413 - {'error': {'message': 'Request
+   ❌ llama-3.1-8b-instant: Groq error: Error code: 413 - {'error': {'message': 'Request
+   🏛️  Consensus: NONE
+   📜 Rationale: No valid agent responses above confidence threshold
+   ==================================================
+   🛠  Meta-Governor: ['NO_CONSENSUS: No valid agent responses above confidence threshold']
+   📡 Meta-Gov: CB=🟢 | pending=0 | history=10 | conf={'Qwen3_32B_Gov': 0.5, 'Llama_3.1_8B_Gov': 0.5, 'llama-3.1-8b-instant': 0.45}
+Training: 1957500it [17:23,  2.91it/s]
+⏱️  Step 1,957,500 | 30198811 tok/s | 32.07/32.0 GB | 100.1% (>32.0B target) | ETA N/A | Elapsed 0:17:42
+
+📊 Step 1,957,500 | Loss: 4.6223 | LR: 6.78e-05 | 📉 Annealing | 📈 Transition: 25% (FFN=65 α=107)
+   Coherence: 0.4543 📉
+   Friction: 🟢 HARMONIZED | early=0.72 late=1.52 Δ=-0.81
+   FFNVeto: 17.5% mean_norm=86.8 max_norm=151.3 | target=65
+   AlphaScale: 100.0% scale=0.616 contrib_norm=206.7 | target=107
+   SoftCap: hit=97.2% max_raw=669.0 mean_raw=483.6
+
+   🔮 MPC: intervene=100.0% control=0.617 I=0.674
+   📊 Pred: 0.606 | Conf: 0.719 (min: 0.719)
+   📈 Dynamics: v=+0.0138 a=+0.0306
+   🎯 Forecast Error: 0.422 (predicted=0.578 vs actual=1.000)
+   I-field:  0.18 0.31 0.43 0.51 0.51 0.53
+   Conf-field:0.28 0.59 0.63 0.74 0.76 0.75
+
+   🔥 Π=334.1 | χ=0.62 | dominant=alpha
+   🔥 Π breakdown: ffn=56.0 alpha=207.4 cap=69.0 mpc=1.8
+   📐 Rate Governor: DISABLED (transition progress < 50%)
+   ⚠️  GOVERNOR INTERACTION GUARD: 3 governors active, limit is 2
+
+   🎭 === META-GOVERNOR ROUND @ step 1,957,500 ===
+   📊 Telemetry: loss=4.6223 lr=6.78e-05 coherence=0.454
+   ❌ qwen/qwen3-32b: Groq error: Error code: 413 - {'error': {'message': 'Request
+   ❌ llama-3.1-8b-instant: Groq error: Error code: 413 - {'error': {'message': 'Request
+   🏛️  Consensus: NONE
+   📜 Rationale: No valid agent responses above confidence threshold
+   ==================================================
+   🛠  Meta-Governor: ['NO_CONSENSUS: No valid agent responses above confidence threshold']
+   📡 Meta-Gov: CB=🟢 | pending=0 | history=11 | conf={'Qwen3_32B_Gov': 0.5, 'Llama_3.1_8B_Gov': 0.5, 'llama-3.1-8b-instant': 0.45}
+Training: 1957750it [19:07,  2.93it/s]
+⏱️  Step 1,957,750 | 27510175 tok/s | 32.08/32.0 GB | 100.1% (>32.0B target) | ETA N/A | Elapsed 0:19:25
+
+📊 Step 1,957,750 | Loss: 4.3331 | LR: 6.81e-05 | 📉 Annealing | 📈 Transition: 28% (FFN=68 α=109)
+   Coherence: 0.4416 📉
+   Friction: 🟢 HARMONIZED | early=0.66 late=1.51 Δ=-0.85
+   FFNVeto: 19.1% mean_norm=87.6 max_norm=159.1 | target=68
+   AlphaScale: 100.0% scale=0.610 contrib_norm=208.7 | target=109
+   SoftCap: hit=97.6% max_raw=641.3 mean_raw=483.0
+
+   🔮 MPC: intervene=100.0% control=0.645 I=0.617
+   📊 Pred: 0.607 | Conf: 0.713 (min: 0.713)
+   📈 Dynamics: v=+0.0014 a=+0.0111
+   🎯 Forecast Error: 0.409 (predicted=0.591 vs actual=1.000)
+   I-field:  0.21 0.32 0.45 0.50 0.51 0.54
+   Conf-field:0.30 0.60 0.64 0.74 0.76 0.75
+
+   🔥 Π=328.1 | χ=0.63 | dominant=alpha
+   🔥 Π breakdown: ffn=49.5 alpha=208.2 cap=68.6 mpc=1.7
+   📐 Rate Governor: DISABLED (transition progress < 50%)
+   ⚠️  GOVERNOR INTERACTION GUARD: 3 governors active, limit is 2
+
+   🎭 === META-GOVERNOR ROUND @ step 1,957,750 ===
+   📊 Telemetry: loss=4.3331 lr=6.81e-05 coherence=0.442
+   ❌ qwen/qwen3-32b: Groq error: Error code: 413 - {'error': {'message': 'Request
+   ❌ llama-3.1-8b-instant: Groq error: Error code: 413 - {'error': {'message': 'Request
+   🏛️  Consensus: NONE
+   📜 Rationale: No valid agent responses above confidence threshold
+   ==================================================
+   🛠  Meta-Governor: ['NO_CONSENSUS: No valid agent responses above confidence threshold']
+   📡 Meta-Gov: CB=🟢 | pending=0 | history=12 | conf={'Qwen3_32B_Gov': 0.5, 'Llama_3.1_8B_Gov': 0.5, 'llama-3.1-8b-instant': 0.45}
+Training: 1958000it [20:50,  2.93it/s]
+⏱️  Step 1,958,000 | 25262898 tok/s | 32.08/32.0 GB | 100.2% (>32.0B target) | ETA N/A | Elapsed 0:21:09
+
+📊 Step 1,958,000 | Loss: 4.3645 | LR: 6.85e-05 | 📉 Annealing | 📈 Transition: 30% (FFN=71 α=110)
+   Coherence: 0.4408 📉
+   Friction: 🟢 HARMONIZED | early=0.72 late=1.68 Δ=-0.96
+   FFNVeto: 15.0% mean_norm=84.5 max_norm=138.5 | target=71
+   AlphaScale: 99.9% scale=0.626 contrib_norm=203.9 | target=110
+   SoftCap: hit=97.6% max_raw=687.1 mean_raw=495.1
+
+   🔮 MPC: intervene=100.0% control=0.635 I=0.640
+   📊 Pred: 0.628 | Conf: 0.714 (min: 0.714)
+   📈 Dynamics: v=+0.0122 a=+0.0069
+   🎯 Forecast Error: 0.404 (predicted=0.596 vs actual=1.000)
+   I-field:  0.17 0.29 0.41 0.49 0.51 0.54
+   Conf-field:0.27 0.55 0.60 0.74 0.76 0.75
+
+   🔥 Π=341.1 | χ=0.59 | dominant=alpha
+   🔥 Π breakdown: ffn=58.3 alpha=202.7 cap=78.4 mpc=1.7
+   📐 Rate Governor: DISABLED (transition progress < 50%)
+   ⚠️  GOVERNOR INTERACTION GUARD: 3 governors active, limit is 2
+
+   🎭 === META-GOVERNOR ROUND @ step 1,958,000 ===
+   📊 Telemetry: loss=4.3645 lr=6.85e-05 coherence=0.441
+   ❌ qwen/qwen3-32b: Groq error: Error code: 413 - {'error': {'message': 'Request
+   ❌ llama-3.1-8b-instant: Groq error: Error code: 413 - {'error': {'message': 'Request
+   🏛️  Consensus: NONE
+   📜 Rationale: No valid agent responses above confidence threshold
+   ==================================================
+   🛠  Meta-Governor: ['NO_CONSENSUS: No valid agent responses above confidence threshold']
+   📡 Meta-Gov: CB=🟢 | pending=0 | history=13 | conf={'Qwen3_32B_Gov': 0.5, 'Llama_3.1_8B_Gov': 0.5, 'llama-3.1-8b-instant': 0.45}
+Training: 1958250it [22:35,  2.92it/s]
+⏱️  Step 1,958,250 | 23351415 tok/s | 32.08/32.0 GB | 100.2% (>32.0B target) | ETA N/A | Elapsed 0:22:53
+
+📊 Step 1,958,250 | Loss: 4.3123 | LR: 6.88e-05 | 📉 Annealing | 📈 Transition: 32% (FFN=74 α=112)
+   Coherence: 0.4412 📉
+   Friction: 🟢 HARMONIZED | early=0.75 late=1.49 Δ=-0.74
+   FFNVeto: 16.9% mean_norm=86.2 max_norm=142.9 | target=74
+   AlphaScale: 99.8% scale=0.619 contrib_norm=205.9 | target=112
+   SoftCap: hit=96.3% max_raw=657.0 mean_raw=480.0
+
+   🔮 MPC: intervene=99.9% control=0.650 I=0.619
+   📊 Pred: 0.614 | Conf: 0.698 (min: 0.698)
+   📈 Dynamics: v=+0.0025 a=+0.0099
+   🎯 Forecast Error: 0.406 (predicted=0.593 vs actual=0.999)
+   I-field:  0.16 0.30 0.43 0.50 0.51 0.54
+   Conf-field:0.29 0.59 0.63 0.73 0.76 0.75
+
+   🔥 Π=326.5 | χ=0.61 | dominant=alpha
+   🔥 Π breakdown: ffn=58.9 alpha=199.5 cap=66.3 mpc=1.8
+   📐 Rate Governor: DISABLED (transition progress < 50%)
+   ⚠️  GOVERNOR INTERACTION GUARD: 3 governors active, limit is 2
+
+   🎭 === META-GOVERNOR ROUND @ step 1,958,250 ===
+   📊 Telemetry: loss=4.3123 lr=6.88e-05 coherence=0.441
+   ❌ qwen/qwen3-32b: Groq error: Error code: 413 - {'error': {'message': 'Request
+   ❌ llama-3.1-8b-instant: Groq error: Error code: 413 - {'error': {'message': 'Request
+   🏛️  Consensus: NONE
+   📜 Rationale: No valid agent responses above confidence threshold
+   ==================================================
+   🛠  Meta-Governor: ['NO_CONSENSUS: No valid agent responses above confidence threshold']
+   📡 Meta-Gov: CB=🟢 | pending=0 | history=14 | conf={'Qwen3_32B_Gov': 0.5, 'Llama_3.1_8B_Gov': 0.5, 'llama-3.1-8b-instant': 0.45}
+Training: 1958500it [24:19,  2.92it/s]
+⏱️  Step 1,958,500 | 21712799 tok/s | 32.09/32.0 GB | 100.2% (>32.0B target) | ETA N/A | Elapsed 0:24:37
+
+📊 Step 1,958,500 | Loss: 4.4239 | LR: 6.91e-05 | 📉 Annealing | 📈 Transition: 35% (FFN=77 α=114)
+   Coherence: 0.4592 📉
+   Friction: 🟢 HARMONIZED | early=0.71 late=1.62 Δ=-0.91
+   FFNVeto: 17.3% mean_norm=86.4 max_norm=161.2 | target=77
+   AlphaScale: 99.3% scale=0.620 contrib_norm=205.7 | target=114
+   SoftCap: hit=97.2% max_raw=726.0 mean_raw=488.2
+
+   🔮 MPC: intervene=97.3% control=0.652 I=0.592
+   📊 Pred: 0.607 | Conf: 0.729 (min: 0.729)
+   📈 Dynamics: v=-0.0018 a=-0.0112
+   🎯 Forecast Error: 0.379 (predicted=0.593 vs actual=0.973)
+   I-field:  0.16 0.32 0.44 0.49 0.51 0.52
+   Conf-field:0.29 0.58 0.62 0.74 0.76 0.75
+
+   🔥 Π=325.6 | χ=0.61 | dominant=alpha
+   🔥 Π breakdown: ffn=51.6 alpha=199.4 cap=72.9 mpc=1.7
+   📐 Rate Governor: DISABLED (transition progress < 50%)
+   ⚠️  GOVERNOR INTERACTION GUARD: 3 governors active, limit is 2
+
+   🎭 === META-GOVERNOR ROUND @ step 1,958,500 ===
+   📊 Telemetry: loss=4.4239 lr=6.91e-05 coherence=0.459
+   ❌ qwen/qwen3-32b: Groq error: Error code: 413 - {'error': {'message': 'Request
+   ❌ llama-3.1-8b-instant: Groq error: Error code: 413 - {'error': {'message': 'Request
+   🏛️  Consensus: NONE
+   📜 Rationale: No valid agent responses above confidence threshold
+   ==================================================
+   🛠  Meta-Governor: ['NO_CONSENSUS: No valid agent responses above confidence threshold']
+   📡 Meta-Gov: CB=🟢 | pending=0 | history=15 | conf={'Qwen3_32B_Gov': 0.5, 'Llama_3.1_8B_Gov': 0.5, 'llama-3.1-8b-instant': 0.45}
+Training: 1958750it [26:02,  2.93it/s]
+⏱️  Step 1,958,750 | 20289232 tok/s | 32.09/32.0 GB | 100.2% (>32.0B target) | ETA N/A | Elapsed 0:26:21
+
+📊 Step 1,958,750 | Loss: 4.1185 | LR: 6.94e-05 | 📉 Annealing | 📈 Transition: 38% (FFN=81 α=115)
+   Coherence: 0.5029 ➡️
+   Friction: 🟢 HARMONIZED | early=0.73 late=1.43 Δ=-0.69
+   FFNVeto: 17.4% mean_norm=85.0 max_norm=154.1 | target=81
+   AlphaScale: 99.7% scale=0.636 contrib_norm=200.9 | target=115
+   SoftCap: hit=97.1% max_raw=661.5 mean_raw=487.0
+
+   🔮 MPC: intervene=100.0% control=0.627 I=0.626
+   📊 Pred: 0.583 | Conf: 0.748 (min: 0.748)
+   📈 Dynamics: v=-0.0120 a=+0.0277
+   🎯 Forecast Error: 0.417 (predicted=0.583 vs actual=1.000)
+   I-field:  0.20 0.38 0.49 0.52 0.55 0.54
+   Conf-field:0.33 0.54 0.58 0.72 0.74 0.75
+
+   🔥 Π=306.9 | χ=0.60 | dominant=alpha
+   🔥 Π breakdown: ffn=47.2 alpha=185.4 cap=72.2 mpc=2.2
+   📐 Rate Governor: DISABLED (transition progress < 50%)
+   ⚠️  GOVERNOR INTERACTION GUARD: 3 governors active, limit is 2
+
+   🎭 === META-GOVERNOR ROUND @ step 1,958,750 ===
+   📊 Telemetry: loss=4.1185 lr=6.94e-05 coherence=0.503
+   ❌ qwen/qwen3-32b: Groq error: Error code: 413 - {'error': {'message': 'Request
+   ❌ llama-3.1-8b-instant: Groq error: Error code: 413 - {'error': {'message': 'Request
+   🏛️  Consensus: NONE
+   📜 Rationale: No valid agent responses above confidence threshold
+   ==================================================
+   🛠  Meta-Governor: ['NO_CONSENSUS: No valid agent responses above confidence threshold']
+   📡 Meta-Gov: CB=🟢 | pending=0 | history=16 | conf={'Qwen3_32B_Gov': 0.5, 'Llama_3.1_8B_Gov': 0.5, 'llama-3.1-8b-instant': 0.45}
+Training: 1959000it [27:46,  2.92it/s]
+⏱️  Step 1,959,000 | 19040022 tok/s | 32.10/32.0 GB | 100.2% (>32.0B target) | ETA N/A | Elapsed 0:28:05
+
+📊 Step 1,959,000 | Loss: 4.4631 | LR: 6.98e-05 | 📉 Annealing | 📈 Transition: 40% (FFN=85 α=117)
+   Coherence: 0.4542 📉
+   Friction: 🟢 HARMONIZED | early=0.71 late=1.50 Δ=-0.79
+   FFNVeto: 15.1% mean_norm=86.1 max_norm=150.7 | target=85
+   AlphaScale: 99.9% scale=0.615 contrib_norm=206.6 | target=117
+   SoftCap: hit=99.1% max_raw=676.3 mean_raw=491.7
+
+   🔮 MPC: intervene=100.0% control=0.572 I=0.771
+   📊 Pred: 0.596 | Conf: 0.726 (min: 0.726)
+   📈 Dynamics: v=+0.0278 a=+0.0722
+   🎯 Forecast Error: 0.443 (predicted=0.557 vs actual=1.000)
+   I-field:  0.18 0.34 0.47 0.51 0.51 0.52
+   Conf-field:0.29 0.58 0.62 0.73 0.76 0.76
+
+   🔥 Π=327.8 | χ=0.61 | dominant=alpha
+   🔥 Π breakdown: ffn=49.9 alpha=200.8 cap=75.2 mpc=1.9
+   📐 Rate Governor: DISABLED (transition progress < 50%)
+   ⚠️  GOVERNOR INTERACTION GUARD: 3 governors active, limit is 2
+
+   🎭 === META-GOVERNOR ROUND @ step 1,959,000 ===
+   📊 Telemetry: loss=4.4631 lr=6.98e-05 coherence=0.454
+   ❌ qwen/qwen3-32b: Groq error: Error code: 413 - {'error': {'message': 'Request
+   ❌ llama-3.1-8b-instant: Groq error: Error code: 413 - {'error': {'message': 'Request
+   🏛️  Consensus: NONE
+   📜 Rationale: No valid agent responses above confidence threshold
+   ==================================================
+   🛠  Meta-Governor: ['NO_CONSENSUS: No valid agent responses above confidence threshold']
+   📡 Meta-Gov: CB=🟢 | pending=0 | history=17 | conf={'Qwen3_32B_Gov': 0.5, 'Llama_3.1_8B_Gov': 0.5, 'llama-3.1-8b-instant': 0.45}
+Training: 1959250it [29:31,  2.91it/s]
+⏱️  Step 1,959,250 | 17931699 tok/s | 32.10/32.0 GB | 100.2% (>32.0B target) | ETA N/A | Elapsed 0:29:50
+
+📊 Step 1,959,250 | Loss: 4.3459 | LR: 7.01e-05 | 📉 Annealing | 📈 Transition: 42% (FFN=88 α=119)
+   Coherence: 0.4665 📉
+   Friction: 🟢 HARMONIZED | early=0.68 late=1.50 Δ=-0.82
+   FFNVeto: 10.8% mean_norm=82.1 max_norm=143.0 | target=88
+   AlphaScale: 99.7% scale=0.644 contrib_norm=198.2 | target=119
+   SoftCap: hit=91.8% max_raw=626.7 mean_raw=470.1
+
+   🔮 MPC: intervene=97.7% control=0.656 I=0.586
+   📊 Pred: 0.601 | Conf: 0.722 (min: 0.722)
+   📈 Dynamics: v=-0.0140 a=-0.0164
+   🎯 Forecast Error: 0.377 (predicted=0.600 vs actual=0.977)
+   I-field:  0.16 0.28 0.42 0.49 0.53 0.55
+   Conf-field:0.28 0.56 0.61 0.73 0.75 0.75
+
+   🔥 Π=319.9 | χ=0.61 | dominant=alpha
+   🔥 Π breakdown: ffn=63.2 alpha=195.5 cap=59.4 mpc=1.6
+   📐 Rate Governor: DISABLED (transition progress < 50%)
+   ⚠️  GOVERNOR INTERACTION GUARD: 3 governors active, limit is 2
+
+   🎭 === META-GOVERNOR ROUND @ step 1,959,250 ===
+   📊 Telemetry: loss=4.3459 lr=7.01e-05 coherence=0.466
+   ❌ qwen/qwen3-32b: Groq error: Error code: 413 - {'error': {'message': 'Request
+   ❌ llama-3.1-8b-instant: Groq error: Error code: 413 - {'error': {'message': 'Request
+   🏛️  Consensus: NONE
+   📜 Rationale: No valid agent responses above confidence threshold
+   ==================================================
+   🛠  Meta-Governor: ['NO_CONSENSUS: No valid agent responses above confidence threshold']
+   📡 Meta-Gov: CB=🟢 | pending=0 | history=18 | conf={'Qwen3_32B_Gov': 0.5, 'Llama_3.1_8B_Gov': 0.5, 'llama-3.1-8b-instant': 0.45}
+Training: 1959500it [31:15,  2.92it/s]
+⏱️  Step 1,959,500 | 16946773 tok/s | 32.10/32.0 GB | 100.2% (>32.0B target) | ETA N/A | Elapsed 0:31:34
+
+📊 Step 1,959,500 | Loss: 4.4209 | LR: 7.04e-05 | 📉 Annealing | 📈 Transition: 45% (FFN=92 α=121)
+   Coherence: 0.4523 📉
+   Friction: 🟢 HARMONIZED | early=0.68 late=1.55 Δ=-0.86
+   FFNVeto: 12.4% mean_norm=82.4 max_norm=139.5 | target=92
+   AlphaScale: 99.1% scale=0.648 contrib_norm=197.7 | target=121
+   SoftCap: hit=97.2% max_raw=662.3 mean_raw=485.1
+
+   🔮 MPC: intervene=100.0% control=0.613 I=0.688
+   📊 Pred: 0.612 | Conf: 0.714 (min: 0.714)
+   📈 Dynamics: v=+0.0129 a=+0.0363
+   🎯 Forecast Error: 0.417 (predicted=0.583 vs actual=1.000)
+   I-field:  0.15 0.28 0.42 0.50 0.54 0.53
+   Conf-field:0.28 0.57 0.62 0.73 0.75 0.75
+
+   🔥 Π=323.2 | χ=0.60 | dominant=alpha
+   🔥 Π breakdown: ffn=55.4 alpha=195.2 cap=70.8 mpc=1.7
+   📐 Rate Governor: DISABLED (transition progress < 50%)
+   ⚠️  GOVERNOR INTERACTION GUARD: 3 governors active, limit is 2
+
+   🎭 === META-GOVERNOR ROUND @ step 1,959,500 ===
+   📊 Telemetry: loss=4.4209 lr=7.04e-05 coherence=0.452
+   ❌ qwen/qwen3-32b: Groq error: Error code: 413 - {'error': {'message': 'Request
+   ❌ llama-3.1-8b-instant: Groq error: Error code: 413 - {'error': {'message': 'Request
+   🏛️  Consensus: NONE
+   📜 Rationale: No valid agent responses above confidence threshold
+   ==================================================
+   🛠  Meta-Governor: ['NO_CONSENSUS: No valid agent responses above confidence threshold']
+   📡 Meta-Gov: CB=🟢 | pending=0 | history=19 | conf={'Qwen3_32B_Gov': 0.5, 'Llama_3.1_8B_Gov': 0.5, 'llama-3.1-8b-instant': 0.45}
+Training: 1959750it [32:59,  2.92it/s]
+⏱️  Step 1,959,750 | 16065002 tok/s | 32.11/32.0 GB | 100.2% (>32.0B target) | ETA N/A | Elapsed 0:33:18
+
+📊 Step 1,959,750 | Loss: 4.4202 | LR: 7.08e-05 | 📉 Annealing | 📈 Transition: 48% (FFN=96 α=123)
+   Coherence: 0.4442 📉
+   Friction: 🟢 HARMONIZED | early=0.71 late=1.38 Δ=-0.66
+   FFNVeto: 12.1% mean_norm=84.1 max_norm=139.5 | target=96
+   AlphaScale: 99.8% scale=0.634 contrib_norm=200.8 | target=123
+   SoftCap: hit=93.4% max_raw=637.3 mean_raw=467.0
+
+   🔮 MPC: intervene=98.7% control=0.656 I=0.594
+   📊 Pred: 0.609 | Conf: 0.713 (min: 0.713)
+   📈 Dynamics: v=-0.0040 a=-0.0034
+   🎯 Forecast Error: 0.389 (predicted=0.598 vs actual=0.987)
+   I-field:  0.15 0.29 0.42 0.50 0.51 0.53
+   Conf-field:0.28 0.59 0.63 0.74 0.76 0.75
+
+   🔥 Π=304.6 | χ=0.64 | dominant=alpha
+   🔥 Π breakdown: ffn=52.4 alpha=194.2 cap=56.3 mpc=1.7
+   📐 Rate Governor: DISABLED (transition progress < 50%)
+   ⚠️  GOVERNOR INTERACTION GUARD: 3 governors active, limit is 2
+
+   🎭 === META-GOVERNOR ROUND @ step 1,959,750 ===
+   📊 Telemetry: loss=4.4202 lr=7.08e-05 coherence=0.444
+   ❌ qwen/qwen3-32b: Groq error: Error code: 413 - {'error': {'message': 'Request
+   ❌ llama-3.1-8b-instant: Groq error: Error code: 413 - {'error': {'message': 'Request
+   🏛️  Consensus: NONE
+   📜 Rationale: No valid agent responses above confidence threshold
+   ==================================================
+   🛠  Meta-Governor: ['NO_CONSENSUS: No valid agent responses above confidence threshold']
+   📡 Meta-Gov: CB=🟢 | pending=0 | history=20 | conf={'Qwen3_32B_Gov': 0.5, 'Llama_3.1_8B_Gov': 0.5, 'llama-3.1-8b-instant': 0.45}
+Training: 1960000it [34:43,  2.94it/s]
+⏱️  Step 1,960,000 | 15271619 tok/s | 32.11/32.0 GB | 100.3% (>32.0B target) | ETA N/A | Elapsed 0:35:02
+
+📊 Step 1,960,000 | Loss: 4.5019 | LR: 7.11e-05 | 📉 Annealing | 📈 Transition: 50% (FFN=100 α=125)
+   Coherence: 0.4441 📉
+   Friction: 🟢 HARMONIZED | early=0.67 late=1.51 Δ=-0.84
+   FFNVeto: 7.6% mean_norm=77.6 max_norm=222.4 | target=100
+   AlphaScale: 99.4% scale=0.677 contrib_norm=188.8 | target=125
+   SoftCap: hit=98.7% max_raw=704.0 mean_raw=500.0
+
+   🔮 MPC: intervene=100.0% control=0.625 I=0.664
+   📊 Pred: 0.615 | Conf: 0.709 (min: 0.709)
+   📈 Dynamics: v=+0.0077 a=+0.0258
+   🎯 Forecast Error: 0.407 (predicted=0.593 vs actual=1.000)
+   I-field:  0.18 0.31 0.42 0.50 0.53 0.52
+   Conf-field:0.29 0.57 0.62 0.74 0.76 0.76
+
+   🔥 Π=327.5 | χ=0.55 | dominant=alpha
+   🔥 Π breakdown: ffn=63.7 alpha=181.2 cap=80.8 mpc=1.8
+   📐 Rate Governor: DISABLED (transition progress < 50%)
+   ⚠️  GOVERNOR INTERACTION GUARD: 3 governors active, limit is 2
+   ⚙️  Auto-tune: instability_target↑0.700, coh/fcst weights↑1.02/1.02
+
+   🎭 === META-GOVERNOR ROUND @ step 1,960,000 ===
+   📊 Telemetry: loss=4.5019 lr=7.11e-05 coherence=0.444
+   ❌ qwen/qwen3-32b: Groq error: Error code: 413 - {'error': {'message': 'Request
+   ❌ llama-3.1-8b-instant: Groq error: Error code: 413 - {'error': {'message': 'Request
+   🏛️  Consensus: NONE
+   📜 Rationale: No valid agent responses above confidence threshold
+   ==================================================
+   🛠  Meta-Governor: ['NO_CONSENSUS: No valid agent responses above confidence threshold']
+   📡 Meta-Gov: CB=🟢 | pending=0 | history=20 | conf={'Qwen3_32B_Gov': 0.5, 'Llama_3.1_8B_Gov': 0.5, 'llama-3.1-8b-instant': 0.45}
+
+💾 Checkpoint: step 1,960,000 → /home/ec2-user/SageMaker/mycelia_checkpoints/mycelia_step_1de840.pt
+Training: 1960250it [37:05,  2.87it/s]
+⏱️  Step 1,960,250 | 14309027 tok/s | 32.12/32.0 GB | 100.3% (>32.0B target) | ETA N/A | Elapsed 0:37:24
+
+📊 Step 1,960,250 | Loss: 4.4197 | LR: 7.14e-05 | 📉 Annealing | 📈 Transition: 52% (FFN=104 α=127)
+   Coherence: 0.4464 📉
+   Friction: 🟢 HARMONIZED | early=0.72 late=1.48 Δ=-0.77
+   FFNVeto: 10.9% mean_norm=83.2 max_norm=182.6 | target=104
+   AlphaScale: 99.5% scale=0.640 contrib_norm=199.1 | target=127
+   SoftCap: hit=97.4% max_raw=669.1 mean_raw=489.0
+
+   🔮 MPC: intervene=12.2% control=0.528 I=0.588
+   📊 Pred: 0.598 | Conf: 0.730 (min: 0.730)
+   📈 Dynamics: v=-0.0172 a=-0.0145
+   🎯 Forecast Error: 0.483 (predicted=0.605 vs actual=0.122)
+   I-field:  0.20 0.33 0.43 0.50 0.56 0.53
+   Conf-field:0.28 0.55 0.60 0.73 0.75 0.76
+
+   🔥 Π=316.7 | χ=0.60 | dominant=alpha
+   🔥 Π breakdown: ffn=48.9 alpha=191.6 cap=73.8 mpc=2.4
+   📐 Rate Governor: hit=0.0% scale=0.932 | ffn_growth=1.00x res_growth=1.48x
+
+   🎭 === META-GOVERNOR ROUND @ step 1,960,250 ===
+   📊 Telemetry: loss=4.4197 lr=7.14e-05 coherence=0.446
+   ❌ qwen/qwen3-32b: Groq error: Error code: 413 - {'error': {'message': 'Request
+   ❌ llama-3.1-8b-instant: Groq error: Error code: 413 - {'error': {'message': 'Request
+   🏛️  Consensus: NONE
+   📜 Rationale: No valid agent responses above confidence threshold
+   ==================================================
+   🛠  Meta-Governor: ['NO_CONSENSUS: No valid agent responses above confidence threshold']
+   📡 Meta-Gov: CB=🟢 | pending=0 | history=20 | conf={'Qwen3_32B_Gov': 0.5, 'Llama_3.1_8B_Gov': 0.5, 'llama-3.1-8b-instant': 0.45}
+Training: 1960500it [38:51,  2.87it/s]
+⏱️  Step 1,960,500 | 13667255 tok/s | 32.12/32.0 GB | 100.3% (>32.0B target) | ETA N/A | Elapsed 0:39:10
+
+📊 Step 1,960,500 | Loss: 4.4640 | LR: 7.17e-05 | 📉 Annealing | 📈 Transition: 55% (FFN=108 α=129)
+   Coherence: 0.4283 📉
+   Friction: 🟢 HARMONIZED | early=0.69 late=1.55 Δ=-0.85
+   FFNVeto: 14.6% mean_norm=86.0 max_norm=139.7 | target=108
+   AlphaScale: 99.8% scale=0.615 contrib_norm=206.7 | target=129
+   SoftCap: hit=98.5% max_raw=675.6 mean_raw=484.2
+
+   🔮 MPC: intervene=28.6% control=0.495 I=0.680
+   📊 Pred: 0.634 | Conf: 0.692 (min: 0.692)
+   📈 Dynamics: v=+0.0185 a=+0.0198
+   🎯 Forecast Error: 0.308 (predicted=0.594 vs actual=0.286)
+   I-field:  0.16 0.30 0.43 0.50 0.51 0.53
+   Conf-field:0.29 0.57 0.62 0.74 0.76 0.76
+
+   🔥 Π=327.8 | χ=0.62 | dominant=alpha
+   🔥 Π breakdown: ffn=53.1 alpha=202.6 cap=69.5 mpc=2.6
+   📐 Rate Governor: hit=0.0% scale=0.876 | ffn_growth=1.00x res_growth=1.56x
+
+   🎭 === META-GOVERNOR ROUND @ step 1,960,500 ===
+   📊 Telemetry: loss=4.4640 lr=7.17e-05 coherence=0.428
+   ❌ qwen/qwen3-32b: Groq error: Error code: 413 - {'error': {'message': 'Request
+   ❌ llama-3.1-8b-instant: Groq error: Error code: 413 - {'error': {'message': 'Request
+   🏛️  Consensus: NONE
+   📜 Rationale: No valid agent responses above confidence threshold
+   ==================================================
+   🛠  Meta-Governor: ['NO_CONSENSUS: No valid agent responses above confidence threshold']
+   📡 Meta-Gov: CB=🟢 | pending=0 | history=20 | conf={'Qwen3_32B_Gov': 0.5, 'Llama_3.1_8B_Gov': 0.5, 'llama-3.1-8b-instant': 0.45}
+Training: 1960750it [40:37,  2.87it/s]
+⏱️  Step 1,960,750 | 13080437 tok/s | 32.12/32.0 GB | 100.3% (>32.0B target) | ETA N/A | Elapsed 0:40:55
+
+📊 Step 1,960,750 | Loss: 4.3437 | LR: 7.21e-05 | 📉 Annealing | 📈 Transition: 57% (FFN=112 α=131)
+   Coherence: 0.4529 📉
+   Friction: 🟢 HARMONIZED | early=0.73 late=1.53 Δ=-0.80
+   FFNVeto: 13.2% mean_norm=84.5 max_norm=141.7 | target=112
+   AlphaScale: 99.5% scale=0.634 contrib_norm=201.1 | target=131
+   SoftCap: hit=94.3% max_raw=747.7 mean_raw=468.2
+
+   🔮 MPC: intervene=24.4% control=0.496 I=0.657
+   📊 Pred: 0.613 | Conf: 0.716 (min: 0.716)
+   📈 Dynamics: v=+0.0121 a=+0.0217
+   🎯 Forecast Error: 0.339 (predicted=0.583 vs actual=0.244)
+   I-field:  0.17 0.33 0.44 0.50 0.51 0.55
+   Conf-field:0.29 0.58 0.64 0.74 0.77 0.77
+
+   🔥 Π=305.4 | χ=0.63 | dominant=alpha
+   🔥 Π breakdown: ffn=51.5 alpha=193.6 cap=57.9 mpc=2.4
+   📐 Rate Governor: hit=0.0% scale=0.925 | ffn_growth=1.00x res_growth=1.50x
+
+   🎭 === META-GOVERNOR ROUND @ step 1,960,750 ===
+   📊 Telemetry: loss=4.3437 lr=7.21e-05 coherence=0.453
+   ❌ qwen/qwen3-32b: Groq error: Error code: 413 - {'error': {'message': 'Request
+   ❌ llama-3.1-8b-instant: Groq error: Error code: 413 - {'error': {'message': 'Request
+   🏛️  Consensus: NONE
+   📜 Rationale: No valid agent responses above confidence threshold
+   ==================================================
+   🛠  Meta-Governor: ['NO_CONSENSUS: No valid agent responses above confidence threshold']
+   📡 Meta-Gov: CB=🟢 | pending=0 | history=20 | conf={'Qwen3_32B_Gov': 0.5, 'Llama_3.1_8B_Gov': 0.5, 'llama-3.1-8b-instant': 0.45}
+Training: 1961000it [42:22,  2.87it/s]
+⏱️  Step 1,961,000 | 12542426 tok/s | 32.13/32.0 GB | 100.3% (>32.0B target) | ETA N/A | Elapsed 0:42:41
+
+📊 Step 1,961,000 | Loss: 4.5204 | LR: 7.24e-05 | 📉 Annealing | 📈 Transition: 60% (FFN=115 α=133)
+   Coherence: 0.4556 📉
+   Friction: 🟢 HARMONIZED | early=0.71 late=1.60 Δ=-0.89
+   FFNVeto: 8.9% mean_norm=80.6 max_norm=142.8 | target=115
+   AlphaScale: 99.5% scale=0.661 contrib_norm=193.4 | target=133
+   SoftCap: hit=95.8% max_raw=643.3 mean_raw=480.4
+
+   🔮 MPC: intervene=16.5% control=0.509 I=0.618
+   📊 Pred: 0.590 | Conf: 0.732 (min: 0.732)
+   📈 Dynamics: v=-0.0033 a=+0.0193
+   🎯 Forecast Error: 0.418 (predicted=0.583 vs actual=0.165)
+   I-field:  0.18 0.33 0.46 0.50 0.52 0.56
+   Conf-field:0.30 0.56 0.62 0.74 0.76 0.76
+
+   🔥 Π=307.4 | χ=0.61 | dominant=alpha
+   🔥 Π breakdown: ffn=51.0 alpha=186.5 cap=67.4 mpc=2.5
+   📐 Rate Governor: hit=0.0% scale=0.923 | ffn_growth=1.00x res_growth=1.49x
+
+   🎭 === META-GOVERNOR ROUND @ step 1,961,000 ===
+   📊 Telemetry: loss=4.5204 lr=7.24e-05 coherence=0.456
+   ❌ qwen/qwen3-32b: Groq error: Error code: 413 - {'error': {'message': 'Request
+   ❌ llama-3.1-8b-instant: Groq error: Error code: 413 - {'error': {'message': 'Request
+   🏛️  Consensus: NONE
+   📜 Rationale: No valid agent responses above confidence threshold
+   ==================================================
+   🛠  Meta-Governor: ['NO_CONSENSUS: No valid agent responses above confidence threshold']
+   📡 Meta-Gov: CB=🟢 | pending=0 | history=20 | conf={'Qwen3_32B_Gov': 0.5, 'Llama_3.1_8B_Gov': 0.5, 'llama-3.1-8b-instant': 0.45}
+Training: 1961250it [44:09,  2.87it/s]
+⏱️  Step 1,961,250 | 12044355 tok/s | 32.13/32.0 GB | 100.3% (>32.0B target) | ETA N/A | Elapsed 0:44:27
+
+📊 Step 1,961,250 | Loss: 4.3929 | LR: 7.27e-05 | 📉 Annealing | 📈 Transition: 62% (FFN=119 α=135)
+   Coherence: 0.4428 📉
+   Friction: 🟢 HARMONIZED | early=0.69 late=1.46 Δ=-0.77
+   FFNVeto: 21.7% mean_norm=89.2 max_norm=162.3 | target=119
+   AlphaScale: 99.8% scale=0.604 contrib_norm=210.5 | target=135
+   SoftCap: hit=96.1% max_raw=647.8 mean_raw=483.2
+
+   🔮 MPC: intervene=11.8% control=0.520 I=0.627
+   📊 Pred: 0.624 | Conf: 0.698 (min: 0.698)
+   📈 Dynamics: v=+0.0045 a=+0.0096
+   🎯 Forecast Error: 0.478 (predicted=0.596 vs actual=0.118)
+   I-field:  0.25 0.38 0.49 0.53 0.51 0.54
+   Conf-field:0.30 0.56 0.61 0.73 0.75 0.75
+
+   🔥 Π=342.3 | χ=0.62 | dominant=alpha
+   🔥 Π breakdown: ffn=59.6 alpha=211.2 cap=69.0 mpc=2.4
+   📐 Rate Governor: hit=0.0% scale=0.905 | ffn_growth=1.00x res_growth=1.52x
+
+   🎭 === META-GOVERNOR ROUND @ step 1,961,250 ===
+   📊 Telemetry: loss=4.3929 lr=7.27e-05 coherence=0.443
+   ❌ qwen/qwen3-32b: Groq error: Error code: 413 - {'error': {'message': 'Request
+   ❌ llama-3.1-8b-instant: Groq error: Error code: 413 - {'error': {'message': 'Request
+   🏛️  Consensus: NONE
+   📜 Rationale: No valid agent responses above confidence threshold
+   ==================================================
+   🛠  Meta-Governor: ['NO_CONSENSUS: No valid agent responses above confidence threshold']
+   📡 Meta-Gov: CB=🟢 | pending=0 | history=20 | conf={'Qwen3_32B_Gov': 0.5, 'Llama_3.1_8B_Gov': 0.5, 'llama-3.1-8b-instant': 0.45}
+Training: 1961500it [45:54,  2.87it/s]
+⏱️  Step 1,961,500 | 11587132 tok/s | 32.14/32.0 GB | 100.3% (>32.0B target) | ETA N/A | Elapsed 0:46:13
+
+📊 Step 1,961,500 | Loss: 4.4461 | LR: 7.31e-05 | 📉 Annealing | 📈 Transition: 65% (FFN=123 α=136)
+   Coherence: 0.4412 📉
+   Friction: 🟢 HARMONIZED | early=0.72 late=1.54 Δ=-0.82
+   FFNVeto: 16.2% mean_norm=85.8 max_norm=163.6 | target=123
+   AlphaScale: 100.0% scale=0.617 contrib_norm=206.0 | target=136
+   SoftCap: hit=98.8% max_raw=691.3 mean_raw=502.9
+
+   🔮 MPC: intervene=8.3% control=0.534 I=0.595
+   📊 Pred: 0.611 | Conf: 0.707 (min: 0.707)
+   📈 Dynamics: v=-0.0014 a=-0.0021
+   🎯 Forecast Error: 0.514 (predicted=0.597 vs actual=0.083)
+   I-field:  0.15 0.29 0.42 0.50 0.51 0.52
+   Conf-field:0.28 0.54 0.59 0.73 0.76 0.76
+
+   🔥 Π=348.1 | χ=0.58 | dominant=alpha
+   🔥 Π breakdown: ffn=59.9 alpha=203.2 cap=82.6 mpc=2.5
+   📐 Rate Governor: hit=0.0% scale=0.829 | ffn_growth=1.00x res_growth=1.61x
+
+   🎭 === META-GOVERNOR ROUND @ step 1,961,500 ===
+   📊 Telemetry: loss=4.4461 lr=7.31e-05 coherence=0.441
+   ❌ qwen/qwen3-32b: Groq error: Error code: 413 - {'error': {'message': 'Request
+   ❌ llama-3.1-8b-instant: Groq error: Error code: 413 - {'error': {'message': 'Request
+   🏛️  Consensus: NONE
+   📜 Rationale: No valid agent responses above confidence threshold
+   ==================================================
+   🛠  Meta-Governor: ['NO_CONSENSUS: No valid agent responses above confidence threshold']
+   📡 Meta-Gov: CB=🟢 | pending=0 | history=20 | conf={'Qwen3_32B_Gov': 0.5, 'Llama_3.1_8B_Gov': 0.5, 'llama-3.1-8b-instant': 0.45}
+Training: 1961750it [47:40,  2.84it/s]
+⏱️  Step 1,961,750 | 11163214 tok/s | 32.14/32.0 GB | 100.3% (>32.0B target) | ETA N/A | Elapsed 0:47:59
+
+📊 Step 1,961,750 | Loss: 4.4249 | LR: 7.34e-05 | 📉 Annealing | 📈 Transition: 68% (FFN=126 α=138)
+   Coherence: 0.4490 📉
+   Friction: 🟢 HARMONIZED | early=0.82 late=1.64 Δ=-0.83
+   FFNVeto: 14.0% mean_norm=85.2 max_norm=173.8 | target=126
+   AlphaScale: 99.8% scale=0.626 contrib_norm=203.6 | target=138
+   SoftCap: hit=95.1% max_raw=697.1 mean_raw=471.5
+
+   🔮 MPC: intervene=10.1% control=0.529 I=0.591
+   📊 Pred: 0.603 | Conf: 0.723 (min: 0.723)
+   📈 Dynamics: v=-0.0218 a=-0.0415
+   🎯 Forecast Error: 0.512 (predicted=0.612 vs actual=0.101)
+   I-field:  0.16 0.28 0.44 0.51 0.53 0.53
+   Conf-field:0.29 0.57 0.62 0.73 0.76 0.76
+
+   🔥 Π=322.1 | χ=0.61 | dominant=alpha
+   🔥 Π breakdown: ffn=62.9 alpha=197.1 cap=59.8 mpc=2.3
+   📐 Rate Governor: hit=0.0% scale=0.892 | ffn_growth=1.00x res_growth=1.54x
+
+   🎭 === META-GOVERNOR ROUND @ step 1,961,750 ===
+   📊 Telemetry: loss=4.4249 lr=7.34e-05 coherence=0.449
+   ❌ qwen/qwen3-32b: Groq error: Error code: 413 - {'error': {'message': 'Request
+   ❌ llama-3.1-8b-instant: Groq error: Error code: 413 - {'error': {'message': 'Request
+   🏛️  Consensus: NONE
+   📜 Rationale: No valid agent responses above confidence threshold
+   ==================================================
+   🛠  Meta-Governor: ['NO_CONSENSUS: No valid agent responses above confidence threshold']
+   📡 Meta-Gov: CB=🟢 | pending=0 | history=20 | conf={'Qwen3_32B_Gov': 0.5, 'Llama_3.1_8B_Gov': 0.5, 'llama-3.1-8b-instant': 0.45}
+Training: 1962000it [49:26,  2.87it/s]
+⏱️  Step 1,962,000 | 10769274 tok/s | 32.15/32.0 GB | 100.4% (>32.0B target) | ETA N/A | Elapsed 0:49:44
+
+📊 Step 1,962,000 | Loss: 4.4149 | LR: 7.37e-05 | 📉 Annealing | 📈 Transition: 70% (FFN=129 α=140)
+   Coherence: 0.4604 📉
+   Friction: 🟢 HARMONIZED | early=0.70 late=1.50 Δ=-0.80
+   FFNVeto: 15.3% mean_norm=85.7 max_norm=140.6 | target=129
+   AlphaScale: 99.8% scale=0.625 contrib_norm=203.8 | target=140
+   SoftCap: hit=94.3% max_raw=702.3 mean_raw=473.0
+
+   🔮 MPC: intervene=14.1% control=0.526 I=0.592
+   📊 Pred: 0.607 | Conf: 0.729 (min: 0.729)
+   📈 Dynamics: v=-0.0109 a=-0.0105
+   🎯 Forecast Error: 0.462 (predicted=0.603 vs actual=0.141)
+   I-field:  0.16 0.28 0.42 0.50 0.52 0.52
+   Conf-field:0.29 0.55 0.61 0.74 0.76 0.77
+
+   🔥 Π=323.5 | χ=0.62 | dominant=alpha
+   🔥 Π breakdown: ffn=60.9 alpha=199.0 cap=61.3 mpc=2.3
+   📐 Rate Governor: hit=0.0% scale=0.916 | ffn_growth=1.00x res_growth=1.51x
+
+   🎭 === META-GOVERNOR ROUND @ step 1,962,000 ===
+   📊 Telemetry: loss=4.4149 lr=7.37e-05 coherence=0.460
+   ❌ qwen/qwen3-32b: Groq error: Error code: 413 - {'error': {'message': 'Request
+   ❌ llama-3.1-8b-instant: Groq error: Error code: 413 - {'error': {'message': 'Request
+   🏛️  Consensus: NONE
+   📜 Rationale: No valid agent responses above confidence threshold
+   ==================================================
+   🛠  Meta-Governor: ['NO_CONSENSUS: No valid agent responses above confidence threshold']
+   📡 Meta-Gov: CB=🟢 | pending=0 | history=20 | conf={'Qwen3_32B_Gov': 0.5, 'Llama_3.1_8B_Gov': 0.5, 'llama-3.1-8b-instant': 0.45}
+Training: 1962038it [49:57,  2.86it/s]^C
+
+🛑 Shutdown signal received, finishing current step...
